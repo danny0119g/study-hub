@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>수강생 페이지</title>
+<style>
+:root{
+  --bg:#f4f5f7; --card:#fff; --ink:#15181e; --ink2:#4a5160; --mut:#7b8392; --line:#e3e6eb;
+  --acc:#2f5bea; --acc-soft:#e8edfd;
+  --todo:#d9480f; --todo-soft:#fff0e6; --ok:#12805c; --ok-soft:#e3f6ee; --sub:#7048e8; --sub-soft:#efe9fd;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0f1218; --card:#181c24; --ink:#eef0f4; --ink2:#b4bac6; --mut:#8a92a1; --line:#272c37;
+    --acc:#7b9bff; --acc-soft:#1f2a4d;
+    --todo:#ff9b66; --todo-soft:#3a2417; --ok:#4cd6a0; --ok-soft:#123428; --sub:#b197fc; --sub-soft:#2a2347;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px 14px 64px}
+h1{font-size:20px;margin:0}
+h2{font-size:13px;letter-spacing:.04em;color:var(--mut);margin:22px 0 8px;font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+.hdr{display:flex;justify-content:space-between;align-items:center;margin:4px 0 14px}
+.hdr button{background:none;border:0;color:var(--mut);font-size:13px;cursor:pointer}
+.login{margin-top:12vh;text-align:center}
+.login input{width:100%;max-width:300px;font-size:22px;text-align:center;letter-spacing:.12em;padding:12px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);text-transform:uppercase}
+.login input:focus{outline:0;border-color:var(--acc)}
+.login button{display:block;margin:12px auto 0;padding:12px 28px;border:0;border-radius:12px;background:var(--acc);color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+.err{color:var(--todo);margin-top:10px;min-height:1.4em}
+.tabs{display:flex;gap:6px;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:2}
+.tabs button{flex:1;padding:10px 0;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink2);font-weight:700;font-size:14px;cursor:pointer}
+.tabs button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.hero{background:var(--acc);color:#fff;border:0}
+.hero .big{font-size:26px;font-weight:800;line-height:1.25;margin:2px 0}
+.hero .sm{opacity:.85;font-size:13px}
+.chip{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:700}
+.chip.todo{background:var(--todo-soft);color:var(--todo)}
+.chip.submitted{background:var(--sub-soft);color:var(--sub)}
+.chip.checked{background:var(--ok-soft);color:var(--ok)}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.row .t{font-weight:700}
+.meta{color:var(--mut);font-size:13px;margin-top:2px}
+.fb{margin-top:8px;padding:8px 10px;border-radius:8px;background:var(--acc-soft);font-size:13.5px}
+.btn{display:inline-block;margin-top:8px;padding:7px 14px;border-radius:9px;background:var(--acc);color:#fff;text-decoration:none;font-weight:700;font-size:13.5px}
+.dd{font-weight:800;font-size:13px}
+.dd.hot{color:var(--todo)}
+.empty{color:var(--mut);text-align:center;padding:18px 0}
+.area{display:flex;justify-content:space-between;align-items:baseline}
+.area .now{font-size:24px;font-weight:800}
+.delta{font-size:13px;font-weight:700;margin-left:6px}
+.delta.up{color:var(--ok)} .delta.down{color:var(--todo)}
+.bars{display:flex;align-items:flex-end;gap:6px;height:86px;margin-top:10px;border-bottom:1px solid var(--line)}
+.bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
+.bar i{display:block;width:100%;max-width:26px;background:var(--acc);border-radius:4px 4px 0 0;opacity:.45}
+.bar.last i{opacity:1}
+.bar b{font-size:11px;color:var(--ink2);margin-bottom:2px;font-weight:700}
+.xl{display:flex;gap:6px;margin-top:3px}
+.xl span{flex:1;text-align:center;font-size:10.5px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+a.mat{display:flex;justify-content:space-between;align-items:center;color:var(--ink);text-decoration:none;font-weight:600}
+a.mat span:last-child{color:var(--acc);font-size:13px}
+.hide{display:none}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+(function () {
+  'use strict';
+  const app = document.getElementById('app');
+  const enc = new TextEncoder();
+  const dec = new TextDecoder();
+  const KEY = 'tutor_code';
+  const ITER = 200000;
+
+  function h(tag, attrs, ...kids) {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) {
+      if (k === 'class') e.className = v;
+      else if (k.startsWith('on')) e.addEventListener(k.slice(2), v);
+      else e.setAttribute(k, v);
+    }
+    for (const c of kids.flat()) if (c != null) e.append(c.nodeType ? c : document.createTextNode(String(c)));
+    return e;
+  }
+  const norm = s => s.replace(/[\s-]/g, '').toUpperCase();
+  const store = {
+    get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } },
+    set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} },
+    del() { try { localStorage.removeItem(KEY); } catch (e) {} }
+  };
+
+  async function fileId(code) {
+    const d = await crypto.subtle.digest('SHA-256', enc.encode('id:' + code));
+    return [...new Uint8Array(d)].slice(0, 8).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+  async function fetchData(raw) {
+    const code = norm(raw);
+    const formatted = code.slice(0, 5) + '-' + code.slice(5);
+    const r = await fetch('data/' + await fileId(formatted) + '.bin', { cache: 'no-store' });
+    if (!r.ok) throw new Error('코드를 찾을 수 없습니다.');
+    const buf = new Uint8Array(await r.arrayBuffer());
+    const base = await crypto.subtle.importKey('raw', enc.encode(formatted), 'PBKDF2', false, ['deriveKey']);
+    const key = await crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt: buf.slice(0, 16), iterations: ITER, hash: 'SHA-256' },
+      base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+    const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: buf.slice(16, 28) }, key, buf.slice(28));
+    return { data: JSON.parse(dec.decode(plain)), saved: formatted };
+  }
+
+  const today = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
+  const parse = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+  const dday = s => Math.round((parse(s) - today()) / 864e5);
+  const ddText = n => n === 0 ? 'D-DAY' : n > 0 ? 'D-' + n : 'D+' + (-n);
+  const fmt = s => { const d = parse(s); return (d.getMonth() + 1) + '/' + d.getDate() + ' (' + '일월화수목금토'[d.getDay()] + ')'; };
+  const STATUS = { todo: '해야 함', submitted: '제출함', checked: '확인 완료' };
+
+  function login(msg) {
+    app.replaceChildren();
+    const input = h('input', { type: 'text', placeholder: 'XXXXX-XXXXX', autocomplete: 'off', autocapitalize: 'characters', maxlength: '11' });
+    const err = h('div', { class: 'err' }, msg || '');
+    const go = async () => {
+      if (norm(input.value).length !== 10) { err.textContent = '코드는 10자리입니다.'; return; }
+      err.textContent = '확인 중...';
+      try { const r = await fetchData(input.value); store.set(r.saved); render(r.data); }
+      catch (e) { err.textContent = '코드가 맞지 않습니다.'; }
+    };
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+    app.append(h('div', { class: 'login' }, h('h1', {}, '수강생 페이지'), h('p', { class: 'meta' }, '받은 코드를 입력하세요.'), input, h('button', { onclick: go }, '입장'), err));
+    input.focus();
+  }
+
+  function render(d) {
+    app.replaceChildren();
+    const tabs = ['홈', '과제', '성적', '자료'];
+    const views = {};
+    const bar = h('div', { class: 'tabs' });
+    tabs.forEach((t, i) => {
+      const b = h('button', { onclick: () => show(t) }, t);
+      b.dataset.t = t; bar.append(b);
+    });
+    function show(t) {
+      for (const k of tabs) views[k].classList.toggle('hide', k !== t);
+      for (const b of bar.children) b.classList.toggle('on', b.dataset.t === t);
+    }
+    views['홈'] = home(d); views['과제'] = assignments(d); views['성적'] = scores(d); views['자료'] = materials(d);
+    app.append(
+      h('div', { class: 'hdr' }, h('h1', {}, d.name), h('button', { onclick: () => { store.del(); login(); } }, '나가기')),
+      bar, ...tabs.map(t => views[t]));
+    show('홈');
+  }
+
+  function assignCard(a) {
+    const n = a.due ? dday(a.due) : null;
+    return h('div', { class: 'card' },
+      h('div', { class: 'row' },
+        h('div', {}, h('div', { class: 't' }, (a.week ? a.week + '주차 · ' : '') + a.title),
+          a.due ? h('div', { class: 'meta' }, '마감 ' + fmt(a.due)) : null),
+        h('div', { style: 'text-align:right' },
+          h('span', { class: 'chip ' + a.status }, STATUS[a.status] || a.status),
+          a.status === 'todo' && n != null ? h('div', { class: 'dd' + (n <= 1 ? ' hot' : '') }, ddText(n)) : null)),
+      a.feedback ? h('div', { class: 'fb' }, a.feedback) : null,
+      a.status === 'todo' && a.submit_url ? h('a', { class: 'btn', href: a.submit_url, target: '_blank', rel: 'noopener' }, '제출하러 가기') : null);
+  }
+
+  function home(d) {
+    const v = h('div', {});
+    const next = d.schedule.filter(s => dday(s.date) >= 0).sort((a, b) => a.date.localeCompare(b.date))[0];
+    v.append(h('div', { class: 'card hero' },
+      h('div', { class: 'sm' }, '다음 수업'),
+      next ? [h('div', { class: 'big' }, fmt(next.date) + ' ' + (next.time || '')), h('div', { class: 'sm' }, ddText(dday(next.date)) + (next.note ? ' · ' + next.note : ''))]
+           : h('div', { class: 'big' }, '예정된 수업 없음')));
+    const todo = d.assignments.filter(a => a.status === 'todo').sort((a, b) => (a.due || '9').localeCompare(b.due || '9'));
+    v.append(h('h2', {}, '지금 해야 할 과제 ' + todo.length));
+    v.append(...(todo.length ? todo.map(assignCard) : [h('div', { class: 'card empty' }, '밀린 과제 없음')]));
+    if (d.notices.length) {
+      v.append(h('h2', {}, '공지'));
+      d.notices.slice().sort((a, b) => b.date.localeCompare(a.date)).forEach(n =>
+        v.append(h('div', { class: 'card' }, h('div', { class: 'meta' }, n.date), h('div', {}, n.text))));
+    }
+    return v;
+  }
+
+  function assignments(d) {
+    const v = h('div', {});
+    const order = { todo: 0, submitted: 1, checked: 2 };
+    const list = d.assignments.slice().sort((a, b) => (order[a.status] - order[b.status]) || (a.due || '9').localeCompare(b.due || '9'));
+    v.append(...(list.length ? list.map(assignCard) : [h('div', { class: 'card empty' }, '등록된 과제 없음')]));
+    return v;
+  }
+
+  function scores(d) {
+    const v = h('div', {});
+    if (!d.scores.length) return h('div', { class: 'card empty' }, '기록 없음');
+    const areas = [...new Set(d.scores.flatMap(s => Object.keys(s).filter(k => k !== 'label')))];
+    for (const ar of areas) {
+      const pts = d.scores.filter(s => typeof s[ar] === 'number').map(s => ({ l: s.label, v: s[ar] }));
+      if (!pts.length) continue;
+      const last = pts[pts.length - 1], prev = pts[pts.length - 2];
+      const diff = prev ? last.v - prev.v : null;
+      v.append(h('div', { class: 'card' },
+        h('div', { class: 'area' }, h('div', { class: 't' }, ar + ' 정답률'),
+          h('div', {}, h('span', { class: 'now' }, last.v + '%'),
+            diff != null && diff !== 0 ? h('span', { class: 'delta ' + (diff > 0 ? 'up' : 'down') }, (diff > 0 ? '▲ +' : '▼ ') + diff) : null)),
+        h('div', { class: 'bars' }, pts.map((p, i) => {
+          const bar = h('div', { class: 'bar' + (i === pts.length - 1 ? ' last' : ''), title: p.l + ' ' + p.v + '%' },
+            h('b', {}, p.v), h('i', { style: 'height:' + Math.max(2, p.v * 0.7) + 'px' }));
+          return bar;
+        })),
+        h('div', { class: 'xl' }, pts.map(p => h('span', {}, p.l)))));
+    }
+    return v;
+  }
+
+  function materials(d) {
+    const v = h('div', {});
+    if (!d.materials.length) return h('div', { class: 'card empty' }, '등록된 자료 없음');
+    d.materials.forEach(m => v.append(h('div', { class: 'card' }, h('a', { class: 'mat', href: m.url, target: '_blank', rel: 'noopener' }, h('span', {}, m.title), h('span', {}, '열기 ›')))));
+    return v;
+  }
+
+  const saved = store.get();
+  if (saved) fetchData(saved).then(r => render(r.data)).catch(() => { store.del(); login('저장된 코드로 열 수 없습니다. 다시 입력하세요.'); });
+  else login();
+})();
+</script>
+</body>
+</html>
