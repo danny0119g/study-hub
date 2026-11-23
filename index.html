@@ -193,7 +193,7 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
     const err = h('div', { class: 'err' }, msg || '');
     const go = async () => {
       if (norm(input.value).length !== 8) { err.textContent = '휴대폰 번호를 확인하세요.'; return; }
-      err.textContent = '확인 중...';
+      err.textContent = '로그인 중...';
       try { const r = await fetchData(input.value); store.set(r.saved); render(r.data); }
       catch (e) { err.textContent = '코드가 맞지 않습니다.'; }
     };
