@@ -174,7 +174,7 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
       catch (e) { err.textContent = '코드가 맞지 않습니다.'; }
     };
     input.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
-    app.append(h('div', { class: 'login' }, h('button', { class: 'back', onclick: landing }, '‹ 처음으로'), h('h1', {}, '수강생 로그인'), h('p', { class: 'meta' }, '8자리를 입력하세요'), input, h('button', { onclick: go }, '입장'), err));
+    app.append(h('div', { class: 'login' }, h('button', { class: 'back', onclick: landing }, '‹ 처음으로'), h('h1', {}, '수강생 로그인'), h('p', { class: 'meta' }, '010 제외 8자리를 입력하세요.'), input, h('button', { onclick: go }, '입장'), err));
     input.focus();
   }
 
