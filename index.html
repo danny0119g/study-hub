@@ -9,99 +9,83 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#f4f5f7; --card:#fff; --ink:#15181e; --ink2:#4a5160; --mut:#7b8392; --line:#e3e6eb;
-  --acc:#2f5bea; --acc-soft:#e8edfd;
-  --todo:#d9480f; --todo-soft:#fff0e6; --ok:#12805c; --ok-soft:#e3f6ee; --sub:#7048e8; --sub-soft:#efe9fd;
-}
-@media (prefers-color-scheme:dark){
-  :root{
-    --bg:#0f1218; --card:#181c24; --ink:#eef0f4; --ink2:#b4bac6; --mut:#8a92a1; --line:#272c37;
-    --acc:#7b9bff; --acc-soft:#1f2a4d;
-    --todo:#ff9b66; --todo-soft:#3a2417; --ok:#4cd6a0; --ok-soft:#123428; --sub:#b197fc; --sub-soft:#2a2347;
-  }
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif}
-main{max-width:640px;margin:0 auto;padding:16px 14px 64px}
-h1{font-size:20px;margin:0}
-h2{font-size:13px;letter-spacing:.04em;color:var(--mut);margin:22px 0 8px;font-weight:700}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
-.hdr{display:flex;justify-content:space-between;align-items:center;margin:4px 0 14px}
-.hdr button{background:none;border:0;color:var(--mut);font-size:13px;cursor:pointer}
-.login{margin-top:12vh;text-align:center}
-.login input{width:100%;max-width:300px;font-size:22px;text-align:center;letter-spacing:.12em;padding:12px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);text-transform:uppercase}
-.login input:focus{outline:0;border-color:var(--acc)}
-.login button{display:block;margin:12px auto 0;padding:12px 28px;border:0;border-radius:12px;background:var(--acc);color:#fff;font-size:16px;font-weight:700;cursor:pointer}
-.err{color:var(--todo);margin-top:10px;min-height:1.4em}
-.tabs{display:flex;gap:6px;position:sticky;top:0;background:var(--bg);padding:8px 0;z-index:2}
-.tabs button{flex:1;padding:10px 0;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink2);font-weight:700;font-size:14px;cursor:pointer}
-.tabs button.on{background:var(--acc);border-color:var(--acc);color:#fff}
-.hero{background:var(--acc);color:#fff;border:0}
-.hero .big{font-size:26px;font-weight:800;line-height:1.25;margin:2px 0}
-.hero .sm{opacity:.85;font-size:13px}
-.chip{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:700}
-.chip.todo{background:var(--todo-soft);color:var(--todo)}
-.chip.submitted{background:var(--sub-soft);color:var(--sub)}
-.chip.checked{background:var(--ok-soft);color:var(--ok)}
-.row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-.row .t{font-weight:700}
-.meta{color:var(--mut);font-size:13px;margin-top:2px}
-.fb{margin-top:8px;padding:8px 10px;border-radius:8px;background:var(--acc-soft);font-size:13.5px}
-.btn{display:inline-block;margin-top:8px;padding:7px 14px;border-radius:9px;background:var(--acc);color:#fff;text-decoration:none;font-weight:700;font-size:13.5px}
-.dd{font-weight:800;font-size:13px}
-.dd.hot{color:var(--todo)}
-.empty{color:var(--mut);text-align:center;padding:18px 0}
-.area{display:flex;justify-content:space-between;align-items:baseline}
-.area .now{font-size:24px;font-weight:800}
-.delta{font-size:13px;font-weight:700;margin-left:6px}
-.delta.up{color:var(--ok)} .delta.down{color:var(--todo)}
-.bars{display:flex;align-items:flex-end;gap:6px;height:86px;margin-top:10px;border-bottom:1px solid var(--line)}
-.bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
-.bar i{display:block;width:100%;max-width:26px;background:var(--acc);border-radius:4px 4px 0 0;opacity:.45}
-.bar.last i{opacity:1}
-.bar b{font-size:11px;color:var(--ink2);margin-bottom:2px;font-weight:700}
-.xl{display:flex;gap:6px;margin-top:3px}
-.xl span{flex:1;text-align:center;font-size:10.5px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-a.mat{display:flex;justify-content:space-between;align-items:center;color:var(--ink);text-decoration:none;font-weight:600}
-a.mat span:last-child{color:var(--acc);font-size:13px}
-.land{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;color:#000;padding:0 20px 8vh}
-@media (prefers-color-scheme:dark){.land{background:#0f1218;color:#fff}}
-.land h1{font-weight:900;font-synthesis:none;font:900 clamp(44px,9vw,84px)/1.15 "Black Han Sans","Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.01em;margin:0 0 22px;text-align:center}
+:root{--ink:#111;--ink2:#444b57;--mut:#8b919c;--line:#e8eaee;--acc:#5588dd;--soft:#e8f0fd;--soft2:#f4f7fc;--ok:#1b8a5a;--bad:#d9480f;color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.55 "Pretendard","Apple SD Gothic Neo","Noto Sans KR",-apple-system,sans-serif}
+button{font-family:inherit}
+main{max-width:560px;margin:0 auto;padding:22px 20px 80px}
+.disp,h1,.cal-h b,.next .big{font-family:"Black Han Sans","Apple SD Gothic Neo","Noto Sans KR",sans-serif;font-weight:900;font-synthesis:none}
+h1{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.01em}
+h2{font-size:13px;color:var(--mut);margin:28px 0 6px;font-weight:700}
+.hdr{display:flex;justify-content:space-between;align-items:center;margin:0 0 18px}
+.hdr button{background:none;border:0;color:var(--mut);font-size:14px;font-weight:600;cursor:pointer;padding:6px 0 6px 12px}
+.meta{color:var(--mut);font-size:14px}
+.err{color:var(--bad);margin-top:12px;min-height:1.4em;font-size:14px}
+.empty{color:var(--mut);text-align:center;padding:36px 0;font-size:15px}
+.card{padding:16px 2px;border-bottom:1px solid var(--line)}
+.post .t{font-weight:700;font-size:17px}
+.post .b{margin-top:8px;white-space:pre-wrap;color:var(--ink2)}
+
+/* 첫 화면 */
+.land{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;padding:0 20px 8vh}
+.land h1{font-size:clamp(44px,9vw,84px);line-height:1.15;margin:0 0 22px;text-align:center}
 .land .btns{display:flex;gap:10px}
-.land .btns button{border:0;border-radius:10px;padding:14px 22px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit}
-.land .b1{background:#5588dd;color:#fff}
-.land .b2{background:#e8f0fd;color:#1f3358}
-@media (prefers-color-scheme:dark){.land .b2{background:#1f2a4d;color:#dbe6ff}}
-.login button.back{background:none;color:var(--mut);font-size:14px;font-weight:600;padding:8px 0;margin:0 auto 14px;border-radius:0}
-.post .t{font-weight:700}
-.post .b{margin-top:6px;white-space:pre-wrap;color:var(--ink2)}
-.cal-h{display:flex;justify-content:space-between;align-items:center;margin:6px 2px 8px}
-.cal-h b{font-size:16px}
-.cal-h button{background:none;border:0;font-size:22px;color:var(--ink2);cursor:pointer;padding:2px 12px}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.cal .w{text-align:center;font-size:12px;color:var(--mut);font-weight:700;padding:4px 0}
-.cal .w.sun,.cal .c.sun .n{color:#d9480f}
+.btn1,.btn2{border:0;border-radius:10px;padding:14px 22px;font-size:16px;font-weight:700;cursor:pointer}
+.btn1{background:var(--acc);color:#fff}
+.btn2{background:var(--soft);color:#1f3358}
+
+/* 로그인 */
+.login{margin-top:14vh;text-align:center}
+.login h1{font-size:34px;margin-bottom:6px}
+.login input{width:100%;max-width:320px;font-size:22px;text-align:center;letter-spacing:.08em;padding:14px;border-radius:10px;border:2px solid transparent;background:var(--soft2);color:var(--ink);margin-top:18px}
+.login input:focus{outline:0;border-color:var(--acc);background:#fff}
+.login .btn1{display:block;margin:12px auto 0;width:100%;max-width:320px;padding:15px}
+.back{background:none;border:0;color:var(--mut);font-size:14px;font-weight:600;cursor:pointer;padding:8px 0;margin-bottom:18px}
+
+/* 탭 */
+.tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:6px}
+.tabs button{flex:1;padding:12px 0;border:0;border-bottom:3px solid transparent;margin-bottom:-1px;background:none;color:var(--mut);font-size:16px;font-weight:700;cursor:pointer}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--acc)}
+
+/* 자료 */
+a.mat{display:flex;justify-content:space-between;align-items:center;color:var(--ink);text-decoration:none;font-weight:600;font-size:17px}
+a.mat span:last-child{color:var(--acc);font-size:14px}
+
+/* 일정 */
+.next{padding:22px 2px 10px}
+.next .sm{color:var(--mut);font-size:14px;font-weight:600}
+.next .big{font-size:30px;line-height:1.25;margin:2px 0 4px}
+.next .acc{color:var(--acc);font-weight:700;font-size:15px}
+.cal-h{display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px}
+.cal-h b{font-size:20px;font-weight:900}
+.cal-h button{background:none;border:0;font-size:24px;color:var(--ink2);cursor:pointer;padding:2px 12px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);row-gap:2px}
+.cal .w{text-align:center;font-size:13px;color:var(--mut);font-weight:700;padding:6px 0}
+.cal .w.sun,.cal .c.sun .n{color:var(--bad)}
 .cal .w.sat,.cal .c.sat .n{color:var(--acc)}
-.cal .c{min-height:58px;border:1px solid var(--line);border-radius:10px;background:var(--card);padding:4px 2px;text-align:center;cursor:default}
+.cal .c{min-height:56px;border-radius:10px;padding:5px 0;text-align:center;cursor:default}
 .cal .c.off{visibility:hidden}
-.cal .c .n{font-size:13px;font-weight:700}
-.cal .c.today .n{display:inline-block;min-width:22px;border-radius:99px;background:var(--ink);color:var(--bg)}
-.cal .c.les{cursor:pointer;background:var(--acc-soft);border-color:transparent}
-.cal .c.les .tm{margin-top:3px;font-size:12px;font-weight:800;color:var(--acc)}
-.cal .c.les.past{opacity:.5}
-.cal .c.sel{outline:2px solid var(--acc)}
-.chg{display:block;width:100%;margin-top:12px;padding:13px 0;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-size:15px;font-weight:700;cursor:pointer}
-.sent{margin-top:10px;text-align:center;color:var(--ok);font-weight:700;min-height:1.4em}
-.modal{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;padding:16px}
-.modal .req{width:100%;max-width:440px;margin:0;box-shadow:0 12px 40px rgba(0,0,0,.25)}
-.modal .req h3{margin:0 0 4px;font-size:18px}
-.req .dp{display:flex;gap:6px;margin:8px 0 12px}
-.req .dp button{flex:1;padding:12px 0;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink2);font-size:15px;font-weight:700;cursor:pointer}
-.req .dp button.on{background:var(--acc);border-color:var(--acc);color:#fff}
-.req input[type=time]{width:100%;font-size:20px;padding:11px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink)}
-.req .go{display:block;width:100%;margin-top:12px;padding:13px 0;border:0;border-radius:12px;background:var(--acc);color:#fff;font-size:16px;font-weight:700;cursor:pointer}
-.req .x{display:block;margin:8px auto 0;background:none;border:0;color:var(--mut);font-size:14px;cursor:pointer}
+.cal .c .n{font-size:15px;font-weight:600}
+.cal .c.today .n{display:inline-block;min-width:30px;line-height:26px;border:2px solid var(--ink);border-radius:99px}
+.cal .c.les{background:var(--soft);cursor:pointer}
+.cal .c.les .tm{margin-top:2px;font-size:12px;font-weight:800;color:var(--acc)}
+.cal .c.les.past{opacity:.45}
+.cal .c.sel{background:var(--acc)}
+.cal .c.sel .n,.cal .c.sel .tm{color:#fff}
+.chg{display:block;width:100%;margin-top:18px;padding:15px 0;border:0;border-radius:10px;background:var(--soft);color:#1f3358;font-size:16px;font-weight:700;cursor:pointer}
+.sent{margin-top:12px;text-align:center;color:var(--ok);font-weight:700;min-height:1.4em}
+
+/* 일정 변경 팝업 */
+.modal{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;padding:16px}
+.modal .req{width:100%;max-width:440px;background:#fff;border:0;border-radius:16px;padding:24px 22px;box-shadow:0 16px 48px rgba(0,0,0,.22)}
+.req h3{margin:0 0 16px;font:900 24px/1.2 "Black Han Sans","Apple SD Gothic Neo",sans-serif;font-synthesis:none}
+.req .t{font-size:14px;font-weight:700;color:var(--ink2)}
+.req .dp{display:flex;gap:6px;margin:8px 0 18px}
+.req .dp button{flex:1;padding:12px 0;border:0;border-radius:10px;background:var(--soft2);color:var(--ink2);font-size:15px;font-weight:700;cursor:pointer}
+.req .dp button.on{background:var(--acc);color:#fff}
+.req input[type=time]{width:100%;font-size:20px;padding:12px;border-radius:10px;border:2px solid transparent;background:var(--soft2);color:var(--ink);margin-top:8px}
+.req .go{display:block;width:100%;margin-top:18px;padding:15px 0;border:0;border-radius:10px;background:var(--acc);color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+.req .x{display:block;margin:10px auto 0;background:none;border:0;color:var(--mut);font-size:14px;cursor:pointer}
 .hide{display:none}
 </style>
 </head>
@@ -172,8 +156,8 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
     app.append(h('div', { class: 'land' },
       h('h1', {}, SITE_NAME),
       h('div', { class: 'btns' },
-        h('button', { class: 'b1', onclick: () => login() }, '로그인'),
-        h('button', { class: 'b2', onclick: board }, '게시판'))));
+        h('button', { class: 'btn1', onclick: () => login() }, '로그인'),
+        h('button', { class: 'btn2', onclick: board }, '게시판'))));
   }
   async function board() {
     app.replaceChildren();
@@ -200,7 +184,7 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
       catch (e) { err.textContent = '코드가 맞지 않습니다.'; }
     };
     input.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
-    app.append(h('div', { class: 'login' }, h('button', { class: 'back', onclick: landing }, '‹ 처음으로'), h('h1', {}, '수강생 로그인'), h('p', { class: 'meta' }, '010 제외 8자리를 입력하세요.'), input, h('button', { onclick: go }, '로그인'), err));
+    app.append(h('div', { class: 'login' }, h('button', { class: 'back', onclick: landing }, '‹ 처음으로'), h('h1', {}, '수강생 로그인'), h('p', { class: 'meta' }, '010 제외 8자리를 입력하세요.'), input, h('button', { class: 'btn1', onclick: go }, '로그인'), err));
     input.focus();
   }
 
@@ -219,7 +203,7 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
     }
     views['자료'] = materials(d); views['일정'] = schedule(d);
     app.append(
-      h('div', { class: 'hdr' }, h('h1', {}, d.name), h('button', { onclick: () => { store.del(); landing(); } }, '나가기')),
+      h('div', { class: 'hdr' }, h('h1', {}, d.name), h('button', { onclick: () => { store.del(); landing(); } }, '로그아웃')),
       bar, ...tabs.map(t => views[t]));
     show('자료');
   }
@@ -249,7 +233,7 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
     let sel = null;
     const head = h('div', { class: 'cal-h' });
     const grid = h('div', { class: 'cal' });
-    const info = h('div', { class: 'card hero' });
+    const info = h('div', { class: 'next' });
     const sent = h('div', { class: 'sent' });
 
     function showInfo(date, l) {
@@ -258,7 +242,7 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
       const n = dday(date);
       info.append(h('div', { class: 'sm' }, date === (nextLesson(d) || {}).date ? '다음 수업' : '선택한 수업'),
         h('div', { class: 'big' }, fmt(date) + ' ' + (l.time || '')),
-        h('div', { class: 'sm' }, (n >= 0 ? ddText(n) : '지난 수업') + (l.note ? ' · ' + l.note : '')));
+        h('div', { class: 'acc' }, (n >= 0 ? ddText(n) : '지난 수업') + (l.note ? ' · ' + l.note : '')));
     }
     function draw() {
       head.replaceChildren(
