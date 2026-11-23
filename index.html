@@ -300,8 +300,19 @@ a.mat .md{display:block;color:var(--mut);font-size:14px;font-weight:500;margin-t
 
   function materials(d) {
     const v = h('div', {});
-    if (!d.materials.length) return h('div', { class: 'card empty' }, '등록된 자료 없음');
-    d.materials.forEach(m => v.append(h('div', { class: 'card' }, h('a', { class: 'mat', href: m.url, target: '_blank', rel: 'noopener' }, h('span', {}, h('span', { class: 'mt' }, m.title), m.desc ? h('span', { class: 'md' }, m.desc) : null), h('span', {}, '열기 ›')))));
+    const draw = list => {
+      list = list.filter(m => m && m.url && !/example\.com/.test(m.url));
+      v.replaceChildren();
+      if (!list.length) { v.append(h('div', { class: 'card empty' }, '등록된 자료 없음')); return; }
+      list.forEach(m => v.append(h('div', { class: 'card' }, h('a', { class: 'mat', href: m.url, target: '_blank', rel: 'noopener' }, h('span', {}, h('span', { class: 'mt' }, m.title), m.desc ? h('span', { class: 'md' }, m.desc) : null), h('span', {}, '열기 ›')))));
+    };
+    draw(d.materials || []);
+    // 공통 자료는 common.json 을 바로 읽어 반영한다 (data/*.bin 을 다시 만들지 않아도 됨). 제목이 같으면 common.json 쪽이 우선.
+    fetch('common.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(c => {
+      if (!c || !Array.isArray(c.materials)) return;
+      const seen = new Set(c.materials.map(m => m.title));
+      draw([...c.materials, ...(d.materials || []).filter(m => !seen.has(m.title))]);
+    }).catch(() => {});
     return v;
   }
 
