@@ -4,7 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>수강생 페이지</title>
+<title>유빈 국어</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f4f5f7; --card:#fff; --ink:#15181e; --ink2:#4a5160; --mut:#7b8392; --line:#e3e6eb;
@@ -62,6 +65,17 @@ h2{font-size:13px;letter-spacing:.04em;color:var(--mut);margin:22px 0 8px;font-w
 .xl span{flex:1;text-align:center;font-size:10.5px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 a.mat{display:flex;justify-content:space-between;align-items:center;color:var(--ink);text-decoration:none;font-weight:600}
 a.mat span:last-child{color:var(--acc);font-size:13px}
+.land{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;color:#000;padding:0 20px 8vh}
+@media (prefers-color-scheme:dark){.land{background:#0f1218;color:#fff}}
+.land h1{font-weight:900;font-synthesis:none;font:900 clamp(44px,9vw,84px)/1.15 "Black Han Sans","Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.01em;margin:0 0 22px;text-align:center}
+.land .btns{display:flex;gap:10px}
+.land .btns button{border:0;border-radius:10px;padding:14px 22px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit}
+.land .b1{background:#5588dd;color:#fff}
+.land .b2{background:#e8f0fd;color:#1f3358}
+@media (prefers-color-scheme:dark){.land .b2{background:#1f2a4d;color:#dbe6ff}}
+.login button.back{background:none;color:var(--mut);font-size:14px;font-weight:600;padding:8px 0;margin:0 auto 14px;border-radius:0}
+.post .t{font-weight:700}
+.post .b{margin-top:6px;white-space:pre-wrap;color:var(--ink2)}
 .hide{display:none}
 </style>
 </head>
@@ -126,6 +140,29 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
   const fmt = s => { const d = parse(s); return (d.getMonth() + 1) + '/' + d.getDate() + ' (' + '일월화수목금토'[d.getDay()] + ')'; };
   const STATUS = { todo: '해야 함', submitted: '제출함', checked: '확인 완료' };
 
+  const SITE_NAME = '유빈 국어';
+  function landing() {
+    app.replaceChildren();
+    app.append(h('div', { class: 'land' },
+      h('h1', {}, SITE_NAME),
+      h('div', { class: 'btns' },
+        h('button', { class: 'b1', onclick: () => login() }, '로그인'),
+        h('button', { class: 'b2', onclick: board }, '게시판'))));
+  }
+  async function board() {
+    app.replaceChildren();
+    const list = h('div', {}, h('div', { class: 'empty' }, '불러오는 중...'));
+    app.append(h('div', { class: 'hdr' }, h('h1', {}, '게시판'), h('button', { onclick: landing }, '‹ 처음으로')), list);
+    try {
+      const r = await fetch('board.json', { cache: 'no-store' });
+      const posts = r.ok ? await r.json() : [];
+      list.replaceChildren();
+      if (!posts.length) list.append(h('div', { class: 'card empty' }, '등록된 글이 없습니다.'));
+      posts.forEach(p => list.append(h('div', { class: 'card post' },
+        h('div', { class: 't' }, p.title), h('div', { class: 'meta' }, p.date || ''), h('div', { class: 'b' }, p.text || ''))));
+    } catch (e) { list.replaceChildren(h('div', { class: 'card empty' }, '글을 불러오지 못했습니다.')); }
+  }
+
   function login(msg) {
     app.replaceChildren();
     const input = h('input', { type: 'text', inputmode: 'numeric', placeholder: '휴대폰 번호 뒤 8자리', autocomplete: 'off', maxlength: '16' });
@@ -137,7 +174,7 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
       catch (e) { err.textContent = '코드가 맞지 않습니다.'; }
     };
     input.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
-    app.append(h('div', { class: 'login' }, h('h1', {}, '수강생 페이지'), h('p', { class: 'meta' }, '휴대폰 번호 뒤 8자리를 입력하세요.'), input, h('button', { onclick: go }, '입장'), err));
+    app.append(h('div', { class: 'login' }, h('button', { class: 'back', onclick: landing }, '‹ 처음으로'), h('h1', {}, '수강생 로그인'), h('p', { class: 'meta' }, '휴대폰 번호 뒤 8자리를 입력하세요.'), input, h('button', { onclick: go }, '입장'), err));
     input.focus();
   }
 
@@ -156,7 +193,7 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
     }
     views['홈'] = home(d); views['과제'] = assignments(d); views['성적'] = scores(d); views['자료'] = materials(d);
     app.append(
-      h('div', { class: 'hdr' }, h('h1', {}, d.name), h('button', { onclick: () => { store.del(); login(); } }, '나가기')),
+      h('div', { class: 'hdr' }, h('h1', {}, d.name), h('button', { onclick: () => { store.del(); landing(); } }, '나가기')),
       bar, ...tabs.map(t => views[t]));
     show('홈');
   }
@@ -232,7 +269,7 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
 
   const saved = store.get();
   if (saved) fetchData(saved).then(r => render(r.data)).catch(() => { store.del(); login('저장된 코드로 열 수 없습니다. 다시 입력하세요.'); });
-  else login();
+  else landing();
 })();
 </script>
 </body>
