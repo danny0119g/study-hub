@@ -25,6 +25,8 @@ a{color:inherit}
 .crumb button{background:none;border:0;padding:0;color:var(--sub);font-weight:600}
 .crumb button:hover{color:var(--acc)}
 .sp{flex:1}
+.homeback{flex:none;font-size:13px;font-weight:600;color:var(--sub);text-decoration:none;border:1px solid var(--line2);border-radius:9px;padding:5px 11px;background:#fff;white-space:nowrap}
+.homeback:hover{color:var(--acc);border-color:var(--acc)}
 .btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);background:#fff;border-radius:12px;padding:9px 15px;font-weight:700;font-size:15px;transition:all .15s}
 .btn:hover{border-color:var(--acc);color:var(--acc)}
 .btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
@@ -147,6 +149,7 @@ body.hasbar .qimg{max-height:calc(100vh - 420px)}
   <div class="crumb" id="crumb"></div>
   <span class="sp"></span>
   <button class="btn ghost" id="rnd" title="이 제재에서 랜덤" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg><span>랜덤</span></button>
+  <a class="homeback" href="../">돌아가기</a>
 </div></header>
 <main id="app"></main>
 <div id="bar" hidden></div>
