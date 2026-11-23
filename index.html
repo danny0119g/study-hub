@@ -165,22 +165,22 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
 
   function login(msg) {
     app.replaceChildren();
-    const input = h('input', { type: 'text', inputmode: 'numeric', placeholder: '전화번호 8자리', autocomplete: 'off', maxlength: '16' });
+    const input = h('input', { type: 'text', inputmode: 'numeric', placeholder: '휴대폰 번호', autocomplete: 'off', maxlength: '16' });
     const err = h('div', { class: 'err' }, msg || '');
     const go = async () => {
-      if (norm(input.value).length !== 8) { err.textContent = '전화번호 8자리를 입력하세요.'; return; }
+      if (norm(input.value).length !== 8) { err.textContent = '휴대폰 번호를 확인하세요.'; return; }
       err.textContent = '확인 중...';
       try { const r = await fetchData(input.value); store.set(r.saved); render(r.data); }
       catch (e) { err.textContent = '코드가 맞지 않습니다.'; }
     };
     input.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
-    app.append(h('div', { class: 'login' }, h('button', { class: 'back', onclick: landing }, '‹ 처음으로'), h('h1', {}, '수강생 로그인'), h('p', { class: 'meta' }, '전화번호 8자리를 입력하세요.'), input, h('button', { onclick: go }, '입장'), err));
+    app.append(h('div', { class: 'login' }, h('button', { class: 'back', onclick: landing }, '‹ 처음으로'), h('h1', {}, '수강생 로그인'), h('p', { class: 'meta' }, '휴대폰 번호'), input, h('button', { onclick: go }, '입장'), err));
     input.focus();
   }
 
   function render(d) {
     app.replaceChildren();
-    const tabs = ['홈', '과제', '성적', '자료'];
+    const tabs = ['자료', '일정'];
     const views = {};
     const bar = h('div', { class: 'tabs' });
     tabs.forEach((t, i) => {
@@ -191,72 +191,24 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
       for (const k of tabs) views[k].classList.toggle('hide', k !== t);
       for (const b of bar.children) b.classList.toggle('on', b.dataset.t === t);
     }
-    views['홈'] = home(d); views['과제'] = assignments(d); views['성적'] = scores(d); views['자료'] = materials(d);
+    views['자료'] = materials(d); views['일정'] = schedule(d);
     app.append(
       h('div', { class: 'hdr' }, h('h1', {}, d.name), h('button', { onclick: () => { store.del(); landing(); } }, '나가기')),
       bar, ...tabs.map(t => views[t]));
-    show('홈');
+    show('자료');
   }
 
-  function assignCard(a) {
-    const n = a.due ? dday(a.due) : null;
-    return h('div', { class: 'card' },
+  function schedule(d) {
+    const v = h('div', {});
+    const all = d.schedule.slice().sort((a, b) => a.date.localeCompare(b.date));
+    const up = all.filter(s => dday(s.date) >= 0), past = all.filter(s => dday(s.date) < 0).reverse();
+    if (!all.length) return h('div', { class: 'card empty' }, '등록된 일정 없음');
+    const card = (s, old) => h('div', { class: 'card', style: old ? 'opacity:.55' : '' },
       h('div', { class: 'row' },
-        h('div', {}, h('div', { class: 't' }, (a.week ? a.week + '주차 · ' : '') + a.title),
-          a.due ? h('div', { class: 'meta' }, '마감 ' + fmt(a.due)) : null),
-        h('div', { style: 'text-align:right' },
-          h('span', { class: 'chip ' + a.status }, STATUS[a.status] || a.status),
-          a.status === 'todo' && n != null ? h('div', { class: 'dd' + (n <= 1 ? ' hot' : '') }, ddText(n)) : null)),
-      a.feedback ? h('div', { class: 'fb' }, a.feedback) : null,
-      a.status === 'todo' && a.submit_url ? h('a', { class: 'btn', href: a.submit_url, target: '_blank', rel: 'noopener' }, '제출하러 가기') : null);
-  }
-
-  function home(d) {
-    const v = h('div', {});
-    const next = d.schedule.filter(s => dday(s.date) >= 0).sort((a, b) => a.date.localeCompare(b.date))[0];
-    v.append(h('div', { class: 'card hero' },
-      h('div', { class: 'sm' }, '다음 수업'),
-      next ? [h('div', { class: 'big' }, fmt(next.date) + ' ' + (next.time || '')), h('div', { class: 'sm' }, ddText(dday(next.date)) + (next.note ? ' · ' + next.note : ''))]
-           : h('div', { class: 'big' }, '예정된 수업 없음')));
-    const todo = d.assignments.filter(a => a.status === 'todo').sort((a, b) => (a.due || '9').localeCompare(b.due || '9'));
-    v.append(h('h2', {}, '지금 해야 할 과제 ' + todo.length));
-    v.append(...(todo.length ? todo.map(assignCard) : [h('div', { class: 'card empty' }, '밀린 과제 없음')]));
-    if (d.notices.length) {
-      v.append(h('h2', {}, '공지'));
-      d.notices.slice().sort((a, b) => b.date.localeCompare(a.date)).forEach(n =>
-        v.append(h('div', { class: 'card' }, h('div', { class: 'meta' }, n.date), h('div', {}, n.text))));
-    }
-    return v;
-  }
-
-  function assignments(d) {
-    const v = h('div', {});
-    const order = { todo: 0, submitted: 1, checked: 2 };
-    const list = d.assignments.slice().sort((a, b) => (order[a.status] - order[b.status]) || (a.due || '9').localeCompare(b.due || '9'));
-    v.append(...(list.length ? list.map(assignCard) : [h('div', { class: 'card empty' }, '등록된 과제 없음')]));
-    return v;
-  }
-
-  function scores(d) {
-    const v = h('div', {});
-    if (!d.scores.length) return h('div', { class: 'card empty' }, '기록 없음');
-    const areas = [...new Set(d.scores.flatMap(s => Object.keys(s).filter(k => k !== 'label')))];
-    for (const ar of areas) {
-      const pts = d.scores.filter(s => typeof s[ar] === 'number').map(s => ({ l: s.label, v: s[ar] }));
-      if (!pts.length) continue;
-      const last = pts[pts.length - 1], prev = pts[pts.length - 2];
-      const diff = prev ? last.v - prev.v : null;
-      v.append(h('div', { class: 'card' },
-        h('div', { class: 'area' }, h('div', { class: 't' }, ar + ' 정답률'),
-          h('div', {}, h('span', { class: 'now' }, last.v + '%'),
-            diff != null && diff !== 0 ? h('span', { class: 'delta ' + (diff > 0 ? 'up' : 'down') }, (diff > 0 ? '▲ +' : '▼ ') + diff) : null)),
-        h('div', { class: 'bars' }, pts.map((p, i) => {
-          const bar = h('div', { class: 'bar' + (i === pts.length - 1 ? ' last' : ''), title: p.l + ' ' + p.v + '%' },
-            h('b', {}, p.v), h('i', { style: 'height:' + Math.max(2, p.v * 0.7) + 'px' }));
-          return bar;
-        })),
-        h('div', { class: 'xl' }, pts.map(p => h('span', {}, p.l)))));
-    }
+        h('div', {}, h('div', { class: 't' }, fmt(s.date) + (s.time ? ' ' + s.time : '')), s.note ? h('div', { class: 'meta' }, s.note) : null),
+        old ? null : h('div', { class: 'dd' + (dday(s.date) <= 1 ? ' hot' : '') }, ddText(dday(s.date)))));
+    up.forEach(s => v.append(card(s, false)));
+    if (past.length) { v.append(h('h2', {}, '지난 일정')); past.forEach(s => v.append(card(s, true))); }
     return v;
   }
 
