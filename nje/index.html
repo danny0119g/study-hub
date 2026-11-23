@@ -56,6 +56,7 @@ main{max-width:1480px;margin:0 auto;padding:26px 22px 60px}
 .tile .n{color:var(--sub);font-size:14px;font-weight:600;margin-top:2px}
 .prog{height:6px;border-radius:6px;background:#eef1f6;margin-top:16px;overflow:hidden}
 .prog i{display:block;height:100%;background:var(--c,var(--acc));border-radius:6px}
+#rnd[hidden]{display:none!important}.tile{cursor:pointer}.tile .tr{position:absolute;top:14px;right:14px;display:flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--cb);color:var(--c);border-radius:999px;padding:6px 11px;font-size:13px;font-weight:700}.tile .tr:hover{background:var(--c);color:#fff;border-color:var(--c)}.tile .tr svg{width:14px;height:14px}
 .tile .pc{font-size:13px;color:var(--sub);margin-top:8px;font-weight:600}
 /* list */
 .lhead{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin:4px 0 18px}
@@ -128,7 +129,7 @@ main{max-width:1480px;margin:0 auto;padding:26px 22px 60px}
   <button class="brand" id="brand">국어의 정답</button>
   <div class="crumb" id="crumb"></div>
   <span class="sp"></span>
-  <button class="btn ghost" id="rnd" title="랜덤 지문"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg><span>랜덤</span></button>
+  <button class="btn ghost" id="rnd" title="이 제재에서 랜덤" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg><span>랜덤</span></button>
 </div></header>
 <main id="app"></main>
 <script>
@@ -153,31 +154,31 @@ const started=x=>{const s=st(x.e.id);for(let q=x.p.q[0];q<=x.p.q[1];q++)if(s.sel
 const nqs=x=>x.p.q[1]-x.p.q[0]+1;
 const inCat=c=>P.filter(x=>x.c===c);
 const sty=c=>`--c:${COL[c][0]};--cb:${COL[c][1]}`;
-let ctx="all",mode="p",filt=get("njs:filt","all");
+let mode="p",filt=get("njs:filt","all");
 
 function crumb(parts){$("#crumb").innerHTML=parts.map((t,i)=>(i?'<span class="sep">/</span>':"")+t).join("")}
 function go(h){if(location.hash==="#"+h)route();else location.hash=h}
 function pick(list,cur){list=list.filter(x=>x.id!==cur);const fresh=list.filter(x=>!done(x));const pool=fresh.length?fresh:list;return pool[Math.floor(Math.random()*pool.length)]}
-function random(c,cur){ctx=c||"all";const x=pick(c?inCat(c):P,cur);if(!x)return;sessionStorage.setItem("njs:ctx",ctx);go("p/"+x.id)}
+function random(c,cur){if(!CN[c])return;const x=pick(inCat(c),cur);if(!x)return;mode="p";go("p/"+x.id)}
+function topRnd(c){const b=$("#rnd");if(!c){b.hidden=true;return}b.hidden=false;b.querySelector("span").textContent=CN[c]+" 랜덤";b.onclick=()=>random(c,location.hash.startsWith("#p/")?decodeURIComponent(location.hash.slice(3)):null)}
 
 function home(){
-  crumb([]);
+  crumb([]);topRnd(null);
   const total=P.length,dn=P.filter(done).length;
-  let h=`<section class="hero"><div><h1>실전 지문</h1><p>지문 하나씩 풀고 바로 채점합니다. 풀이 기록은 이 기기에 저장됩니다.</p>
+  let h=`<section class="hero"><div><h1>실전 지문</h1><p>제재를 골라 지문 하나씩 풀고 바로 채점합니다. 각 제재의 랜덤 버튼은 그 제재 안에서만 고릅니다.</p>
   <div class="stat"><div><b>${total}</b>지문</div><div><b>${P.reduce((s,x)=>s+nqs(x),0).toLocaleString()}</b>문항</div><div><b>${dn}</b>채점 완료</div></div></div>
-  <button class="rand" id="hr"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg></span><span><b>랜덤 지문 풀기</b><small>안 푼 지문 중에서 무작위로</small></span></button></section>`;
-  const tile=([c,n])=>{const L=inCat(c),d=L.filter(done).length;return `<button class="tile" style="${sty(c)}" data-c="${c}"><b>${n}</b><div class="n">${L.length}지문</div><div class="prog"><i style="width:${L.length?d/L.length*100:0}%"></i></div><div class="pc">${d?`${d} / ${L.length} 완료`:"아직 안 풂"}</div></button>`};
+  </section>`;
+  const tile=([c,n])=>{const L=inCat(c),d=L.filter(done).length;return `<div class="tile" role="button" tabindex="0" style="${sty(c)}" data-c="${c}"><button class="tr" data-r="${c}" title="${n} 랜덤"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>랜덤</button><b>${n}</b><div class="n">${L.length}지문</div><div class="prog"><i style="width:${L.length?d/L.length*100:0}%"></i></div><div class="pc">${d?`${d} / ${L.length} 완료`:"아직 안 풂"}</div></div>`};
   h+=`<div class="grp">독서</div><div class="tiles">${CAT.filter(([c])=>RD.has(c)).map(tile).join("")}</div>`;
   h+=`<div class="grp">문학</div><div class="tiles">${CAT.filter(([c])=>!RD.has(c)).map(tile).join("")}</div>`;
   $("#app").innerHTML=h;
-  $("#hr").onclick=()=>random();
-  document.querySelectorAll(".tile").forEach(b=>b.onclick=()=>go("c/"+b.dataset.c));
+  document.querySelectorAll(".tile").forEach(b=>{b.onclick=()=>go("c/"+b.dataset.c);b.onkeydown=ev=>{if(ev.key==="Enter")go("c/"+b.dataset.c)}});
+  document.querySelectorAll(".tile .tr").forEach(b=>b.onclick=ev=>{ev.stopPropagation();random(b.dataset.r)});
 }
 
 function list(c){
   if(!CN[c])return home();
-  ctx=c;sessionStorage.setItem("njs:ctx",c);
-  crumb([`<b>${CN[c]}</b>`]);
+  crumb([`<b>${CN[c]}</b>`]);topRnd(c);
   const L=inCat(c);const d=L.filter(done).length;
   const shown=filt==="todo"?L.filter(x=>!done(x)):filt==="done"?L.filter(done):L;
   let h=`<div class="lhead" style="${sty(c)}"><div><h1>${CN[c]}</h1><div class="n">${L.length}지문 · ${d}개 완료</div></div><span class="sp"></span>
@@ -211,9 +212,8 @@ function fill(root){root.querySelectorAll("img[data-e]").forEach(im=>imgUrl(im.d
 
 function passage(id){
   const x=PI[id];if(!x)return home();
-  ctx=sessionStorage.getItem("njs:ctx")||x.c;
   const c=x.c,e=x.e,p=x.p,s=st(e.id),g=!!s.graded[p.f];
-  crumb([`<button id="bc">${CN[c]}</button>`,`<b>${x.name}</b>`]);
+  crumb([`<button id="bc">${CN[c]}</button>`,`<b>${x.name}</b>`]);topRnd(c);
   const L=inCat(c),i=L.indexOf(x);
   let h=`<div class="phead" style="${sty(c)}"><span class="chip">${CN[c]}</span><h1>${x.name}</h1><span class="q">${p.q[0]}~${p.q[1]}번</span></div>
   <div class="seg mtab"><button data-m="p" class="${mode==="p"?"on":""}">지문</button><button data-m="q" class="${mode==="q"?"on":""}">문제 · 답안</button></div>
@@ -228,7 +228,7 @@ function passage(id){
     h+=`</span><span class="rs">${rs}</span></div>`;
   }
   h+=`<div class="acts">${g?`<span class="score">${ok} / ${nqs(x)}</span><button class="btn" id="redo">다시 풀기</button>`:`<button class="btn pri" id="grade">채점하기</button>`}<span class="sp"></span>
-  <div class="nav">${i>0?'<button class="btn" id="prev">이전</button>':""}${i<L.length-1?'<button class="btn" id="next">다음</button>':""}<button class="btn" id="nr">랜덤</button></div></div></div></div></div>`;
+  <div class="nav">${i>0?'<button class="btn" id="prev">이전</button>':""}${i<L.length-1?'<button class="btn" id="next">다음</button>':""}<button class="btn" id="nr">${CN[c]} 랜덤</button></div></div></div></div></div>`;
   $("#app").innerHTML=h;fill($("#app"));
   const nx=L[i+1];if(nx&&MODE==="dir")setTimeout(()=>{for(const k of [nx.p.f,nx.p.f+"_q"]){const im=new Image();im.src=`img/${nx.e.id}/${k}.jpg`}},700);
   $("#bc").onclick=()=>go("c/"+c);
@@ -239,17 +239,16 @@ function passage(id){
   const rb=$("#redo");if(rb)rb.onclick=()=>{const t=st(e.id);delete t.graded[p.f];for(let q=p.q[0];q<=p.q[1];q++)delete t.sel[q];set(stKey(e.id),t);passage(id)};
   const pb=$("#prev");if(pb)pb.onclick=()=>{mode="p";go("p/"+L[i-1].id)};
   const nb=$("#next");if(nb)nb.onclick=()=>{mode="p";go("p/"+L[i+1].id)};
-  $("#nr").onclick=()=>{mode="p";random(ctx==="all"?null:ctx,id)};
+  $("#nr").onclick=()=>random(c,id);
 }
 
 function route(){
   const h=decodeURIComponent(location.hash.slice(1));window.scrollTo(0,0);
   if(h.startsWith("c/"))list(h.slice(2));
   else if(h.startsWith("p/"))passage(h.slice(2));
-  else{ctx="all";sessionStorage.setItem("njs:ctx","all");home()}
+  else home();
 }
 $("#brand").onclick=()=>go("");
-$("#rnd").onclick=()=>random();
 window.addEventListener("hashchange",route);
 route();
 </script>
