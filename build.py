@@ -2,36 +2,33 @@
 """students.json + common.json -> data/<id>.bin (학생별 암호화 파일).
 
 사용법:  python3 build.py
-- students.json 에 code 가 없는 학생은 코드를 자동 발급해 students.json 에 저장한다.
+- 학생 코드는 학생 휴대폰 번호 뒤 8자리(010 제외)이며, students.json 의 code 에 반드시 적는다.
 - students.json 은 내 컴퓨터에만 둔다(.gitignore). 저장소에는 data/*.bin 만 올라간다.
 """
 import hashlib
 import json
 import os
-import secrets
+import re
 import sys
 
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
-ALPHABET = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ"  # 헷갈리는 0 O 1 I 제외
-CODE_LEN = 10
-ITER = 200_000
+ITER = 600_000
+ID_SALT = b"study-hub-id"
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
 def norm(code: str) -> str:
-    """정규형: 대문자, XXXXX-XXXXX (웹페이지의 fetchData 와 동일해야 함)."""
-    raw = "".join(code.split()).replace("-", "").upper()
-    return raw[:5] + "-" + raw[5:]
-
-
-def new_code() -> str:
-    raw = "".join(secrets.choice(ALPHABET) for _ in range(CODE_LEN))
-    return raw[:5] + "-" + raw[5:]
+    """정규형: 숫자 8자리 (웹페이지의 norm 과 동일해야 함). 010 포함 11자리면 010 을 뗀다."""
+    digits = re.sub(r"\D", "", str(code))
+    if len(digits) == 11 and digits.startswith("010"):
+        digits = digits[3:]
+    return digits
 
 
 def file_id(code: str) -> str:
-    return hashlib.sha256(("id:" + code).encode()).hexdigest()[:16]
+    # 느린 해시(PBKDF2)를 써야 data/ 의 파일명만으로 코드를 빠르게 역산할 수 없다.
+    return hashlib.pbkdf2_hmac("sha256", code.encode(), ID_SALT, ITER, dklen=8).hex()
 
 
 def encrypt(code: str, payload: dict) -> bytes:
@@ -62,13 +59,12 @@ def main() -> int:
         if f.endswith(".bin"):
             os.remove(os.path.join(out_dir, f))
 
-    changed = False
     seen = set()
     for s in students:
-        if not s.get("code"):
-            s["code"] = new_code()
-            changed = True
-        code = norm(s["code"])
+        code = norm(s.get("code", ""))
+        if not re.fullmatch(r"\d{8}", code):
+            print(f"코드는 숫자 8자리여야 합니다: {s.get('name')} ({s.get('code')!r})")
+            return 1
         if code in seen:
             print(f"코드 중복: {s.get('name')}")
             return 1
@@ -83,12 +79,8 @@ def main() -> int:
         }
         with open(os.path.join(out_dir, file_id(code) + ".bin"), "wb") as f:
             f.write(encrypt(code, payload))
-        print(f"{s.get('name', '?'):<10} {s['code']}")
+        print(f"{s.get('name', '?'):<10} {code}")
 
-    if changed:
-        with open(os.path.join(ROOT, "students.json"), "w", encoding="utf-8") as f:
-            json.dump(students, f, ensure_ascii=False, indent=2)
-        print("\n새 코드를 students.json 에 저장했습니다.")
     print(f"\n{len(students)}명 빌드 완료 -> data/")
     return 0
 
