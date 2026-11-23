@@ -4,226 +4,252 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>국어의 정답 · 실전 지문 연습</title>
+<title>국어의 정답 · 실전 지문</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f6f8fb;--card:#fff;--ink:#111;--sub:#6b7280;--line:#e6e9ef;--acc:#5588dd;--soft:#e8f0fd;--ok:#1b8a5a;--bad:#d9480f;--okbg:#e6f5ee;--badbg:#fdece4}
+:root{--bg:#f5f7fa;--card:#fff;--ink:#0f1115;--ink2:#3d4350;--sub:#7a808c;--line:#e7eaf0;--line2:#d9dee7;--acc:#5588dd;--acc2:#3f6fc2;--soft:#eaf1fc;--ok:#1b8a5a;--okbg:#e7f6ee;--bad:#d9480f;--badbg:#fdeee6;--shadow:0 1px 2px rgba(16,24,40,.04),0 4px 16px rgba(16,24,40,.05)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Pretendard Variable","Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-button{font:inherit;cursor:pointer}
-header.top{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(8px);-webkit-backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line);padding:10px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-header.top .brand{font:400 21px/1 "Black Han Sans","Apple SD Gothic Neo",sans-serif;color:var(--ink);text-decoration:none;letter-spacing:-.01em;cursor:pointer;background:none;border:0;padding:0}
-header.top h1{font-size:16px;margin:0;font-weight:700;color:var(--sub);padding-left:14px;border-left:1px solid var(--line)}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 "Pretendard Variable","Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",-apple-system,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.005em}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a{color:inherit}
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.6) blur(12px);-webkit-backdrop-filter:saturate(1.6) blur(12px);border-bottom:1px solid var(--line)}
+.top .in{max-width:1480px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:14px}
+.brand{font:400 22px/1 "Black Han Sans","Apple SD Gothic Neo",sans-serif;background:none;border:0;padding:0;letter-spacing:-.01em;white-space:nowrap;flex:none}
+.btn{white-space:nowrap}
+.crumb{display:flex;align-items:center;gap:8px;color:var(--sub);font-weight:600;font-size:15px;min-width:0}
+.crumb b{color:var(--ink);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb .sep{color:var(--line2)}
+.crumb button{background:none;border:0;padding:0;color:var(--sub);font-weight:600}
+.crumb button:hover{color:var(--acc)}
 .sp{flex:1}
-.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 14px;font-weight:700;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);background:#fff;border-radius:12px;padding:9px 15px;font-weight:700;font-size:15px;transition:all .15s}
 .btn:hover{border-color:var(--acc);color:var(--acc)}
 .btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
-.btn.pri:hover{color:#fff;filter:brightness(1.08)}
-main{max-width:1560px;margin:0 auto;padding:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
-.grid.rd{grid-template-columns:repeat(auto-fill,minmax(132px,1fr))}
-.grid.rd .card{padding:12px 14px}
-.grid.rd .card b{font-size:17px}
-@media (max-width:520px){main{padding:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.rd{grid-template-columns:repeat(3,minmax(0,1fr))}.card{padding:12px 14px}.card b{font-size:17px}.grid.rd .card small:last-child{display:none}.hero{padding:18px}.hero h2{font-size:20px}header.top h1{font-size:14px}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;text-align:left;display:block;width:100%;transition:border-color .15s,box-shadow .15s,transform .15s}
-.card:hover{border-color:var(--acc);box-shadow:0 4px 16px rgba(85,136,221,.16);transform:translateY(-1px)}
-.card b{font-size:19px;display:block;letter-spacing:-.01em}
-.card small{color:var(--sub)}
-.bar{height:6px;background:#edf1f7;border-radius:4px;margin:12px 0 6px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--acc)}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.tab{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;text-align:center;min-width:92px}
-.tab small{display:block;color:var(--sub);font-size:12px}
-.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
-.tab.on small{color:#e3ecfb}
-.tab.done::after{content:"✔";margin-left:6px;color:var(--ok);font-weight:800}
-.tab.on.done::after{color:#bff0d3}
-.view{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
-.pane{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;overflow:hidden}
-.pane h3{margin:4px 8px 8px;font-size:14px;color:var(--sub)}
-.pane img{width:100%;height:auto;display:block}
-.pane img.ld{min-height:240px;background:#f1f3f5}
-.sticky{position:sticky;top:64px}
-.ans{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:12px}
-.row{display:flex;align-items:center;gap:6px;padding:6px 4px;border-radius:8px}
-.row .n{width:40px;font-weight:800}
-.row .c{display:flex;gap:6px;flex-wrap:wrap}
-.ch{width:42px;height:42px;border-radius:50%;border:1.5px solid #b8bec9;background:#fff;font-size:17px;font-weight:700}
-.ch:hover{border-color:var(--acc)}
-.ch.sel{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.pri:hover{background:var(--acc2);border-color:var(--acc2);color:#fff}
+.btn.ghost{border-color:transparent;background:transparent}
+.btn.ghost:hover{background:var(--soft)}
+.btn svg{width:17px;height:17px}
+main{max-width:1480px;margin:0 auto;padding:26px 22px 60px}
+/* home */
+.hero{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin:6px 0 26px}
+.hero h1{margin:0;font-size:32px;line-height:1.2;letter-spacing:-.03em;font-weight:800}
+.hero p{margin:8px 0 0;color:var(--sub);font-size:16px}
+.stat{display:flex;gap:26px;margin-top:16px}
+.stat div{font-size:13px;color:var(--sub);font-weight:600}
+.stat b{display:block;font-size:24px;color:var(--ink);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.rand{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#5588dd,#3f6fc2);color:#fff;border:0;border-radius:18px;padding:18px 22px;box-shadow:0 8px 24px rgba(63,111,194,.28);text-align:left;transition:transform .15s,box-shadow .15s}
+.rand:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(63,111,194,.34)}
+.rand .ic{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.18);display:grid;place-items:center}
+.rand .ic svg{width:24px;height:24px}
+.rand b{display:block;font-size:18px}
+.rand small{opacity:.85;font-size:13px}
+.grp{margin:26px 0 12px;font-size:14px;font-weight:800;color:var(--sub);letter-spacing:.02em}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tile{position:relative;border-top:4px solid var(--c)!important;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;text-align:left;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s,border-color .15s;overflow:hidden}
+.tile:hover{transform:translateY(-2px);border-color:var(--c);box-shadow:0 10px 24px rgba(16,24,40,.08)}
+.tile .dot{width:38px;height:38px;border-radius:11px;background:var(--cb);color:var(--c);display:grid;place-items:center;font-weight:800;font-size:15px;margin-bottom:14px}
+.tile b{display:block;font-size:22px;letter-spacing:-.02em}
+.tile .n{color:var(--sub);font-size:14px;font-weight:600;margin-top:2px}
+.prog{height:6px;border-radius:6px;background:#eef1f6;margin-top:16px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--c,var(--acc));border-radius:6px}
+.tile .pc{font-size:13px;color:var(--sub);margin-top:8px;font-weight:600}
+/* list */
+.lhead{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin:4px 0 18px}
+.lhead h1{margin:0;font-size:30px;letter-spacing:-.03em}
+.lhead .n{color:var(--sub);font-weight:600}
+.seg{display:inline-flex;background:#eceff4;border-radius:12px;padding:3px}
+.seg button{border:0;background:none;border-radius:9px;padding:7px 13px;font-weight:700;font-size:14px;color:var(--sub)}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(16,24,40,.12)}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.item{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-align:left;transition:border-color .15s,box-shadow .15s}
+.item:hover{border-color:var(--acc);box-shadow:0 4px 14px rgba(16,24,40,.06)}
+.item .k{flex:1;min-width:0}
+.item .k b{display:block;font-size:16px;font-weight:700;line-height:1.35}
+.item .k small{color:var(--sub);font-size:13px;font-weight:600}
+.badge{font-size:12px;font-weight:800;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.badge.new{background:#f1f3f7;color:var(--sub)}
+.badge.ok{background:var(--okbg);color:var(--ok)}
+.badge.mid{background:#fff4e0;color:#a35e00}
+.empty{color:var(--sub);text-align:center;padding:50px 0}
+/* passage */
+.phead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.chip{font-size:13px;font-weight:800;border-radius:999px;padding:5px 12px;background:var(--cb);color:var(--c)}
+.phead h1{margin:0;font-size:22px;letter-spacing:-.02em}
+.phead .q{color:var(--sub);font-weight:600}
+.view{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:18px;align-items:start}
+.pane{background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:var(--shadow);overflow:hidden}
+.pane img{width:100%;height:auto;display:block;border-radius:10px}
+.pane img.ld{min-height:320px;background:linear-gradient(90deg,#f1f3f6 0%,#f8f9fb 50%,#f1f3f6 100%);background-size:200% 100%;animation:sh 1.2s infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.side{position:sticky;top:76px;display:flex;flex-direction:column;gap:14px}
+.qimg{max-height:calc(100vh - 340px);overflow:auto}
+.sheet{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:var(--shadow)}
+.sheet h3{margin:0 0 10px;font-size:15px;color:var(--sub);font-weight:800;display:flex;align-items:center}
+.row{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:12px}
+.row .no{width:44px;font-weight:800;font-variant-numeric:tabular-nums}
+.row .cs{display:flex;gap:8px}
+.ch{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line2);background:#fff;font-weight:800;font-size:16px;transition:all .12s}
+.ch:hover:not(:disabled){border-color:var(--acc);color:var(--acc)}
+.ch.sel{background:var(--ink);border-color:var(--ink);color:#fff}
 .ch.right{background:var(--ok);border-color:var(--ok);color:#fff}
 .ch.wrong{background:var(--bad);border-color:var(--bad);color:#fff}
-.ch.key{border:3px solid var(--ok);color:var(--ok)}
+.ch.key{border:2.5px solid var(--ok);color:var(--ok)}
+.ch.key.right,.ch.right{background:var(--ok);border-color:var(--ok);color:#fff}
+.ch.wrong{background:var(--bad);border-color:var(--bad);color:#fff}
+.ch:disabled{cursor:default}
 .row.ok{background:var(--okbg)}.row.no{background:var(--badbg)}
-.res{margin-left:auto;font-weight:800}
-.row.ok .res{color:var(--ok)}.row.no .res{color:var(--bad)}
-.acts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center}
-.score{font-weight:800}
-.mtabs{display:none;gap:6px;margin-bottom:10px}
-.mtabs .btn.on{background:var(--acc);color:#fff;border-color:var(--acc)}
-.timer{font-variant-numeric:tabular-nums;font-weight:700}
-.note{color:var(--sub);font-size:13px;margin:6px 2px 14px}
-@media (max-width:980px){.view{grid-template-columns:1fr}.sticky{position:static}.mtabs{display:flex}.view.m-p .qpane,.view.m-q .ppane{display:none}}
-
-.sec{margin:26px 2px 10px;font-size:15px;font-weight:800;color:var(--ink)}
-.sec small{color:var(--sub);font-weight:600;margin-left:6px;font-size:13px}
-.yr{margin:34px 2px 2px;font-size:22px;font-weight:800;letter-spacing:-.02em}
-.hero{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-bottom:6px}
-.hero h2{margin:0 0 6px;font-size:24px;letter-spacing:-.02em}
-.hero p{margin:0;color:var(--sub);font-size:15px}
-.hero .stats{display:flex;gap:22px;margin-top:14px;flex-wrap:wrap}
-.hero .stats b{display:block;font-size:22px;color:var(--acc)}
-.hero .stats span{font-size:13px;color:var(--sub);font-weight:600}
-.card .done{color:var(--ok);font-weight:700}
-.cat{text-align:left}
-.cat b{font-size:20px}
-.tag{display:inline-block;font-size:12px;font-weight:800;background:var(--soft);color:var(--acc);border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:middle}
-.tab.on .tag{background:rgba(255,255,255,.25);color:#fff}
-.tabs.many .tab{min-width:70px;padding:6px 8px}
+.row .rs{margin-left:auto;font-size:13px;font-weight:800}
+.row.ok .rs{color:var(--ok)}.row.no .rs{color:var(--bad)}
+.acts{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.score{font-size:20px;font-weight:800;margin-right:4px}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.mtab{display:none}
+@media (max-width:980px){
+ .view{grid-template-columns:1fr}.side{position:static}.qimg{max-height:none}
+ .mtab{display:flex;margin-bottom:12px}
+ .view.mp .side .qimg,.view.mq .ppane{display:none}
+}
+@media (max-width:560px){
+ .top .in{padding:10px 14px;gap:10px}.brand{font-size:19px}.crumb{display:none}#rnd span{display:none}
+ main{padding:18px 14px 50px}.hero h1{font-size:26px}
+ .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile{padding:16px}.tile b{font-size:19px}
+ .rand{width:100%}.list{grid-template-columns:1fr}
+ .ch{width:36px;height:36px;font-size:15px}.row .no{width:38px}.row{gap:6px;padding:6px 4px}.cs{gap:5px!important}
+ .phead h1{font-size:18px}
+}
 </style>
 </head>
 <body>
-<header class="top">
-  <button class="brand" id="brand">국어의 정답</button><h1 id="ttl">실전 지문 연습</h1>
+<header class="top"><div class="in">
+  <button class="brand" id="brand">국어의 정답</button>
+  <div class="crumb" id="crumb"></div>
   <span class="sp"></span>
-  <span class="timer" id="timer" hidden></span>
-  <button class="btn" id="tbtn" hidden></button>
-  <button class="btn" id="home" hidden>← 전체 목록</button>
-</header>
+  <button class="btn ghost" id="rnd" title="랜덤 지문"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg><span>랜덤</span></button>
+</div></header>
 <main id="app"></main>
 <script>
-const DATA=[{"id": "2027-s1-01","round": 1,"lab": "시즌1 1차","ser": "시즌1","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 5,"5": 2,"6": 1,"7": 1,"8": 3,"9": 2},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 4,"11": 5,"12": 2,"13": 3},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 3,"16": 5,"17": 4},"c": "hum"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 4,"19": 1,"20": 1,"21": 4},"c": "ho"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 5,"23": 3,"24": 5,"25": 4,"26": 5},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 2,"28": 1,"29": 5,"30": 2},"c": "go"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 3,"32": 5,"33": 4,"34": 4},"c": "gs"}],"yr": 2027},{"id": "2027-s2-02","round": 2,"lab": "시즌2 2차","ser": "시즌2","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 1,"5": 5,"6": 4,"7": 5,"8": 2,"9": 3},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 4,"11": 3,"12": 3,"13": 5},"c": "hum"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 2,"15": 3,"16": 1,"17": 4},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 3,"19": 4,"20": 2,"21": 4},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 5,"23": 5,"24": 4,"25": 3,"26": 3},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 1,"29": 5,"30": 2},"c": "ho"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 2,"32": 1,"33": 5,"34": 3},"c": "gs"}],"yr": 2027},{"id": "2027-s3-01","round": 1,"lab": "시즌3 1차","ser": "시즌3","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 4,"5": 1,"6": 5,"7": 4,"8": 2,"9": 2},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 3,"11": 2,"12": 5,"13": 1},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 4,"15": 1,"16": 3,"17": 3},"c": "soc"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 2,"19": 3,"20": 1,"21": 3},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 2,"23": 2,"24": 5,"25": 1,"26": 4},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 4,"29": 5,"30": 4},"c": "gs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 3,"32": 1,"33": 2,"34": 5},"c": "ho"}],"yr": 2027},{"id": "2027-s3-02","round": 2,"lab": "시즌3 2차","ser": "시즌3","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 3,"5": 2,"6": 4,"7": 2,"8": 3,"9": 3},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 5,"12": 4,"13": 2},"c": "hum"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 4,"15": 5,"16": 1,"17": 5},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 5,"19": 3,"20": 1,"21": 3},"c": "ho"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 5,"23": 1,"24": 4,"25": 4,"26": 3},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 5,"28": 1,"29": 4,"30": 2},"c": "hs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 2,"32": 2,"33": 4,"34": 3},"c": "go"}],"yr": 2027},{"id": "2027-s3-03","round": 3,"lab": "시즌3 3차","ser": "시즌3","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 2,"5": 1,"6": 3,"7": 4,"8": 5,"9": 2},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 4,"12": 2,"13": 5},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 4,"16": 3,"17": 2},"c": "soc"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 3,"19": 2,"20": 4,"21": 2},"c": "ho"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 1,"23": 3,"24": 4,"25": 5,"26": 5},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 4,"28": 4,"29": 1,"30": 2},"c": "hs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 1,"32": 5,"33": 3,"34": 2},"c": "go"}],"yr": 2027},{"id": "2027-s3-04","round": 4,"lab": "시즌3 4차","ser": "시즌3","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 3,"5": 2,"6": 1,"7": 2,"8": 4,"9": 5},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 2,"12": 5,"13": 5},"c": "hum"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 2,"16": 3,"17": 3},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 5,"19": 2,"20": 1,"21": 3},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 3,"23": 4,"24": 1,"25": 3,"26": 1},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 2,"28": 4,"29": 5,"30": 5},"c": "gs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 4,"32": 1,"33": 2,"34": 3},"c": "ho"}],"yr": 2027},{"id": "2027-s4-01","round": 1,"lab": "시즌4 1차","ser": "시즌4","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 3,"5": 2,"6": 3,"7": 4,"8": 2,"9": 4},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 1,"12": 3,"13": 5},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 4,"15": 5,"16": 4,"17": 3},"c": "soc"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 3,"19": 1,"20": 5,"21": 3},"c": "go"},{"f": "L2","area": "문학","q": [22,25],"a": {"22": 5,"23": 3,"24": 2,"25": 2},"c": "hs"},{"f": "L3","area": "문학","q": [26,30],"a": {"26": 4,"27": 1,"28": 3,"29": 3,"30": 2},"c": "ho"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 4,"32": 5,"33": 4,"34": 3},"c": "gs"}],"yr": 2027},{"id": "2027-s4-02","round": 2,"lab": "시즌4 2차","ser": "시즌4","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 1,"5": 2,"6": 5,"7": 3,"8": 5,"9": 2},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 4,"12": 3,"13": 2},"c": "hum"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 3,"15": 1,"16": 4,"17": 1},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 3,"19": 2,"20": 4,"21": 4},"c": "ho"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 1,"23": 4,"24": 2,"25": 4,"26": 2},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 3,"29": 5,"30": 3},"c": "go"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 5,"32": 1,"33": 1,"34": 5},"c": "hs"}],"yr": 2027},{"id": "2027-s5-02","round": 2,"lab": "시즌5 2차","ser": "시즌5","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 5,"5": 1,"6": 4,"7": 5,"8": 2,"9": 3},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 4,"11": 2,"12": 5,"13": 1},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 2,"16": 5,"17": 3},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 3,"19": 4,"20": 2,"21": 5},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 2,"23": 3,"24": 1,"25": 4,"26": 3},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 5,"29": 3,"30": 5},"c": "hs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 1,"32": 4,"33": 2,"34": 4},"c": "ho"}],"yr": 2027},{"id": "2027-s5-03","round": 3,"lab": "시즌5 3차","ser": "시즌5","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 4,"5": 1,"6": 2,"7": 2,"8": 5,"9": 2},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 3,"11": 3,"12": 4,"13": 1},"c": "hum"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 3,"16": 3,"17": 5},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 1,"19": 4,"20": 5,"21": 3},"c": "ho"},{"f": "L2","area": "문학","q": [22,27],"a": {"22": 1,"23": 5,"24": 2,"25": 5,"26": 2,"27": 3},"c": "hs"},{"f": "L3","area": "문학","q": [28,31],"a": {"28": 3,"29": 2,"30": 4,"31": 3},"c": "go"},{"f": "L4","area": "문학","q": [32,34],"a": {"32": 4,"33": 5,"34": 1},"c": "gs"}],"yr": 2027},{"id": "2027-s5-06","round": 6,"lab": "시즌5 6차","ser": "시즌5","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 1,"5": 2,"6": 2,"7": 3,"8": 5,"9": 4},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 5,"11": 2,"12": 3,"13": 1},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 4,"15": 1,"16": 5,"17": 5},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 1,"19": 3,"20": 2,"21": 2},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 3,"23": 5,"24": 4,"25": 1,"26": 5},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 5,"28": 3,"29": 4,"30": 2},"c": "gs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 5,"32": 2,"33": 3,"34": 4},"c": "ho"}],"yr": 2027},{"id": "2027-s5-07","round": 7,"lab": "시즌5 7차","ser": "시즌5","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 1,"5": 5,"6": 3,"7": 4,"8": 2,"9": 4},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 2,"11": 3,"12": 4,"13": 5},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 2,"15": 3,"16": 4,"17": 5},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 1,"19": 3,"20": 2,"21": 4},"c": "ho"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 1,"23": 2,"24": 5,"25": 5,"26": 4},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 3,"28": 5,"29": 3,"30": 5},"c": "go"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 2,"32": 4,"33": 4,"34": 1},"c": "hs"}],"yr": 2027},{"id": "2027-s5-08","round": 8,"lab": "시즌5 8차","ser": "시즌5","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 3,"5": 1,"6": 1,"7": 2,"8": 3,"9": 5},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 3,"12": 5,"13": 3},"c": "hum"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 4,"15": 5,"16": 2,"17": 4},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 2,"19": 4,"20": 2,"21": 5},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 1,"23": 4,"24": 3,"25": 4,"26": 3},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 4,"28": 5,"29": 5,"30": 1},"c": "gs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 2,"32": 5,"33": 1,"34": 3},"c": "ho"}],"yr": 2027},{"id": "2027-s6-02","round": 2,"lab": "시즌6 2차","ser": "시즌6","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 3,"5": 2,"6": 5,"7": 3,"8": 4,"9": 1},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 3,"11": 1,"12": 1,"13": 5},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 5,"15": 5,"16": 1,"17": 4},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 5,"19": 2,"20": 5,"21": 3},"c": "ho"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 1,"23": 2,"24": 4,"25": 3,"26": 4},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 2,"28": 4,"29": 1,"30": 5},"c": "go"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 1,"32": 3,"33": 1,"34": 4},"c": "hs"}],"yr": 2027},{"id": "2027-s6-03","round": 3,"lab": "시즌6 3차","ser": "시즌6","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 4,"5": 5,"6": 3,"7": 4,"8": 1,"9": 2},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 2,"11": 4,"12": 3,"13": 3},"c": "hum"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 5,"16": 5,"17": 1},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 1,"19": 4,"20": 4,"21": 5},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 2,"23": 5,"24": 4,"25": 3,"26": 1},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 2,"28": 3,"29": 1,"30": 5},"c": "hs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 1,"32": 2,"33": 5,"34": 3},"c": "ho"}],"yr": 2027},{"id": "2027-s6-04","round": 4,"lab": "시즌6 4차","ser": "시즌6","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 2,"5": 3,"6": 5,"7": 4,"8": 3,"9": 1},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 5,"12": 4,"13": 2},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 5,"16": 5,"17": 4},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 1,"19": 5,"20": 3,"21": 1},"c": "ho"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 2,"23": 3,"24": 2,"25": 4,"26": 5},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 5,"28": 4,"29": 2,"30": 4},"c": "gs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 3,"32": 1,"33": 3,"34": 4},"c": "go"}],"yr": 2027},{"id": "2027-s6-06","round": 6,"lab": "시즌6 6차","ser": "시즌6","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 4,"5": 1,"6": 5,"7": 4,"8": 3,"9": 1},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 3,"11": 2,"12": 5,"13": 4},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 3,"16": 5,"17": 4},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 5,"19": 4,"20": 1,"21": 4},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 2,"23": 5,"24": 2,"25": 5,"26": 5},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 2,"28": 4,"29": 1,"30": 3},"c": "ho"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 2,"32": 3,"33": 1,"34": 3},"c": "hs"}],"yr": 2027},{"id": "2027-s6-07","round": 7,"lab": "시즌6 7차","ser": "시즌6","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 5,"5": 2,"6": 5,"7": 4,"8": 1,"9": 2},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 4,"11": 1,"12": 1,"13": 4},"c": "hum"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 3,"15": 2,"16": 5,"17": 2},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 4,"19": 3,"20": 5,"21": 2},"c": "ho"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 4,"23": 5,"24": 3,"25": 2,"26": 5},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 1,"29": 2,"30": 5},"c": "hs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 1,"32": 4,"33": 4,"34": 3},"c": "go"}],"yr": 2027},{"id": "2027-s6-08","round": 8,"lab": "시즌6 8차","ser": "시즌6","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 5,"5": 3,"6": 3,"7": 2,"8": 5,"9": 1},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 4,"11": 1,"12": 5,"13": 2},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 2,"16": 5,"17": 4},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 1,"19": 3,"20": 5,"21": 3},"c": "ho"},{"f": "L2","area": "문학","q": [22,27],"a": {"22": 2,"23": 3,"24": 4,"25": 5,"26": 2,"27": 1},"c": "hs"},{"f": "L3","area": "문학","q": [28,30],"a": {"28": 2,"29": 2,"30": 5},"c": "gs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 4,"32": 4,"33": 1,"34": 5},"c": "go"}],"yr": 2027},{"id": "2027-s6-09","round": 9,"lab": "시즌6 9차","ser": "시즌6","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 4,"5": 2,"6": 1,"7": 4,"8": 3,"9": 2},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 5,"11": 1,"12": 4,"13": 1},"c": "hum"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 2,"15": 4,"16": 3,"17": 3},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 5,"19": 3,"20": 5,"21": 2},"c": "go"},{"f": "L2","area": "문학","q": [22,27],"a": {"22": 1,"23": 3,"24": 4,"25": 4,"26": 5,"27": 1},"c": "hs"},{"f": "L3","area": "문학","q": [28,31],"a": {"28": 4,"29": 2,"30": 1,"31": 3},"c": "ho"},{"f": "L4","area": "문학","q": [32,34],"a": {"32": 4,"33": 4,"34": 2},"c": "gs"}],"yr": 2027},{"id": "2027-on-01","round": 1,"lab": "온라인 1차","ser": "온라인","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 4,"5": 5,"6": 2,"7": 3,"8": 2,"9": 1},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 3,"12": 3,"13": 2},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 5,"15": 2,"16": 1,"17": 4},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 4,"19": 2,"20": 1,"21": 5},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 4,"23": 3,"24": 4,"25": 3,"26": 5},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 3,"28": 2,"29": 1,"30": 5},"c": "gs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 1,"32": 3,"33": 5,"34": 2},"c": "ho"}],"yr": 2027},{"id": "2027-on-02","round": 2,"lab": "온라인 2차","ser": "온라인","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 2,"5": 3,"6": 4,"7": 3,"8": 1,"9": 4},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 3,"12": 3,"13": 1},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 2,"15": 5,"16": 4,"17": 5},"c": "soc"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 5,"19": 3,"20": 5,"21": 3},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 1,"23": 1,"24": 3,"25": 2,"26": 2},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 4,"29": 5,"30": 4},"c": "ho"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 4,"32": 2,"33": 3,"34": 5},"c": "hs"}],"yr": 2027},{"id": "2027-on-06","round": 6,"lab": "온라인 6차","ser": "온라인","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 4,"5": 4,"6": 1,"7": 3,"8": 2,"9": 5},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 3,"11": 4,"12": 2,"13": 1},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 4,"15": 3,"16": 1,"17": 5},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 1,"19": 4,"20": 4,"21": 5},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 2,"23": 3,"24": 3,"25": 2,"26": 2},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 3,"28": 2,"29": 5,"30": 4},"c": "ho"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 5,"32": 5,"33": 1,"34": 5},"c": "gs"}],"yr": 2027},{"id": "2026-s6-01","round": 1,"ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 1,"5": 2,"6": 5,"7": 3,"8": 4,"9": 3},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 2,"11": 1,"12": 4,"13": 4},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 1,"16": 4,"17": 2},"c": "hum"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 5,"19": 3,"20": 3,"21": 5},"c": "ho"},{"f": "L2","area": "문학","q": [22,27],"a": {"22": 3,"23": 4,"24": 5,"25": 2,"26": 1,"27": 4},"c": "hs"},{"f": "L3","area": "문학","q": [28,31],"a": {"28": 4,"29": 1,"30": 3,"31": 2},"c": "go"},{"f": "L4","area": "문학","q": [32,34],"a": {"32": 3,"33": 2,"34": 1},"c": "gs"}],"lab": "시즌6 1차","ser": "시즌6","yr": 2026},{"id": "2026-s6-02","round": 2,"ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 2,"5": 3,"6": 1,"7": 4,"8": 3,"9": 3},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 4,"11": 2,"12": 5,"13": 5},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 3,"15": 4,"16": 5,"17": 1},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 2,"19": 4,"20": 1,"21": 5},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 1,"23": 5,"24": 4,"25": 2,"26": 5},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 5,"29": 3,"30": 3},"c": "ho"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 3,"32": 3,"33": 2,"34": 4},"c": "hs"}],"lab": "시즌6 2차","ser": "시즌6","yr": 2026},{"id": "2026-s6-03","round": 3,"ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 1,"5": 3,"6": 4,"7": 3,"8": 2,"9": 5},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 4,"12": 3,"13": 2},"c": "hum"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 2,"15": 5,"16": 5,"17": 3},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 4,"19": 1,"20": 2,"21": 4},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 2,"23": 2,"24": 3,"25": 4,"26": 5},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 5,"28": 3,"29": 4,"30": 5},"c": "ho"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 2,"32": 4,"33": 3,"34": 2},"c": "gs"}],"lab": "시즌6 3차","ser": "시즌6","yr": 2026},{"id": "2026-s6-04","round": 4,"ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 1,"5": 2,"6": 4,"7": 5,"8": 2,"9": 5},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 2,"11": 4,"12": 5,"13": 3},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 3,"16": 4,"17": 2},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 1,"19": 2,"20": 5,"21": 2},"c": "gs"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 2,"23": 5,"24": 4,"25": 3,"26": 2},"c": "ho"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 3,"29": 4,"30": 4},"c": "go"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 1,"32": 5,"33": 3,"34": 4},"c": "hs"}],"lab": "시즌6 4차","ser": "시즌6","yr": 2026},{"id": "2026-s6-05","round": 5,"ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 2,"5": 2,"6": 4,"7": 1,"8": 3,"9": 1},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 3,"11": 5,"12": 1,"13": 3},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 2,"16": 4,"17": 5},"c": "soc"},{"f": "L1","area": "문학","q": [18,20],"a": {"18": 2,"19": 3,"20": 3},"c": "go"},{"f": "L2","area": "문학","q": [21,26],"a": {"21": 5,"22": 4,"23": 1,"24": 4,"25": 3,"26": 2},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 4,"28": 5,"29": 3,"30": 5},"c": "ho"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 1,"32": 2,"33": 4,"34": 2},"c": "hs"}],"lab": "시즌6 5차","ser": "시즌6","yr": 2026},{"id": "2026-s6-06","round": 6,"ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 4,"5": 2,"6": 3,"7": 5,"8": 2,"9": 1},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 3,"11": 2,"12": 4,"13": 5},"c": "hum"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 5,"16": 2,"17": 3},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 3,"19": 3,"20": 5,"21": 3},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 2,"23": 3,"24": 2,"25": 1,"26": 5},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 2,"29": 5,"30": 4},"c": "ho"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 1,"32": 4,"33": 4,"34": 5},"c": "gs"}],"lab": "시즌6 6차","ser": "시즌6","yr": 2026},{"id": "2026-s6-07","round": 7,"ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 1,"5": 5,"6": 4,"7": 3,"8": 5,"9": 2},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 5,"11": 1,"12": 3,"13": 3},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 4,"15": 5,"16": 4,"17": 2},"c": "soc"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 2,"19": 1,"20": 5,"21": 3},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 2,"23": 5,"24": 4,"25": 3,"26": 4},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 3,"28": 4,"29": 5,"30": 2},"c": "ho"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 1,"32": 1,"33": 4,"34": 3},"c": "hs"}],"lab": "시즌6 7차","ser": "시즌6","yr": 2026},{"id": "2026-s6-08","round": 8,"ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 2,"5": 4,"6": 4,"7": 1,"8": 3,"9": 1},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 4,"12": 2,"13": 5},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 3,"15": 5,"16": 5,"17": 3},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 4,"19": 2,"20": 2,"21": 5},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 2,"23": 5,"24": 1,"25": 4,"26": 3},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 3,"29": 3,"30": 5},"c": "ho"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 2,"32": 4,"33": 1,"34": 5},"c": "gs"}],"lab": "시즌6 8차","ser": "시즌6","yr": 2026},{"id": "2026-s6-09","round": 9,"ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 4,"5": 3,"6": 2,"7": 4,"8": 3,"9": 5},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 4,"12": 2,"13": 1},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 5,"15": 4,"16": 2,"17": 3},"c": "hum"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 5,"19": 1,"20": 3,"21": 5},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 3,"23": 4,"24": 5,"25": 2,"26": 4},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 4,"29": 1,"30": 4},"c": "hs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 2,"32": 3,"33": 5,"34": 4},"c": "ho"}],"lab": "시즌6 9차","ser": "시즌6","yr": 2026},{"id": "2026-s6-10","round": 10,"ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 1,"5": 2,"6": 4,"7": 3,"8": 5,"9": 5},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 2,"11": 4,"12": 3,"13": 3},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 4,"16": 3,"17": 5},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 2,"19": 1,"20": 5,"21": 3},"c": "ho"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 1,"23": 4,"24": 3,"25": 2,"26": 3},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 5,"28": 5,"29": 4,"30": 4},"c": "gs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 4,"32": 1,"33": 1,"34": 2},"c": "go"}],"lab": "시즌6 10차","ser": "시즌6","yr": 2026},{"id": "2026-s6-11","round": 11,"ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 4,"5": 5,"6": 2,"7": 1,"8": 3,"9": 1},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 3,"11": 5,"12": 2,"13": 2},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 1,"15": 4,"16": 3,"17": 5},"c": "hum"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 4,"19": 4,"20": 3,"21": 5},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 2,"23": 1,"24": 4,"25": 5,"26": 2},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 5,"29": 2,"30": 2},"c": "ho"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 1,"32": 1,"33": 3,"34": 3},"c": "hs"}],"lab": "시즌6 11차","ser": "시즌6","yr": 2026},{"id": "2026-s6-12","round": 12,"ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 1,"5": 5,"6": 3,"7": 4,"8": 3,"9": 2},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 3,"11": 5,"12": 1,"13": 2},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 3,"15": 1,"16": 4,"17": 2},"c": "soc"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 3,"19": 1,"20": 5,"21": 4},"c": "go"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 5,"23": 3,"24": 2,"25": 1,"26": 4},"c": "hs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 1,"28": 2,"29": 5,"30": 2},"c": "gs"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 4,"32": 4,"33": 3,"34": 1},"c": "ho"}],"lab": "시즌6 12차","ser": "시즌6","yr": 2026},{"id": "2026-on-07","round": 7,"lab": "온라인 7차","ser": "온라인","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 5,"5": 4,"6": 2,"7": 1,"8": 4,"9": 4},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 5,"11": 1,"12": 3,"13": 2},"c": "soc"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 3,"15": 4,"16": 5,"17": 2},"c": "sci"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 2,"19": 5,"20": 2,"21": 5},"c": "ho"},{"f": "L2","area": "문학","q": [22,27],"a": {"22": 2,"23": 4,"24": 3,"25": 4,"26": 3,"27": 4},"c": "hs"},{"f": "L3","area": "문학","q": [28,31],"a": {"28": 3,"29": 3,"30": 1,"31": 1},"c": "go"},{"f": "L4","area": "문학","q": [32,34],"a": {"32": 1,"33": 5,"34": 5},"c": "gs"}],"yr": 2026},{"id": "2026-on-08","round": 8,"lab": "온라인 8차","ser": "온라인","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 4,"5": 2,"6": 2,"7": 5,"8": 3,"9": 5},"c": "soc"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 4,"11": 5,"12": 1,"13": 4},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 4,"15": 2,"16": 3,"17": 5},"c": "hum"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 2,"19": 5,"20": 5,"21": 4},"c": "go"},{"f": "L2","area": "문학","q": [22,25],"a": {"22": 1,"23": 3,"24": 2,"25": 4},"c": "hs"},{"f": "L3","area": "문학","q": [26,31],"a": {"26": 2,"27": 3,"28": 4,"29": 3,"30": 5,"31": 4},"c": "ho"},{"f": "L4","area": "문학","q": [32,34],"a": {"32": 1,"33": 2,"34": 1},"c": "gs"}],"yr": 2026},{"id": "2026-on-09","round": 9,"lab": "온라인 9차","ser": "온라인","ps": [{"f": "R1","area": "독서","q": [4,9],"a": {"4": 3,"5": 2,"6": 1,"7": 2,"8": 5,"9": 2},"c": "hum"},{"f": "R2","area": "독서","q": [10,13],"a": {"10": 1,"11": 4,"12": 3,"13": 4},"c": "sci"},{"f": "R3","area": "독서","q": [14,17],"a": {"14": 3,"15": 3,"16": 1,"17": 4},"c": "soc"},{"f": "L1","area": "문학","q": [18,21],"a": {"18": 5,"19": 3,"20": 1,"21": 5},"c": "ho"},{"f": "L2","area": "문학","q": [22,26],"a": {"22": 4,"23": 3,"24": 5,"25": 3,"26": 2},"c": "gs"},{"f": "L3","area": "문학","q": [27,30],"a": {"27": 2,"28": 4,"29": 1,"30": 2},"c": "go"},{"f": "L4","area": "문학","q": [31,34],"a": {"31": 1,"32": 4,"33": 4,"34": 5},"c": "hs"}],"yr": 2026}];
-const CATS={hum:"인문",soc:"사회",sci:"과학·기술",hs:"현대시",gs:"고전시가",go:"고전소설",ho:"현대소설"};
-const RC=["hum","soc","sci"],LC=["hs","gs","go","ho"];
+const MODE="dir";
+const DATA=[{"id":"2027-s1-01","pub":"이감","yr":2027,"lab":"시즌1 1차","so":1,"round":1,"ps":[{"f":"R1","q":[4,9],"a":{"4":5,"5":2,"6":1,"7":1,"8":3,"9":2},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":4,"11":5,"12":2,"13":3},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":1,"15":3,"16":5,"17":4},"c":"hum"},{"f":"L1","q":[18,21],"a":{"18":4,"19":1,"20":1,"21":4},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":5,"23":3,"24":5,"25":4,"26":5},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":2,"28":1,"29":5,"30":2},"c":"go"},{"f":"L4","q":[31,34],"a":{"31":3,"32":5,"33":4,"34":4},"c":"gs"}]},{"id":"2027-s2-02","pub":"이감","yr":2027,"lab":"시즌2 2차","so":2,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":5,"6":4,"7":5,"8":2,"9":3},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":4,"11":3,"12":3,"13":5},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":2,"15":3,"16":1,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":3,"19":4,"20":2,"21":4},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":5,"23":5,"24":4,"25":3,"26":3},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":1,"29":5,"30":2},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":2,"32":1,"33":5,"34":3},"c":"gs"}]},{"id":"2027-s3-01","pub":"이감","yr":2027,"lab":"시즌3 1차","so":3,"round":1,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":1,"6":5,"7":4,"8":2,"9":2},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":3,"11":2,"12":5,"13":1},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":4,"15":1,"16":3,"17":3},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":2,"19":3,"20":1,"21":3},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":2,"24":5,"25":1,"26":4},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":4,"29":5,"30":4},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":3,"32":1,"33":2,"34":5},"c":"ho"}]},{"id":"2027-s3-02","pub":"이감","yr":2027,"lab":"시즌3 2차","so":3,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":3,"5":2,"6":4,"7":2,"8":3,"9":3},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":1,"11":5,"12":4,"13":2},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":4,"15":5,"16":1,"17":5},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":5,"19":3,"20":1,"21":3},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":5,"23":1,"24":4,"25":4,"26":3},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":5,"28":1,"29":4,"30":2},"c":"hs"},{"f":"L4","q":[31,34],"a":{"31":2,"32":2,"33":4,"34":3},"c":"go"}]},{"id":"2027-s3-03","pub":"이감","yr":2027,"lab":"시즌3 3차","so":3,"round":3,"ps":[{"f":"R1","q":[4,9],"a":{"4":2,"5":1,"6":3,"7":4,"8":5,"9":2},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":4,"12":2,"13":5},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":1,"15":4,"16":3,"17":2},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":3,"19":2,"20":4,"21":2},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":1,"23":3,"24":4,"25":5,"26":5},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":4,"28":4,"29":1,"30":2},"c":"hs"},{"f":"L4","q":[31,34],"a":{"31":1,"32":5,"33":3,"34":2},"c":"go"}]},{"id":"2027-s3-04","pub":"이감","yr":2027,"lab":"시즌3 4차","so":3,"round":4,"ps":[{"f":"R1","q":[4,9],"a":{"4":3,"5":2,"6":1,"7":2,"8":4,"9":5},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":1,"11":2,"12":5,"13":5},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":1,"15":2,"16":3,"17":3},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":5,"19":2,"20":1,"21":3},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":3,"23":4,"24":1,"25":3,"26":1},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":2,"28":4,"29":5,"30":5},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":4,"32":1,"33":2,"34":3},"c":"ho"}]},{"id":"2027-s4-01","pub":"이감","yr":2027,"lab":"시즌4 1차","so":4,"round":1,"ps":[{"f":"R1","q":[4,9],"a":{"4":3,"5":2,"6":3,"7":4,"8":2,"9":4},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":1,"12":3,"13":5},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":4,"15":5,"16":4,"17":3},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":3,"19":1,"20":5,"21":3},"c":"go"},{"f":"L2","q":[22,25],"a":{"22":5,"23":3,"24":2,"25":2},"c":"hs"},{"f":"L3","q":[26,30],"a":{"26":4,"27":1,"28":3,"29":3,"30":2},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":4,"32":5,"33":4,"34":3},"c":"gs"}]},{"id":"2027-s4-02","pub":"이감","yr":2027,"lab":"시즌4 2차","so":4,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":2,"6":5,"7":3,"8":5,"9":2},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":1,"11":4,"12":3,"13":2},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":3,"15":1,"16":4,"17":1},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":3,"19":2,"20":4,"21":4},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":1,"23":4,"24":2,"25":4,"26":2},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":3,"29":5,"30":3},"c":"go"},{"f":"L4","q":[31,34],"a":{"31":5,"32":1,"33":1,"34":5},"c":"hs"}]},{"id":"2027-s5-02","pub":"이감","yr":2027,"lab":"시즌5 2차","so":5,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":5,"5":1,"6":4,"7":5,"8":2,"9":3},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":4,"11":2,"12":5,"13":1},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":1,"15":2,"16":5,"17":3},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":3,"19":4,"20":2,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":3,"24":1,"25":4,"26":3},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":5,"29":3,"30":5},"c":"hs"},{"f":"L4","q":[31,34],"a":{"31":1,"32":4,"33":2,"34":4},"c":"ho"}]},{"id":"2027-s5-03","pub":"이감","yr":2027,"lab":"시즌5 3차","so":5,"round":3,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":1,"6":2,"7":2,"8":5,"9":2},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":3,"11":3,"12":4,"13":1},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":1,"15":3,"16":3,"17":5},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":4,"20":5,"21":3},"c":"ho"},{"f":"L2","q":[22,27],"a":{"22":1,"23":5,"24":2,"25":5,"26":2,"27":3},"c":"hs"},{"f":"L3","q":[28,31],"a":{"28":3,"29":2,"30":4,"31":3},"c":"go"},{"f":"L4","q":[32,34],"a":{"32":4,"33":5,"34":1},"c":"gs"}]},{"id":"2027-s5-06","pub":"이감","yr":2027,"lab":"시즌5 6차","so":5,"round":6,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":2,"6":2,"7":3,"8":5,"9":4},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":5,"11":2,"12":3,"13":1},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":4,"15":1,"16":5,"17":5},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":3,"20":2,"21":2},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":3,"23":5,"24":4,"25":1,"26":5},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":5,"28":3,"29":4,"30":2},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":5,"32":2,"33":3,"34":4},"c":"ho"}]},{"id":"2027-s5-07","pub":"이감","yr":2027,"lab":"시즌5 7차","so":5,"round":7,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":5,"6":3,"7":4,"8":2,"9":4},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":2,"11":3,"12":4,"13":5},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":2,"15":3,"16":4,"17":5},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":3,"20":2,"21":4},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":1,"23":2,"24":5,"25":5,"26":4},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":3,"28":5,"29":3,"30":5},"c":"go"},{"f":"L4","q":[31,34],"a":{"31":2,"32":4,"33":4,"34":1},"c":"hs"}]},{"id":"2027-s5-08","pub":"이감","yr":2027,"lab":"시즌5 8차","so":5,"round":8,"ps":[{"f":"R1","q":[4,9],"a":{"4":3,"5":1,"6":1,"7":2,"8":3,"9":5},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":1,"11":3,"12":5,"13":3},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":4,"15":5,"16":2,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":2,"19":4,"20":2,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":1,"23":4,"24":3,"25":4,"26":3},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":4,"28":5,"29":5,"30":1},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":2,"32":5,"33":1,"34":3},"c":"ho"}]},{"id":"2027-s6-02","pub":"이감","yr":2027,"lab":"시즌6 2차","so":6,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":3,"5":2,"6":5,"7":3,"8":4,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":3,"11":1,"12":1,"13":5},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":5,"15":5,"16":1,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":5,"19":2,"20":5,"21":3},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":1,"23":2,"24":4,"25":3,"26":4},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":2,"28":4,"29":1,"30":5},"c":"go"},{"f":"L4","q":[31,34],"a":{"31":1,"32":3,"33":1,"34":4},"c":"hs"}]},{"id":"2027-s6-03","pub":"이감","yr":2027,"lab":"시즌6 3차","so":6,"round":3,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":5,"6":3,"7":4,"8":1,"9":2},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":2,"11":4,"12":3,"13":3},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":1,"15":5,"16":5,"17":1},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":4,"20":4,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":5,"24":4,"25":3,"26":1},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":2,"28":3,"29":1,"30":5},"c":"hs"},{"f":"L4","q":[31,34],"a":{"31":1,"32":2,"33":5,"34":3},"c":"ho"}]},{"id":"2027-s6-04","pub":"이감","yr":2027,"lab":"시즌6 4차","so":6,"round":4,"ps":[{"f":"R1","q":[4,9],"a":{"4":2,"5":3,"6":5,"7":4,"8":3,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":5,"12":4,"13":2},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":1,"15":5,"16":5,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":5,"20":3,"21":1},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":2,"23":3,"24":2,"25":4,"26":5},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":5,"28":4,"29":2,"30":4},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":3,"32":1,"33":3,"34":4},"c":"go"}]},{"id":"2027-s6-06","pub":"이감","yr":2027,"lab":"시즌6 6차","so":6,"round":6,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":1,"6":5,"7":4,"8":3,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":3,"11":2,"12":5,"13":4},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":1,"15":3,"16":5,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":5,"19":4,"20":1,"21":4},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":5,"24":2,"25":5,"26":5},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":2,"28":4,"29":1,"30":3},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":2,"32":3,"33":1,"34":3},"c":"hs"}]},{"id":"2027-s6-07","pub":"이감","yr":2027,"lab":"시즌6 7차","so":6,"round":7,"ps":[{"f":"R1","q":[4,9],"a":{"4":5,"5":2,"6":5,"7":4,"8":1,"9":2},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":4,"11":1,"12":1,"13":4},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":3,"15":2,"16":5,"17":2},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":4,"19":3,"20":5,"21":2},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":4,"23":5,"24":3,"25":2,"26":5},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":1,"29":2,"30":5},"c":"hs"},{"f":"L4","q":[31,34],"a":{"31":1,"32":4,"33":4,"34":3},"c":"go"}]},{"id":"2027-s6-08","pub":"이감","yr":2027,"lab":"시즌6 8차","so":6,"round":8,"ps":[{"f":"R1","q":[4,9],"a":{"4":5,"5":3,"6":3,"7":2,"8":5,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":4,"11":1,"12":5,"13":2},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":1,"15":2,"16":5,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":3,"20":5,"21":3},"c":"ho"},{"f":"L2","q":[22,27],"a":{"22":2,"23":3,"24":4,"25":5,"26":2,"27":1},"c":"hs"},{"f":"L3","q":[28,30],"a":{"28":2,"29":2,"30":5},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":4,"32":4,"33":1,"34":5},"c":"go"}]},{"id":"2027-s6-09","pub":"이감","yr":2027,"lab":"시즌6 9차","so":6,"round":9,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":2,"6":1,"7":4,"8":3,"9":2},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":5,"11":1,"12":4,"13":1},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":2,"15":4,"16":3,"17":3},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":5,"19":3,"20":5,"21":2},"c":"go"},{"f":"L2","q":[22,27],"a":{"22":1,"23":3,"24":4,"25":4,"26":5,"27":1},"c":"hs"},{"f":"L3","q":[28,31],"a":{"28":4,"29":2,"30":1,"31":3},"c":"ho"},{"f":"L4","q":[32,34],"a":{"32":4,"33":4,"34":2},"c":"gs"}]},{"id":"2027-on-01","pub":"이감","yr":2027,"lab":"온라인 1차","so":10,"round":1,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":5,"6":2,"7":3,"8":2,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":3,"12":3,"13":2},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":5,"15":2,"16":1,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":4,"19":2,"20":1,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":4,"23":3,"24":4,"25":3,"26":5},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":3,"28":2,"29":1,"30":5},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":1,"32":3,"33":5,"34":2},"c":"ho"}]},{"id":"2027-on-02","pub":"이감","yr":2027,"lab":"온라인 2차","so":10,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":2,"5":3,"6":4,"7":3,"8":1,"9":4},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":3,"12":3,"13":1},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":2,"15":5,"16":4,"17":5},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":5,"19":3,"20":5,"21":3},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":1,"23":1,"24":3,"25":2,"26":2},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":4,"29":5,"30":4},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":4,"32":2,"33":3,"34":5},"c":"hs"}]},{"id":"2027-on-06","pub":"이감","yr":2027,"lab":"온라인 6차","so":10,"round":6,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":4,"6":1,"7":3,"8":2,"9":5},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":3,"11":4,"12":2,"13":1},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":4,"15":3,"16":1,"17":5},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":4,"20":4,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":3,"24":3,"25":2,"26":2},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":3,"28":2,"29":5,"30":4},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":5,"32":5,"33":1,"34":5},"c":"gs"}]},{"id":"2026-s6-01","pub":"이감","yr":2026,"lab":"시즌6 1차","so":6,"round":1,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":2,"6":5,"7":3,"8":4,"9":3},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":2,"11":1,"12":4,"13":4},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":1,"15":1,"16":4,"17":2},"c":"hum"},{"f":"L1","q":[18,21],"a":{"18":5,"19":3,"20":3,"21":5},"c":"ho"},{"f":"L2","q":[22,27],"a":{"22":3,"23":4,"24":5,"25":2,"26":1,"27":4},"c":"hs"},{"f":"L3","q":[28,31],"a":{"28":4,"29":1,"30":3,"31":2},"c":"go"},{"f":"L4","q":[32,34],"a":{"32":3,"33":2,"34":1},"c":"gs"}]},{"id":"2026-s6-02","pub":"이감","yr":2026,"lab":"시즌6 2차","so":6,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":2,"5":3,"6":1,"7":4,"8":3,"9":3},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":4,"11":2,"12":5,"13":5},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":3,"15":4,"16":5,"17":1},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":2,"19":4,"20":1,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":1,"23":5,"24":4,"25":2,"26":5},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":5,"29":3,"30":3},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":3,"32":3,"33":2,"34":4},"c":"hs"}]},{"id":"2026-s6-03","pub":"이감","yr":2026,"lab":"시즌6 3차","so":6,"round":3,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":3,"6":4,"7":3,"8":2,"9":5},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":1,"11":4,"12":3,"13":2},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":2,"15":5,"16":5,"17":3},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":4,"19":1,"20":2,"21":4},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":2,"24":3,"25":4,"26":5},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":5,"28":3,"29":4,"30":5},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":2,"32":4,"33":3,"34":2},"c":"gs"}]},{"id":"2026-s6-04","pub":"이감","yr":2026,"lab":"시즌6 4차","so":6,"round":4,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":2,"6":4,"7":5,"8":2,"9":5},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":2,"11":4,"12":5,"13":3},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":1,"15":3,"16":4,"17":2},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":2,"20":5,"21":2},"c":"gs"},{"f":"L2","q":[22,26],"a":{"22":2,"23":5,"24":4,"25":3,"26":2},"c":"ho"},{"f":"L3","q":[27,30],"a":{"27":1,"28":3,"29":4,"30":4},"c":"go"},{"f":"L4","q":[31,34],"a":{"31":1,"32":5,"33":3,"34":4},"c":"hs"}]},{"id":"2026-s6-05","pub":"이감","yr":2026,"lab":"시즌6 5차","so":6,"round":5,"ps":[{"f":"R1","q":[4,9],"a":{"4":2,"5":2,"6":4,"7":1,"8":3,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":3,"11":5,"12":1,"13":3},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":1,"15":2,"16":4,"17":5},"c":"soc"},{"f":"L1","q":[18,20],"a":{"18":2,"19":3,"20":3},"c":"go"},{"f":"L2","q":[21,26],"a":{"21":5,"22":4,"23":1,"24":4,"25":3,"26":2},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":4,"28":5,"29":3,"30":5},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":1,"32":2,"33":4,"34":2},"c":"hs"}]},{"id":"2026-s6-06","pub":"이감","yr":2026,"lab":"시즌6 6차","so":6,"round":6,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":2,"6":3,"7":5,"8":2,"9":1},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":3,"11":2,"12":4,"13":5},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":1,"15":5,"16":2,"17":3},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":3,"19":3,"20":5,"21":3},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":3,"24":2,"25":1,"26":5},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":2,"29":5,"30":4},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":1,"32":4,"33":4,"34":5},"c":"gs"}]},{"id":"2026-s6-07","pub":"이감","yr":2026,"lab":"시즌6 7차","so":6,"round":7,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":5,"6":4,"7":3,"8":5,"9":2},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":5,"11":1,"12":3,"13":3},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":4,"15":5,"16":4,"17":2},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":2,"19":1,"20":5,"21":3},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":5,"24":4,"25":3,"26":4},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":3,"28":4,"29":5,"30":2},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":1,"32":1,"33":4,"34":3},"c":"hs"}]},{"id":"2026-s6-08","pub":"이감","yr":2026,"lab":"시즌6 8차","so":6,"round":8,"ps":[{"f":"R1","q":[4,9],"a":{"4":2,"5":4,"6":4,"7":1,"8":3,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":4,"12":2,"13":5},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":3,"15":5,"16":5,"17":3},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":4,"19":2,"20":2,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":5,"24":1,"25":4,"26":3},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":3,"29":3,"30":5},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":2,"32":4,"33":1,"34":5},"c":"gs"}]},{"id":"2026-s6-09","pub":"이감","yr":2026,"lab":"시즌6 9차","so":6,"round":9,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":3,"6":2,"7":4,"8":3,"9":5},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":1,"11":4,"12":2,"13":1},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":5,"15":4,"16":2,"17":3},"c":"hum"},{"f":"L1","q":[18,21],"a":{"18":5,"19":1,"20":3,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":3,"23":4,"24":5,"25":2,"26":4},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":4,"29":1,"30":4},"c":"hs"},{"f":"L4","q":[31,34],"a":{"31":2,"32":3,"33":5,"34":4},"c":"ho"}]},{"id":"2026-s6-10","pub":"이감","yr":2026,"lab":"시즌6 10차","so":6,"round":10,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":2,"6":4,"7":3,"8":5,"9":5},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":2,"11":4,"12":3,"13":3},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":1,"15":4,"16":3,"17":5},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":2,"19":1,"20":5,"21":3},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":1,"23":4,"24":3,"25":2,"26":3},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":5,"28":5,"29":4,"30":4},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":4,"32":1,"33":1,"34":2},"c":"go"}]},{"id":"2026-s6-11","pub":"이감","yr":2026,"lab":"시즌6 11차","so":6,"round":11,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":5,"6":2,"7":1,"8":3,"9":1},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":3,"11":5,"12":2,"13":2},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":1,"15":4,"16":3,"17":5},"c":"hum"},{"f":"L1","q":[18,21],"a":{"18":4,"19":4,"20":3,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":1,"24":4,"25":5,"26":2},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":5,"29":2,"30":2},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":1,"32":1,"33":3,"34":3},"c":"hs"}]},{"id":"2026-s6-12","pub":"이감","yr":2026,"lab":"시즌6 12차","so":6,"round":12,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":5,"6":3,"7":4,"8":3,"9":2},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":3,"11":5,"12":1,"13":2},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":3,"15":1,"16":4,"17":2},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":3,"19":1,"20":5,"21":4},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":5,"23":3,"24":2,"25":1,"26":4},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":2,"29":5,"30":2},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":4,"32":4,"33":3,"34":1},"c":"ho"}]},{"id":"2026-on-07","pub":"이감","yr":2026,"lab":"온라인 7차","so":10,"round":7,"ps":[{"f":"R1","q":[4,9],"a":{"4":5,"5":4,"6":2,"7":1,"8":4,"9":4},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":5,"11":1,"12":3,"13":2},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":3,"15":4,"16":5,"17":2},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":2,"19":5,"20":2,"21":5},"c":"ho"},{"f":"L2","q":[22,27],"a":{"22":2,"23":4,"24":3,"25":4,"26":3,"27":4},"c":"hs"},{"f":"L3","q":[28,31],"a":{"28":3,"29":3,"30":1,"31":1},"c":"go"},{"f":"L4","q":[32,34],"a":{"32":1,"33":5,"34":5},"c":"gs"}]},{"id":"2026-on-08","pub":"이감","yr":2026,"lab":"온라인 8차","so":10,"round":8,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":2,"6":2,"7":5,"8":3,"9":5},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":4,"11":5,"12":1,"13":4},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":4,"15":2,"16":3,"17":5},"c":"hum"},{"f":"L1","q":[18,21],"a":{"18":2,"19":5,"20":5,"21":4},"c":"go"},{"f":"L2","q":[22,25],"a":{"22":1,"23":3,"24":2,"25":4},"c":"hs"},{"f":"L3","q":[26,31],"a":{"26":2,"27":3,"28":4,"29":3,"30":5,"31":4},"c":"ho"},{"f":"L4","q":[32,34],"a":{"32":1,"33":2,"34":1},"c":"gs"}]},{"id":"2026-on-09","pub":"이감","yr":2026,"lab":"온라인 9차","so":10,"round":9,"ps":[{"f":"R1","q":[4,9],"a":{"4":3,"5":2,"6":1,"7":2,"8":5,"9":2},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":4,"12":3,"13":4},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":3,"15":3,"16":1,"17":4},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":5,"19":3,"20":1,"21":5},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":4,"23":3,"24":5,"25":3,"26":2},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":2,"28":4,"29":1,"30":2},"c":"go"},{"f":"L4","q":[31,34],"a":{"31":1,"32":4,"33":4,"34":5},"c":"hs"}]}];
+const CAT=[["hum","인문"],["soc","사회"],["sci","과기"],["hs","현시"],["ho","현소"],["gs","고시"],["go","고소"]];
+const CN=Object.fromEntries(CAT);
+const COL={hum:["#3f6fc2","#eaf1fc"],soc:["#0f8a6b","#e4f6f0"],sci:["#7a4fd0","#f0eafc"],hs:["#d4572e","#fdeee8"],ho:["#b8860b","#fbf4e2"],gs:["#c03a6b","#fbe9f0"],go:["#2f7d9e","#e6f3f8"]};
+const RD=new Set(["hum","soc","sci"]);
 const $=s=>document.querySelector(s);
 const get=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}};
 const set=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
-let view=null,pi=0,mode="p",tm=null;   // view={kind:"exam"|"cat",id,items:[{e,p}]}
-const exam=id=>DATA.find(e=>e.id===id);
-const label=e=>e.lab;const ser=e=>e.ser;const full=e=>e.yr+" 이감 "+e.lab;const nq=e=>e.ps.reduce((s,p)=>s+p.q[1]-p.q[0]+1,0);
+// passages
+const P=[];
+for(const e of DATA)for(const p of e.ps)P.push({id:e.id+"~"+p.f,e,p,c:p.c,name:`${e.pub} ${e.yr}학년도 ${e.lab}`});
+P.sort((a,b)=>b.e.yr-a.e.yr||a.e.so-b.e.so||a.e.round-b.e.round||a.p.q[0]-b.p.q[0]);
+const PI=Object.fromEntries(P.map(x=>[x.id,x]));
 const stKey=id=>"njs:"+id;
-function state(id){return get(stKey(id),{sel:{},graded:{},sec:0})}
-function catItems(c){const o=[];for(const e of DATA)for(const p of e.ps)if(p.c===c)o.push({e,p});return o}
-function pname(e,p){const i=e.ps.indexOf(p);return (p.area==="독서"?"독서":"문학")+(p.area==="독서"?i+1:i-2)}
-function catProgress(c){const it=catItems(c);let n=0;for(const x of it)if(state(x.e.id).graded[x.p.f])n++;return [n,it.length]}
+const st=id=>get(stKey(id),{sel:{},graded:{}});
+const done=x=>!!st(x.e.id).graded[x.p.f];
+const started=x=>{const s=st(x.e.id);for(let q=x.p.q[0];q<=x.p.q[1];q++)if(s.sel[q])return true;return false};
+const nqs=x=>x.p.q[1]-x.p.q[0]+1;
+const inCat=c=>P.filter(x=>x.c===c);
+const sty=c=>`--c:${COL[c][0]};--cb:${COL[c][1]}`;
+let ctx="all",mode="p",filt=get("njs:filt","all");
+
+function crumb(parts){$("#crumb").innerHTML=parts.map((t,i)=>(i?'<span class="sep">/</span>':"")+t).join("")}
+function go(h){if(location.hash==="#"+h)route();else location.hash=h}
+function pick(list,cur){list=list.filter(x=>x.id!==cur);const fresh=list.filter(x=>!done(x));const pool=fresh.length?fresh:list;return pool[Math.floor(Math.random()*pool.length)]}
+function random(c,cur){ctx=c||"all";const x=pick(c?inCat(c):P,cur);if(!x)return;sessionStorage.setItem("njs:ctx",ctx);go("p/"+x.id)}
 
 function home(){
-  clearInterval(tm);view=null;$("#timer").dataset.for="";
-  $("#ttl").textContent="실전 지문 연습";$("#home").hidden=true;$("#timer").hidden=true;$("#tbtn").hidden=true;
-  const np=DATA.reduce((s,e)=>s+e.ps.length,0),nqs=DATA.reduce((s,e)=>s+nq(e),0);
-  let done=0;for(const e of DATA){const s=state(e.id);for(const p of e.ps)if(s.graded[p.f])done++}
-  let h=`<section class="hero"><h2>이감 모의고사 독서·문학</h2><p>공통 4~34번을 지문 단위로 풀고 바로 채점합니다. 기록은 이 기기에 저장됩니다.</p>
-  <div class="stats"><div><b>${DATA.length}</b><span>회차</span></div><div><b>${np}</b><span>지문</span></div><div><b>${nqs.toLocaleString()}</b><span>문항</span></div><div><b>${done}</b><span>채점 완료 지문</span></div></div></section>`;
-  const catCard=c=>{const [n,t]=catProgress(c);return `<button class="card cat" data-c="${c}"><b>${CATS[c]}</b><small>${t}지문</small><div class="bar"><i style="width:${n/t*100}%"></i></div><small>${n?`<span class="done">${n}</span> / ${t} 채점`:"아직 안 풂"}</small></button>`};
-  h+='<div class="sec">독서 유형별 모아 풀기</div><div class="grid">'+RC.map(catCard).join("")+'</div>';
-  h+='<div class="sec">문학 유형별 모아 풀기</div><div class="grid">'+LC.map(catCard).join("")+'</div>';
-  const yrs=[...new Set(DATA.map(e=>e.yr))];
-  for(const y of yrs){
-    h+=`<div class="yr">${y}학년도</div>`;
-    const sers=[...new Set(DATA.filter(e=>e.yr===y).map(e=>e.ser))];
-    for(const sr of sers){
-      const es=DATA.filter(e=>e.yr===y&&e.ser===sr);
-      h+=`<div class="sec">${sr}<small>${es.length}회</small></div><div class="grid rd">`;
-      for(const e of es){
-        const s=state(e.id);let n=0;for(const p of e.ps)if(s.graded[p.f])n++;
-        h+=`<button class="card ex" data-id="${e.id}"><b>${e.lab.replace(sr+" ","")}</b><small>${e.ps.length}지문 · ${nq(e)}문항</small><div class="bar"><i style="width:${n/e.ps.length*100}%"></i></div><small>${n?`<span class="done">${n}</span> / ${e.ps.length}지문 채점`:"아직 안 풂"}</small></button>`;
-      }
-      h+='</div>';
+  crumb([]);
+  const total=P.length,dn=P.filter(done).length;
+  let h=`<section class="hero"><div><h1>실전 지문</h1><p>지문 하나씩 풀고 바로 채점합니다. 풀이 기록은 이 기기에 저장됩니다.</p>
+  <div class="stat"><div><b>${total}</b>지문</div><div><b>${P.reduce((s,x)=>s+nqs(x),0).toLocaleString()}</b>문항</div><div><b>${dn}</b>채점 완료</div></div></div>
+  <button class="rand" id="hr"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg></span><span><b>랜덤 지문 풀기</b><small>안 푼 지문 중에서 무작위로</small></span></button></section>`;
+  const tile=([c,n])=>{const L=inCat(c),d=L.filter(done).length;return `<button class="tile" style="${sty(c)}" data-c="${c}"><b>${n}</b><div class="n">${L.length}지문</div><div class="prog"><i style="width:${L.length?d/L.length*100:0}%"></i></div><div class="pc">${d?`${d} / ${L.length} 완료`:"아직 안 풂"}</div></button>`};
+  h+=`<div class="grp">독서</div><div class="tiles">${CAT.filter(([c])=>RD.has(c)).map(tile).join("")}</div>`;
+  h+=`<div class="grp">문학</div><div class="tiles">${CAT.filter(([c])=>!RD.has(c)).map(tile).join("")}</div>`;
+  $("#app").innerHTML=h;
+  $("#hr").onclick=()=>random();
+  document.querySelectorAll(".tile").forEach(b=>b.onclick=()=>go("c/"+b.dataset.c));
+}
+
+function list(c){
+  if(!CN[c])return home();
+  ctx=c;sessionStorage.setItem("njs:ctx",c);
+  crumb([`<b>${CN[c]}</b>`]);
+  const L=inCat(c);const d=L.filter(done).length;
+  const shown=filt==="todo"?L.filter(x=>!done(x)):filt==="done"?L.filter(done):L;
+  let h=`<div class="lhead" style="${sty(c)}"><div><h1>${CN[c]}</h1><div class="n">${L.length}지문 · ${d}개 완료</div></div><span class="sp"></span>
+  <div class="seg">${[["all","전체"],["todo","안 푼 것"],["done","푼 것"]].map(([k,t])=>`<button data-f="${k}" class="${filt===k?"on":""}">${t}</button>`).join("")}</div>
+  <button class="btn pri" id="cr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>${CN[c]} 랜덤</button></div>`;
+  if(!shown.length)h+=`<div class="empty">해당하는 지문이 없습니다.</div>`;
+  else{
+    h+='<div class="list">';
+    for(const x of shown){
+      const s=st(x.e.id);let b;
+      if(done(x)){let ok=0;for(let q=x.p.q[0];q<=x.p.q[1];q++)if(s.sel[q]===x.p.a[q])ok++;b=`<span class="badge ok">${ok}/${nqs(x)}</span>`}
+      else b=started(x)?'<span class="badge mid">푸는 중</span>':'<span class="badge new">안 풂</span>';
+      h+=`<button class="item" data-id="${x.id}"><span class="k"><b>${x.name}</b><small>${x.p.q[0]}~${x.p.q[1]}번 · ${nqs(x)}문항</small></span>${b}</button>`;
     }
+    h+='</div>';
   }
   $("#app").innerHTML=h;
-  document.querySelectorAll(".card.ex").forEach(b=>b.onclick=()=>go(b.dataset.id));
-  document.querySelectorAll(".card.cat").forEach(b=>b.onclick=()=>go("c-"+b.dataset.c));
-}
-function go(h){location.hash=h;route()}
-
-function fmt(s){const m=Math.floor(s/60),x=s%60;return String(m).padStart(2,"0")+":"+String(x).padStart(2,"0")}
-function startTimer(id){
-  clearInterval(tm);const s=state(id);let run=false;
-  const t=$("#timer"),b=$("#tbtn");t.hidden=false;b.hidden=false;t.textContent=fmt(s.sec||0);b.textContent="▶ 타이머";
-  b.onclick=()=>{
-    run=!run;b.textContent=run?"⏸ 멈춤":"▶ 타이머";
-    clearInterval(tm);
-    if(run)tm=setInterval(()=>{const st=state(id);st.sec=(st.sec||0)+1;set(stKey(id),st);t.textContent=fmt(st.sec)},1000);
-  };
+  document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{filt=b.dataset.f;set("njs:filt",filt);list(c)});
+  document.querySelectorAll(".item").forEach(b=>b.onclick=()=>go("p/"+b.dataset.id));
+  $("#cr").onclick=()=>random(c);
 }
 
-function openExam(id){
-  const e=exam(id);if(!e){home();return}
-  view={kind:"exam",id,items:e.ps.map(p=>({e,p}))};pi=0;mode="p";
-  $("#ttl").textContent=full(e);$("#home").hidden=false;
-  startTimer(id);render();
+// images
+const PK={};
+function imgUrl(eid,k){
+  if(MODE==="dir")return Promise.resolve(`img/${eid}/${k}.jpg`);
+  if(!PK[eid])PK[eid]=fetch("pk/"+eid+".json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{const m={};for(const kk in j){const b=atob(j[kk]),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);m[kk]=URL.createObjectURL(new Blob([u],{type:"image/jpeg"}))}return m}).catch(e=>{delete PK[eid];throw e});
+  return PK[eid].then(m=>m[k]);
 }
-function openCat(c){
-  if(!CATS[c]){home();return}
-  clearInterval(tm);$("#timer").hidden=true;$("#tbtn").hidden=true;$("#timer").dataset.for="";
-  view={kind:"cat",id:c,items:catItems(c)};
-  const st=get("njs:pos:"+c,0);pi=Math.min(st,view.items.length-1);mode="p";
-  $("#ttl").textContent=CATS[c]+" 모아 풀기";$("#home").hidden=false;render();
-}
+function fill(root){root.querySelectorAll("img[data-e]").forEach(im=>imgUrl(im.dataset.e,im.dataset.k).then(u=>{im.onload=()=>im.classList.remove("ld");im.src=u}).catch(()=>{im.alt="이미지를 불러오지 못했습니다. 새로고침해 주세요."}))}
 
-function render(){
-  const it=view.items[pi],e=it.e,p=it.p,s=state(e.id);
-  if(view.kind==="cat")set("njs:pos:"+view.id,pi);
-  const ia=k=>`src="img/${e.id}/${k}.jpg"`;
-  let h='<div class="tabs'+(view.kind==="cat"?" many":"")+'">';
-  view.items.forEach((x,i)=>{
-    const sx=state(x.e.id),d=sx.graded[x.p.f];
-    if(view.kind==="exam"){
-      h+=`<button class="tab ${i===pi?"on":""} ${d?"done":""}" data-i="${i}">${pname(x.e,x.p)}<span class="tag">${CATS[x.p.c]}</span><small>${x.p.q[0]}~${x.p.q[1]}번</small></button>`;
-    }else{
-      h+=`<button class="tab ${i===pi?"on":""} ${d?"done":""}" data-i="${i}">#${i+1}<small>${String(x.e.yr).slice(2)} ${label(x.e)} · ${x.p.q[0]}~${x.p.q[1]}</small></button>`;
-    }
-  });
-  h+=`</div><div class="mtabs"><button class="btn ${mode==="p"?"on":""}" data-m="p">지문</button><button class="btn ${mode==="q"?"on":""}" data-m="q">문제·답안</button></div>`;
-  const cap=view.kind==="cat"?`${CATS[p.c]} #${pi+1} · ${full(e)} ${pname(e,p)} · ${p.q[0]}~${p.q[1]}번`:`${pname(e,p)} · ${CATS[p.c]}`;
-  h+=`<div class="view m-${mode}"><div class="pane ppane"><h3>지문 — ${cap}</h3><img ${ia(p.f)} alt="지문"></div>`;
-  h+=`<div class="qpane"><div class="pane"><h3>문제</h3><img ${ia(p.f+"_q")} alt="문제"></div><div class="ans">`;
-  const g=!!s.graded[p.f];let ok=0,tot=0;
+function passage(id){
+  const x=PI[id];if(!x)return home();
+  ctx=sessionStorage.getItem("njs:ctx")||x.c;
+  const c=x.c,e=x.e,p=x.p,s=st(e.id),g=!!s.graded[p.f];
+  crumb([`<button id="bc">${CN[c]}</button>`,`<b>${x.name}</b>`]);
+  const L=inCat(c),i=L.indexOf(x);
+  let h=`<div class="phead" style="${sty(c)}"><span class="chip">${CN[c]}</span><h1>${x.name}</h1><span class="q">${p.q[0]}~${p.q[1]}번</span></div>
+  <div class="seg mtab"><button data-m="p" class="${mode==="p"?"on":""}">지문</button><button data-m="q" class="${mode==="q"?"on":""}">문제 · 답안</button></div>
+  <div class="view m${mode}"><div class="pane ppane"><img class="ld" data-e="${e.id}" data-k="${p.f}" alt="지문"></div>
+  <div class="side"><div class="pane qimg"><img class="ld" data-e="${e.id}" data-k="${p.f}_q" alt="문제"></div><div class="sheet"><h3>답안</h3>`;
+  let ok=0;
   for(let q=p.q[0];q<=p.q[1];q++){
-    const key=String(q),ans=p.a[key],sel=s.sel[key];tot++;
-    let rc="",res="";
-    if(g){if(sel===ans){ok++;rc="ok";res="정답"}else{rc="no";res=(sel?"오답":"미응답")+" · 답 "+"①②③④⑤"[ans-1]}}
-    h+=`<div class="row ${rc}"><span class="n">${q}번</span><span class="c">`;
-    for(let c=1;c<=5;c++){
-      let cl="ch";
-      if(g){ if(c===ans)cl+=" key"; if(sel===c&&c!==ans)cl+=" wrong"; if(sel===c&&c===ans)cl+=" right";}
-      else if(sel===c)cl+=" sel";
-      h+=`<button class="${cl}" data-q="${key}" data-c="${c}" ${g?"disabled":""}>${c}</button>`;
-    }
-    h+=`</span><span class="res">${res}</span></div>`;
+    const ans=p.a[q],sel=s.sel[q];let rc="",rs="";
+    if(g){if(sel===ans){ok++;rc="ok";rs="정답"}else{rc="no";rs=(sel?"오답":"미응답")+" · 정답 "+ans}}
+    h+=`<div class="row ${rc}"><span class="no">${q}</span><span class="cs">`;
+    for(let k=1;k<=5;k++){let cl="ch";if(g){if(k===ans)cl+=" key";if(sel===k)cl+=k===ans?" right":" wrong"}else if(sel===k)cl+=" sel";h+=`<button class="${cl}" data-q="${q}" data-k="${k}" ${g?"disabled":""}>${k}</button>`}
+    h+=`</span><span class="rs">${rs}</span></div>`;
   }
-  h+=`<div class="acts">`;
-  if(!g)h+=`<button class="btn pri" id="grade">이 지문 채점</button>`;
-  else h+=`<span class="score">${ok} / ${tot}</span><button class="btn" id="redo">다시 풀기</button>`;
-  h+=`<span class="sp"></span>`;
-  if(pi>0)h+=`<button class="btn" id="prev">← 이전</button>`;
-  if(pi<view.items.length-1)h+=`<button class="btn" id="next">다음 →</button>`;
-  h+=`</div></div></div></div>`;
-  $("#app").innerHTML=h;
-  const nx=view.items[pi+1];if(nx)setTimeout(()=>{for(const k of [nx.p.f,nx.p.f+"_q"]){const im=new Image();im.src=`img/${nx.e.id}/${k}.jpg`}},600);
-  document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{pi=+b.dataset.i;mode="p";render();window.scrollTo(0,0)});
-  document.querySelectorAll(".mtabs .btn").forEach(b=>b.onclick=()=>{mode=b.dataset.m;render()});
-  document.querySelectorAll(".ch").forEach(b=>b.onclick=()=>{
-    const st=state(e.id);const q=b.dataset.q,c=+b.dataset.c;
-    if(st.sel[q]===c)delete st.sel[q];else st.sel[q]=c;
-    set(stKey(e.id),st);render();
-  });
-  const gb=$("#grade");if(gb)gb.onclick=()=>{const st=state(e.id);st.graded[p.f]=true;set(stKey(e.id),st);render()};
-  const rb=$("#redo");if(rb)rb.onclick=()=>{const st=state(e.id);delete st.graded[p.f];for(let q=p.q[0];q<=p.q[1];q++)delete st.sel[q];set(stKey(e.id),st);render()};
-  const nb=$("#next");if(nb)nb.onclick=()=>{pi++;mode="p";render();window.scrollTo(0,0)};
-  const pb=$("#prev");if(pb)pb.onclick=()=>{pi--;mode="p";render();window.scrollTo(0,0)};
+  h+=`<div class="acts">${g?`<span class="score">${ok} / ${nqs(x)}</span><button class="btn" id="redo">다시 풀기</button>`:`<button class="btn pri" id="grade">채점하기</button>`}<span class="sp"></span>
+  <div class="nav">${i>0?'<button class="btn" id="prev">이전</button>':""}${i<L.length-1?'<button class="btn" id="next">다음</button>':""}<button class="btn" id="nr">랜덤</button></div></div></div></div></div>`;
+  $("#app").innerHTML=h;fill($("#app"));
+  const nx=L[i+1];if(nx&&MODE==="dir")setTimeout(()=>{for(const k of [nx.p.f,nx.p.f+"_q"]){const im=new Image();im.src=`img/${nx.e.id}/${k}.jpg`}},700);
+  $("#bc").onclick=()=>go("c/"+c);
+  document.querySelectorAll(".mtab button").forEach(b=>b.onclick=()=>{mode=b.dataset.m;passage(id)});
+  document.querySelectorAll(".ch").forEach(b=>b.onclick=()=>{const t=st(e.id),q=b.dataset.q,k=+b.dataset.k;if(t.sel[q]===k)delete t.sel[q];else t.sel[q]=k;set(stKey(e.id),t);
+    document.querySelectorAll(`.ch[data-q="${q}"]`).forEach(o=>o.classList.toggle("sel",t.sel[q]===+o.dataset.k))});
+  const gb=$("#grade");if(gb)gb.onclick=()=>{const t=st(e.id);t.graded[p.f]=true;set(stKey(e.id),t);passage(id)};
+  const rb=$("#redo");if(rb)rb.onclick=()=>{const t=st(e.id);delete t.graded[p.f];for(let q=p.q[0];q<=p.q[1];q++)delete t.sel[q];set(stKey(e.id),t);passage(id)};
+  const pb=$("#prev");if(pb)pb.onclick=()=>{mode="p";go("p/"+L[i-1].id)};
+  const nb=$("#next");if(nb)nb.onclick=()=>{mode="p";go("p/"+L[i+1].id)};
+  $("#nr").onclick=()=>{mode="p";random(ctx==="all"?null:ctx,id)};
 }
 
 function route(){
-  const h=location.hash.replace("#","");
-  if(exam(h))openExam(h);
-  else if(/^c-[a-z]+$/.test(h))openCat(h.slice(2));
-  else home();
+  const h=decodeURIComponent(location.hash.slice(1));window.scrollTo(0,0);
+  if(h.startsWith("c/"))list(h.slice(2));
+  else if(h.startsWith("p/"))passage(h.slice(2));
+  else{ctx="all";sessionStorage.setItem("njs:ctx","all");home()}
 }
-$("#home").onclick=()=>go("");$("#brand").onclick=()=>go("");
+$("#brand").onclick=()=>go("");
+$("#rnd").onclick=()=>random();
 window.addEventListener("hashchange",route);
 route();
 </script>
