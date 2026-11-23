@@ -74,6 +74,8 @@ def main() -> int:
             "notices": common.get("notices", []) + s.get("notices", []),
             "materials": common.get("materials", []) + s.get("materials", []),
             "schedule": s.get("schedule", []),
+            "weekly": s.get("weekly", []),
+            "skip": s.get("skip", []),
             "assignments": s.get("assignments", []),
             "scores": s.get("scores", []),
         }
