@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>국어의 정답 · 실전 지문</title>
+<title>국어의 정답 · 과거의 유산</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
@@ -76,6 +76,22 @@ main{max-width:1480px;margin:0 auto;padding:26px 22px 60px}
 .badge.ok{background:var(--okbg);color:var(--ok)}
 .badge.mid{background:#fff4e0;color:#a35e00}
 .empty{color:var(--sub);text-align:center;padding:50px 0}
+.item{cursor:pointer}
+.pk{flex:none;width:28px;height:28px;border-radius:8px;border:1.5px solid var(--line2);background:#fff;display:grid;place-items:center;padding:0;color:transparent;transition:all .12s}
+.pk svg{width:16px;height:16px}.pk:hover{border-color:var(--acc)}
+.pk.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.lhead .btn{padding:8px 13px;font-size:14px}
+#bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:30;width:min(760px,calc(100% - 24px));display:flex;align-items:center;gap:12px;background:#151922;color:#fff;border-radius:16px;padding:10px 10px 10px 18px;box-shadow:0 12px 32px rgba(10,14,22,.28);flex-wrap:wrap}
+#bar[hidden]{display:none}
+#bar .bn{font-weight:600;font-size:15px}#bar .bn b{font-size:17px}
+#bar .lk{background:none;border:0;color:#aeb8cc;font-weight:700;font-size:14px;padding:6px 4px}#bar .lk:hover{color:#fff}
+#bar .ck{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#d6dbe6;cursor:pointer}
+#bar .ck input{width:16px;height:16px;accent-color:var(--acc)}
+#bar .msg{font-weight:700;font-size:14px;color:#cfe0ff;padding:9px 6px}
+#bar .btn.pri{border-radius:11px}
+body.hasbar main{padding-bottom:120px}
+body.hasbar .qimg{max-height:calc(100vh - 420px)}
+.phead .btn{margin-left:auto;padding:7px 12px;font-size:14px}.phead .btn.on{background:var(--soft);border-color:var(--acc);color:var(--acc)}
 /* passage */
 .phead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
 .chip{font-size:13px;font-weight:800;border-radius:999px;padding:5px 12px;background:var(--cb);color:var(--c)}
@@ -115,6 +131,7 @@ main{max-width:1480px;margin:0 auto;padding:26px 22px 60px}
  .view.mp .side .qimg,.view.mq .ppane{display:none}
 }
 @media (max-width:560px){
+ #bar{bottom:10px;padding:10px 10px 10px 14px;gap:8px 10px}#bar .bn{font-size:14px}
  .top .in{padding:10px 14px;gap:10px}.brand{font-size:19px}.crumb{display:none}#rnd span{display:none}
  main{padding:18px 14px 50px}.hero h1{font-size:26px}
  .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile{padding:16px}.tile b{font-size:19px}
@@ -132,6 +149,7 @@ main{max-width:1480px;margin:0 auto;padding:26px 22px 60px}
   <button class="btn ghost" id="rnd" title="이 제재에서 랜덤" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg><span>랜덤</span></button>
 </div></header>
 <main id="app"></main>
+<div id="bar" hidden></div>
 <script>
 const MODE="dir";
 const DATA=[{"id":"2027-s1-01","pub":"이감","yr":2027,"lab":"시즌1 1차","so":1,"round":1,"ps":[{"f":"R1","q":[4,9],"a":{"4":5,"5":2,"6":1,"7":1,"8":3,"9":2},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":4,"11":5,"12":2,"13":3},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":1,"15":3,"16":5,"17":4},"c":"hum"},{"f":"L1","q":[18,21],"a":{"18":4,"19":1,"20":1,"21":4},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":5,"23":3,"24":5,"25":4,"26":5},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":2,"28":1,"29":5,"30":2},"c":"go"},{"f":"L4","q":[31,34],"a":{"31":3,"32":5,"33":4,"34":4},"c":"gs"}]},{"id":"2027-s2-02","pub":"이감","yr":2027,"lab":"시즌2 2차","so":2,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":5,"6":4,"7":5,"8":2,"9":3},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":4,"11":3,"12":3,"13":5},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":2,"15":3,"16":1,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":3,"19":4,"20":2,"21":4},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":5,"23":5,"24":4,"25":3,"26":3},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":1,"29":5,"30":2},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":2,"32":1,"33":5,"34":3},"c":"gs"}]},{"id":"2027-s3-01","pub":"이감","yr":2027,"lab":"시즌3 1차","so":3,"round":1,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":1,"6":5,"7":4,"8":2,"9":2},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":3,"11":2,"12":5,"13":1},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":4,"15":1,"16":3,"17":3},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":2,"19":3,"20":1,"21":3},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":2,"24":5,"25":1,"26":4},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":4,"29":5,"30":4},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":3,"32":1,"33":2,"34":5},"c":"ho"}]},{"id":"2027-s3-02","pub":"이감","yr":2027,"lab":"시즌3 2차","so":3,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":3,"5":2,"6":4,"7":2,"8":3,"9":3},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":1,"11":5,"12":4,"13":2},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":4,"15":5,"16":1,"17":5},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":5,"19":3,"20":1,"21":3},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":5,"23":1,"24":4,"25":4,"26":3},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":5,"28":1,"29":4,"30":2},"c":"hs"},{"f":"L4","q":[31,34],"a":{"31":2,"32":2,"33":4,"34":3},"c":"go"}]},{"id":"2027-s3-03","pub":"이감","yr":2027,"lab":"시즌3 3차","so":3,"round":3,"ps":[{"f":"R1","q":[4,9],"a":{"4":2,"5":1,"6":3,"7":4,"8":5,"9":2},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":4,"12":2,"13":5},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":1,"15":4,"16":3,"17":2},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":3,"19":2,"20":4,"21":2},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":1,"23":3,"24":4,"25":5,"26":5},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":4,"28":4,"29":1,"30":2},"c":"hs"},{"f":"L4","q":[31,34],"a":{"31":1,"32":5,"33":3,"34":2},"c":"go"}]},{"id":"2027-s3-04","pub":"이감","yr":2027,"lab":"시즌3 4차","so":3,"round":4,"ps":[{"f":"R1","q":[4,9],"a":{"4":3,"5":2,"6":1,"7":2,"8":4,"9":5},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":1,"11":2,"12":5,"13":5},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":1,"15":2,"16":3,"17":3},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":5,"19":2,"20":1,"21":3},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":3,"23":4,"24":1,"25":3,"26":1},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":2,"28":4,"29":5,"30":5},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":4,"32":1,"33":2,"34":3},"c":"ho"}]},{"id":"2027-s4-01","pub":"이감","yr":2027,"lab":"시즌4 1차","so":4,"round":1,"ps":[{"f":"R1","q":[4,9],"a":{"4":3,"5":2,"6":3,"7":4,"8":2,"9":4},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":1,"12":3,"13":5},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":4,"15":5,"16":4,"17":3},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":3,"19":1,"20":5,"21":3},"c":"go"},{"f":"L2","q":[22,25],"a":{"22":5,"23":3,"24":2,"25":2},"c":"hs"},{"f":"L3","q":[26,30],"a":{"26":4,"27":1,"28":3,"29":3,"30":2},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":4,"32":5,"33":4,"34":3},"c":"gs"}]},{"id":"2027-s4-02","pub":"이감","yr":2027,"lab":"시즌4 2차","so":4,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":2,"6":5,"7":3,"8":5,"9":2},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":1,"11":4,"12":3,"13":2},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":3,"15":1,"16":4,"17":1},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":3,"19":2,"20":4,"21":4},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":1,"23":4,"24":2,"25":4,"26":2},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":3,"29":5,"30":3},"c":"go"},{"f":"L4","q":[31,34],"a":{"31":5,"32":1,"33":1,"34":5},"c":"hs"}]},{"id":"2027-s5-02","pub":"이감","yr":2027,"lab":"시즌5 2차","so":5,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":5,"5":1,"6":4,"7":5,"8":2,"9":3},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":4,"11":2,"12":5,"13":1},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":1,"15":2,"16":5,"17":3},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":3,"19":4,"20":2,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":3,"24":1,"25":4,"26":3},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":5,"29":3,"30":5},"c":"hs"},{"f":"L4","q":[31,34],"a":{"31":1,"32":4,"33":2,"34":4},"c":"ho"}]},{"id":"2027-s5-03","pub":"이감","yr":2027,"lab":"시즌5 3차","so":5,"round":3,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":1,"6":2,"7":2,"8":5,"9":2},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":3,"11":3,"12":4,"13":1},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":1,"15":3,"16":3,"17":5},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":4,"20":5,"21":3},"c":"ho"},{"f":"L2","q":[22,27],"a":{"22":1,"23":5,"24":2,"25":5,"26":2,"27":3},"c":"hs"},{"f":"L3","q":[28,31],"a":{"28":3,"29":2,"30":4,"31":3},"c":"go"},{"f":"L4","q":[32,34],"a":{"32":4,"33":5,"34":1},"c":"gs"}]},{"id":"2027-s5-06","pub":"이감","yr":2027,"lab":"시즌5 6차","so":5,"round":6,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":2,"6":2,"7":3,"8":5,"9":4},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":5,"11":2,"12":3,"13":1},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":4,"15":1,"16":5,"17":5},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":3,"20":2,"21":2},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":3,"23":5,"24":4,"25":1,"26":5},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":5,"28":3,"29":4,"30":2},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":5,"32":2,"33":3,"34":4},"c":"ho"}]},{"id":"2027-s5-07","pub":"이감","yr":2027,"lab":"시즌5 7차","so":5,"round":7,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":5,"6":3,"7":4,"8":2,"9":4},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":2,"11":3,"12":4,"13":5},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":2,"15":3,"16":4,"17":5},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":3,"20":2,"21":4},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":1,"23":2,"24":5,"25":5,"26":4},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":3,"28":5,"29":3,"30":5},"c":"go"},{"f":"L4","q":[31,34],"a":{"31":2,"32":4,"33":4,"34":1},"c":"hs"}]},{"id":"2027-s5-08","pub":"이감","yr":2027,"lab":"시즌5 8차","so":5,"round":8,"ps":[{"f":"R1","q":[4,9],"a":{"4":3,"5":1,"6":1,"7":2,"8":3,"9":5},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":1,"11":3,"12":5,"13":3},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":4,"15":5,"16":2,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":2,"19":4,"20":2,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":1,"23":4,"24":3,"25":4,"26":3},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":4,"28":5,"29":5,"30":1},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":2,"32":5,"33":1,"34":3},"c":"ho"}]},{"id":"2027-s6-02","pub":"이감","yr":2027,"lab":"시즌6 2차","so":6,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":3,"5":2,"6":5,"7":3,"8":4,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":3,"11":1,"12":1,"13":5},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":5,"15":5,"16":1,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":5,"19":2,"20":5,"21":3},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":1,"23":2,"24":4,"25":3,"26":4},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":2,"28":4,"29":1,"30":5},"c":"go"},{"f":"L4","q":[31,34],"a":{"31":1,"32":3,"33":1,"34":4},"c":"hs"}]},{"id":"2027-s6-03","pub":"이감","yr":2027,"lab":"시즌6 3차","so":6,"round":3,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":5,"6":3,"7":4,"8":1,"9":2},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":2,"11":4,"12":3,"13":3},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":1,"15":5,"16":5,"17":1},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":4,"20":4,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":5,"24":4,"25":3,"26":1},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":2,"28":3,"29":1,"30":5},"c":"hs"},{"f":"L4","q":[31,34],"a":{"31":1,"32":2,"33":5,"34":3},"c":"ho"}]},{"id":"2027-s6-04","pub":"이감","yr":2027,"lab":"시즌6 4차","so":6,"round":4,"ps":[{"f":"R1","q":[4,9],"a":{"4":2,"5":3,"6":5,"7":4,"8":3,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":5,"12":4,"13":2},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":1,"15":5,"16":5,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":5,"20":3,"21":1},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":2,"23":3,"24":2,"25":4,"26":5},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":5,"28":4,"29":2,"30":4},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":3,"32":1,"33":3,"34":4},"c":"go"}]},{"id":"2027-s6-06","pub":"이감","yr":2027,"lab":"시즌6 6차","so":6,"round":6,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":1,"6":5,"7":4,"8":3,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":3,"11":2,"12":5,"13":4},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":1,"15":3,"16":5,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":5,"19":4,"20":1,"21":4},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":5,"24":2,"25":5,"26":5},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":2,"28":4,"29":1,"30":3},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":2,"32":3,"33":1,"34":3},"c":"hs"}]},{"id":"2027-s6-07","pub":"이감","yr":2027,"lab":"시즌6 7차","so":6,"round":7,"ps":[{"f":"R1","q":[4,9],"a":{"4":5,"5":2,"6":5,"7":4,"8":1,"9":2},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":4,"11":1,"12":1,"13":4},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":3,"15":2,"16":5,"17":2},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":4,"19":3,"20":5,"21":2},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":4,"23":5,"24":3,"25":2,"26":5},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":1,"29":2,"30":5},"c":"hs"},{"f":"L4","q":[31,34],"a":{"31":1,"32":4,"33":4,"34":3},"c":"go"}]},{"id":"2027-s6-08","pub":"이감","yr":2027,"lab":"시즌6 8차","so":6,"round":8,"ps":[{"f":"R1","q":[4,9],"a":{"4":5,"5":3,"6":3,"7":2,"8":5,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":4,"11":1,"12":5,"13":2},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":1,"15":2,"16":5,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":3,"20":5,"21":3},"c":"ho"},{"f":"L2","q":[22,27],"a":{"22":2,"23":3,"24":4,"25":5,"26":2,"27":1},"c":"hs"},{"f":"L3","q":[28,30],"a":{"28":2,"29":2,"30":5},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":4,"32":4,"33":1,"34":5},"c":"go"}]},{"id":"2027-s6-09","pub":"이감","yr":2027,"lab":"시즌6 9차","so":6,"round":9,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":2,"6":1,"7":4,"8":3,"9":2},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":5,"11":1,"12":4,"13":1},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":2,"15":4,"16":3,"17":3},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":5,"19":3,"20":5,"21":2},"c":"go"},{"f":"L2","q":[22,27],"a":{"22":1,"23":3,"24":4,"25":4,"26":5,"27":1},"c":"hs"},{"f":"L3","q":[28,31],"a":{"28":4,"29":2,"30":1,"31":3},"c":"ho"},{"f":"L4","q":[32,34],"a":{"32":4,"33":4,"34":2},"c":"gs"}]},{"id":"2027-on-01","pub":"이감","yr":2027,"lab":"온라인 1차","so":10,"round":1,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":5,"6":2,"7":3,"8":2,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":3,"12":3,"13":2},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":5,"15":2,"16":1,"17":4},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":4,"19":2,"20":1,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":4,"23":3,"24":4,"25":3,"26":5},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":3,"28":2,"29":1,"30":5},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":1,"32":3,"33":5,"34":2},"c":"ho"}]},{"id":"2027-on-02","pub":"이감","yr":2027,"lab":"온라인 2차","so":10,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":2,"5":3,"6":4,"7":3,"8":1,"9":4},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":3,"12":3,"13":1},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":2,"15":5,"16":4,"17":5},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":5,"19":3,"20":5,"21":3},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":1,"23":1,"24":3,"25":2,"26":2},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":4,"29":5,"30":4},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":4,"32":2,"33":3,"34":5},"c":"hs"}]},{"id":"2027-on-06","pub":"이감","yr":2027,"lab":"온라인 6차","so":10,"round":6,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":4,"6":1,"7":3,"8":2,"9":5},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":3,"11":4,"12":2,"13":1},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":4,"15":3,"16":1,"17":5},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":4,"20":4,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":3,"24":3,"25":2,"26":2},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":3,"28":2,"29":5,"30":4},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":5,"32":5,"33":1,"34":5},"c":"gs"}]},{"id":"2026-s6-01","pub":"이감","yr":2026,"lab":"시즌6 1차","so":6,"round":1,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":2,"6":5,"7":3,"8":4,"9":3},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":2,"11":1,"12":4,"13":4},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":1,"15":1,"16":4,"17":2},"c":"hum"},{"f":"L1","q":[18,21],"a":{"18":5,"19":3,"20":3,"21":5},"c":"ho"},{"f":"L2","q":[22,27],"a":{"22":3,"23":4,"24":5,"25":2,"26":1,"27":4},"c":"hs"},{"f":"L3","q":[28,31],"a":{"28":4,"29":1,"30":3,"31":2},"c":"go"},{"f":"L4","q":[32,34],"a":{"32":3,"33":2,"34":1},"c":"gs"}]},{"id":"2026-s6-02","pub":"이감","yr":2026,"lab":"시즌6 2차","so":6,"round":2,"ps":[{"f":"R1","q":[4,9],"a":{"4":2,"5":3,"6":1,"7":4,"8":3,"9":3},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":4,"11":2,"12":5,"13":5},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":3,"15":4,"16":5,"17":1},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":2,"19":4,"20":1,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":1,"23":5,"24":4,"25":2,"26":5},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":5,"29":3,"30":3},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":3,"32":3,"33":2,"34":4},"c":"hs"}]},{"id":"2026-s6-03","pub":"이감","yr":2026,"lab":"시즌6 3차","so":6,"round":3,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":3,"6":4,"7":3,"8":2,"9":5},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":1,"11":4,"12":3,"13":2},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":2,"15":5,"16":5,"17":3},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":4,"19":1,"20":2,"21":4},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":2,"24":3,"25":4,"26":5},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":5,"28":3,"29":4,"30":5},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":2,"32":4,"33":3,"34":2},"c":"gs"}]},{"id":"2026-s6-04","pub":"이감","yr":2026,"lab":"시즌6 4차","so":6,"round":4,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":2,"6":4,"7":5,"8":2,"9":5},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":2,"11":4,"12":5,"13":3},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":1,"15":3,"16":4,"17":2},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":1,"19":2,"20":5,"21":2},"c":"gs"},{"f":"L2","q":[22,26],"a":{"22":2,"23":5,"24":4,"25":3,"26":2},"c":"ho"},{"f":"L3","q":[27,30],"a":{"27":1,"28":3,"29":4,"30":4},"c":"go"},{"f":"L4","q":[31,34],"a":{"31":1,"32":5,"33":3,"34":4},"c":"hs"}]},{"id":"2026-s6-05","pub":"이감","yr":2026,"lab":"시즌6 5차","so":6,"round":5,"ps":[{"f":"R1","q":[4,9],"a":{"4":2,"5":2,"6":4,"7":1,"8":3,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":3,"11":5,"12":1,"13":3},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":1,"15":2,"16":4,"17":5},"c":"soc"},{"f":"L1","q":[18,20],"a":{"18":2,"19":3,"20":3},"c":"go"},{"f":"L2","q":[21,26],"a":{"21":5,"22":4,"23":1,"24":4,"25":3,"26":2},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":4,"28":5,"29":3,"30":5},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":1,"32":2,"33":4,"34":2},"c":"hs"}]},{"id":"2026-s6-06","pub":"이감","yr":2026,"lab":"시즌6 6차","so":6,"round":6,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":2,"6":3,"7":5,"8":2,"9":1},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":3,"11":2,"12":4,"13":5},"c":"hum"},{"f":"R3","q":[14,17],"a":{"14":1,"15":5,"16":2,"17":3},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":3,"19":3,"20":5,"21":3},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":3,"24":2,"25":1,"26":5},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":2,"29":5,"30":4},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":1,"32":4,"33":4,"34":5},"c":"gs"}]},{"id":"2026-s6-07","pub":"이감","yr":2026,"lab":"시즌6 7차","so":6,"round":7,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":5,"6":4,"7":3,"8":5,"9":2},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":5,"11":1,"12":3,"13":3},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":4,"15":5,"16":4,"17":2},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":2,"19":1,"20":5,"21":3},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":5,"24":4,"25":3,"26":4},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":3,"28":4,"29":5,"30":2},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":1,"32":1,"33":4,"34":3},"c":"hs"}]},{"id":"2026-s6-08","pub":"이감","yr":2026,"lab":"시즌6 8차","so":6,"round":8,"ps":[{"f":"R1","q":[4,9],"a":{"4":2,"5":4,"6":4,"7":1,"8":3,"9":1},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":4,"12":2,"13":5},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":3,"15":5,"16":5,"17":3},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":4,"19":2,"20":2,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":5,"24":1,"25":4,"26":3},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":3,"29":3,"30":5},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":2,"32":4,"33":1,"34":5},"c":"gs"}]},{"id":"2026-s6-09","pub":"이감","yr":2026,"lab":"시즌6 9차","so":6,"round":9,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":3,"6":2,"7":4,"8":3,"9":5},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":1,"11":4,"12":2,"13":1},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":5,"15":4,"16":2,"17":3},"c":"hum"},{"f":"L1","q":[18,21],"a":{"18":5,"19":1,"20":3,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":3,"23":4,"24":5,"25":2,"26":4},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":4,"29":1,"30":4},"c":"hs"},{"f":"L4","q":[31,34],"a":{"31":2,"32":3,"33":5,"34":4},"c":"ho"}]},{"id":"2026-s6-10","pub":"이감","yr":2026,"lab":"시즌6 10차","so":6,"round":10,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":2,"6":4,"7":3,"8":5,"9":5},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":2,"11":4,"12":3,"13":3},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":1,"15":4,"16":3,"17":5},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":2,"19":1,"20":5,"21":3},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":1,"23":4,"24":3,"25":2,"26":3},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":5,"28":5,"29":4,"30":4},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":4,"32":1,"33":1,"34":2},"c":"go"}]},{"id":"2026-s6-11","pub":"이감","yr":2026,"lab":"시즌6 11차","so":6,"round":11,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":5,"6":2,"7":1,"8":3,"9":1},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":3,"11":5,"12":2,"13":2},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":1,"15":4,"16":3,"17":5},"c":"hum"},{"f":"L1","q":[18,21],"a":{"18":4,"19":4,"20":3,"21":5},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":2,"23":1,"24":4,"25":5,"26":2},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":5,"29":2,"30":2},"c":"ho"},{"f":"L4","q":[31,34],"a":{"31":1,"32":1,"33":3,"34":3},"c":"hs"}]},{"id":"2026-s6-12","pub":"이감","yr":2026,"lab":"시즌6 12차","so":6,"round":12,"ps":[{"f":"R1","q":[4,9],"a":{"4":1,"5":5,"6":3,"7":4,"8":3,"9":2},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":3,"11":5,"12":1,"13":2},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":3,"15":1,"16":4,"17":2},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":3,"19":1,"20":5,"21":4},"c":"go"},{"f":"L2","q":[22,26],"a":{"22":5,"23":3,"24":2,"25":1,"26":4},"c":"hs"},{"f":"L3","q":[27,30],"a":{"27":1,"28":2,"29":5,"30":2},"c":"gs"},{"f":"L4","q":[31,34],"a":{"31":4,"32":4,"33":3,"34":1},"c":"ho"}]},{"id":"2026-on-07","pub":"이감","yr":2026,"lab":"온라인 7차","so":10,"round":7,"ps":[{"f":"R1","q":[4,9],"a":{"4":5,"5":4,"6":2,"7":1,"8":4,"9":4},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":5,"11":1,"12":3,"13":2},"c":"soc"},{"f":"R3","q":[14,17],"a":{"14":3,"15":4,"16":5,"17":2},"c":"sci"},{"f":"L1","q":[18,21],"a":{"18":2,"19":5,"20":2,"21":5},"c":"ho"},{"f":"L2","q":[22,27],"a":{"22":2,"23":4,"24":3,"25":4,"26":3,"27":4},"c":"hs"},{"f":"L3","q":[28,31],"a":{"28":3,"29":3,"30":1,"31":1},"c":"go"},{"f":"L4","q":[32,34],"a":{"32":1,"33":5,"34":5},"c":"gs"}]},{"id":"2026-on-08","pub":"이감","yr":2026,"lab":"온라인 8차","so":10,"round":8,"ps":[{"f":"R1","q":[4,9],"a":{"4":4,"5":2,"6":2,"7":5,"8":3,"9":5},"c":"soc"},{"f":"R2","q":[10,13],"a":{"10":4,"11":5,"12":1,"13":4},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":4,"15":2,"16":3,"17":5},"c":"hum"},{"f":"L1","q":[18,21],"a":{"18":2,"19":5,"20":5,"21":4},"c":"go"},{"f":"L2","q":[22,25],"a":{"22":1,"23":3,"24":2,"25":4},"c":"hs"},{"f":"L3","q":[26,31],"a":{"26":2,"27":3,"28":4,"29":3,"30":5,"31":4},"c":"ho"},{"f":"L4","q":[32,34],"a":{"32":1,"33":2,"34":1},"c":"gs"}]},{"id":"2026-on-09","pub":"이감","yr":2026,"lab":"온라인 9차","so":10,"round":9,"ps":[{"f":"R1","q":[4,9],"a":{"4":3,"5":2,"6":1,"7":2,"8":5,"9":2},"c":"hum"},{"f":"R2","q":[10,13],"a":{"10":1,"11":4,"12":3,"13":4},"c":"sci"},{"f":"R3","q":[14,17],"a":{"14":3,"15":3,"16":1,"17":4},"c":"soc"},{"f":"L1","q":[18,21],"a":{"18":5,"19":3,"20":1,"21":5},"c":"ho"},{"f":"L2","q":[22,26],"a":{"22":4,"23":3,"24":5,"25":3,"26":2},"c":"gs"},{"f":"L3","q":[27,30],"a":{"27":2,"28":4,"29":1,"30":2},"c":"go"},{"f":"L4","q":[31,34],"a":{"31":1,"32":4,"33":4,"34":5},"c":"hs"}]}];
@@ -165,7 +183,7 @@ function topRnd(c){const b=$("#rnd");if(!c){b.hidden=true;return}b.hidden=false;
 function home(){
   crumb([]);topRnd(null);
   const total=P.length,dn=P.filter(done).length;
-  let h=`<section class="hero"><div><h1>실전 지문</h1><p>제재를 골라 지문 하나씩 풀고 바로 채점합니다. 각 제재의 랜덤 버튼은 그 제재 안에서만 고릅니다.</p>
+  let h=`<section class="hero"><div><h1>과거의 유산</h1>
   <div class="stat"><div><b>${total}</b>지문</div><div><b>${P.reduce((s,x)=>s+nqs(x),0).toLocaleString()}</b>문항</div><div><b>${dn}</b>채점 완료</div></div></div>
   </section>`;
   const tile=([c,n])=>{const L=inCat(c),d=L.filter(done).length;return `<div class="tile" role="button" tabindex="0" style="${sty(c)}" data-c="${c}"><button class="tr" data-r="${c}" title="${n} 랜덤"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>랜덤</button><b>${n}</b><div class="n">${L.length}지문</div><div class="prog"><i style="width:${L.length?d/L.length*100:0}%"></i></div><div class="pc">${d?`${d} / ${L.length} 완료`:"아직 안 풂"}</div></div>`};
@@ -184,6 +202,7 @@ function list(c){
   let h=`<div class="lhead" style="${sty(c)}"><div><h1>${CN[c]}</h1><div class="n">${L.length}지문 · ${d}개 완료</div></div><span class="sp"></span>
   <div class="seg">${[["all","전체"],["todo","안 푼 것"],["done","푼 것"]].map(([k,t])=>`<button data-f="${k}" class="${filt===k?"on":""}">${t}</button>`).join("")}</div>
   <button class="btn pri" id="cr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>${CN[c]} 랜덤</button></div>`;
+  if(shown.length)h=h.replace('<span class="sp"></span>',`<span class="sp"></span><button class="btn" id="pall">${shown.every(x=>inBk(x.id))?"모두 빼기":"보이는 지문 모두 담기"}</button>`);
   if(!shown.length)h+=`<div class="empty">해당하는 지문이 없습니다.</div>`;
   else{
     h+='<div class="list">';
@@ -191,13 +210,14 @@ function list(c){
       const s=st(x.e.id);let b;
       if(done(x)){let ok=0;for(let q=x.p.q[0];q<=x.p.q[1];q++)if(s.sel[q]===x.p.a[q])ok++;b=`<span class="badge ok">${ok}/${nqs(x)}</span>`}
       else b=started(x)?'<span class="badge mid">푸는 중</span>':'<span class="badge new">안 풂</span>';
-      h+=`<button class="item" data-id="${x.id}"><span class="k"><b>${x.name}</b><small>${x.p.q[0]}~${x.p.q[1]}번 · ${nqs(x)}문항</small></span>${b}</button>`;
+      h+=itemHtml(x,b);
     }
     h+='</div>';
   }
   $("#app").innerHTML=h;
   document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{filt=b.dataset.f;set("njs:filt",filt);list(c)});
-  document.querySelectorAll(".item").forEach(b=>b.onclick=()=>go("p/"+b.dataset.id));
+  wireItems(()=>list(c));
+  const pa=$("#pall");if(pa)pa.onclick=()=>{const all=shown.every(x=>inBk(x.id));BK=all?BK.filter(id=>!shown.some(x=>x.id===id)):[...BK,...shown.filter(x=>!inBk(x.id)).map(x=>x.id)];saveBk();list(c)};
   $("#cr").onclick=()=>random(c);
 }
 
@@ -215,7 +235,7 @@ function passage(id){
   const c=x.c,e=x.e,p=x.p,s=st(e.id),g=!!s.graded[p.f];
   crumb([`<button id="bc">${CN[c]}</button>`,`<b>${x.name}</b>`]);topRnd(c);
   const L=inCat(c),i=L.indexOf(x);
-  let h=`<div class="phead" style="${sty(c)}"><span class="chip">${CN[c]}</span><h1>${x.name}</h1><span class="q">${p.q[0]}~${p.q[1]}번</span></div>
+  let h=`<div class="phead" style="${sty(c)}"><span class="chip">${CN[c]}</span><h1>${x.name}</h1><span class="q">${p.q[0]}~${p.q[1]}번</span><button class="btn ${inBk(id)?"on":""}" id="pkb">${inBk(id)?"PDF에 담김":"PDF에 담기"}</button></div>
   <div class="seg mtab"><button data-m="p" class="${mode==="p"?"on":""}">지문</button><button data-m="q" class="${mode==="q"?"on":""}">문제 · 답안</button></div>
   <div class="view m${mode}"><div class="pane ppane"><img class="ld" data-e="${e.id}" data-k="${p.f}" alt="지문"></div>
   <div class="side"><div class="pane qimg"><img class="ld" data-e="${e.id}" data-k="${p.f}_q" alt="문제"></div><div class="sheet"><h3>답안</h3>`;
@@ -232,6 +252,7 @@ function passage(id){
   $("#app").innerHTML=h;fill($("#app"));
   const nx=L[i+1];if(nx&&MODE==="dir")setTimeout(()=>{for(const k of [nx.p.f,nx.p.f+"_q"]){const im=new Image();im.src=`img/${nx.e.id}/${k}.jpg`}},700);
   $("#bc").onclick=()=>go("c/"+c);
+  $("#pkb").onclick=()=>{togBk(id);const b=$("#pkb"),on=inBk(id);b.classList.toggle("on",on);b.textContent=on?"PDF에 담김":"PDF에 담기"};
   document.querySelectorAll(".mtab button").forEach(b=>b.onclick=()=>{mode=b.dataset.m;passage(id)});
   document.querySelectorAll(".ch").forEach(b=>b.onclick=()=>{const t=st(e.id),q=b.dataset.q,k=+b.dataset.k;if(t.sel[q]===k)delete t.sel[q];else t.sel[q]=k;set(stKey(e.id),t);
     document.querySelectorAll(`.ch[data-q="${q}"]`).forEach(o=>o.classList.toggle("sel",t.sel[q]===+o.dataset.k))});
@@ -246,11 +267,140 @@ function route(){
   const h=decodeURIComponent(location.hash.slice(1));window.scrollTo(0,0);
   if(h.startsWith("c/"))list(h.slice(2));
   else if(h.startsWith("p/"))passage(h.slice(2));
+  else if(h==="bk")bkPage();
   else home();
 }
 $("#brand").onclick=()=>go("");
+
+// ---------- PDF basket ----------
+let BK=get("njs:bk",[]).filter(id=>PI[id]);
+const inBk=id=>BK.includes(id);
+const ORD=Object.fromEntries(CAT.map(([c],i)=>[c,i])),PO=Object.fromEntries(P.map((x,i)=>[x.id,i]));
+const bkSorted=()=>BK.map(id=>PI[id]).filter(Boolean).sort((a,b)=>ORD[a.c]-ORD[b.c]||PO[a.id]-PO[b.id]);
+function saveBk(){set("njs:bk",BK);bar()}
+function togBk(id){BK=inBk(id)?BK.filter(x=>x!==id):[...BK,id];saveBk()}
+let busy=false;
+function bar(msg){
+  const b=$("#bar");document.body.classList.toggle("hasbar",BK.length>0);
+  if(!BK.length){b.hidden=true;return}
+  b.hidden=false;const ans=get("njs:ans",true);
+  b.innerHTML=`<span class="bn"><b>${BK.length}</b>개 지문 담음</span><button class="lk" id="bkv">담은 목록</button>
+  <label class="ck"><input type="checkbox" id="bka" ${ans?"checked":""}> 정답표 포함</label><span class="sp"></span>
+  ${msg?`<span class="msg">${msg}</span>`:`<button class="lk" id="bkc">비우기</button><button class="btn pri" id="bkd">${ICON_DL}PDF 받기</button>`}`;
+  $("#bkv").onclick=()=>go("bk");
+  $("#bka").onchange=e=>set("njs:ans",e.target.checked);
+  if(!msg){$("#bkc").onclick=()=>{BK=[];saveBk();route()};$("#bkd").onclick=download}
+}
+const ICON_DL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>';
+
+function bkPage(){
+  topRnd(null);crumb([`<b>PDF로 받을 지문</b>`]);
+  const L=bkSorted();
+  let h=`<div class="lhead"><div><h1>PDF로 받을 지문</h1><div class="n">${L.length}지문 · 제재 순서대로 묶입니다</div></div></div>`;
+  if(!L.length)h+=`<div class="empty">아직 담은 지문이 없습니다. 지문 목록에서 체크해서 담으세요.</div>`;
+  else{h+='<div class="list">';for(const x of L)h+=itemHtml(x,`<span class="chip" style="${sty(x.c)}">${CN[x.c]}</span>`);h+='</div>'}
+  $("#app").innerHTML=h;wireItems(bkPage);
+}
+function itemHtml(x,b){return `<div class="item" role="button" tabindex="0" data-id="${x.id}"><button class="pk ${inBk(x.id)?"on":""}" data-pk="${x.id}" title="PDF에 담기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button><span class="k"><b>${x.name}</b><small>${x.p.q[0]}~${x.p.q[1]}번 · ${nqs(x)}문항</small></span>${b}</div>`}
+function wireItems(re){
+  document.querySelectorAll(".item").forEach(b=>{b.onclick=()=>go("p/"+b.dataset.id);b.onkeydown=ev=>{if(ev.key==="Enter")go("p/"+b.dataset.id)}});
+  document.querySelectorAll(".item .pk").forEach(b=>b.onclick=ev=>{ev.stopPropagation();togBk(b.dataset.pk);re?re():b.classList.toggle("on",inBk(b.dataset.pk))});
+}
+
+// ---------- PDF writer ----------
+const A4W=595.28,A4H=841.89,MX=30,MT=46,MB=30,GT=20,CW=(A4W-2*MX-GT)/2;
+const f2=v=>(Math.round(v*100)/100).toString();
+function jpgInfo(d){let i=2;while(i<d.length-9){if(d[i]!==0xFF){i++;continue}const m=d[i+1];if(m===0xD8||m===0xFF||m===0x01||(m>=0xD0&&m<=0xD7)){i+=m===0xFF?1:2;continue}const len=d[i+2]<<8|d[i+3];
+  if(m>=0xC0&&m<=0xCF&&m!==0xC4&&m!==0xC8&&m!==0xCC)return{h:d[i+5]<<8|d[i+6],w:d[i+7]<<8|d[i+8],nc:d[i+9]};i+=2+len}throw new Error("jpeg")}
+class PW{
+  constructor(){this.o=[]}
+  reserve(){this.o.push(null);return this.o.length}
+  put(n,parts){this.o[n-1]=parts}
+  add(parts){const n=this.reserve();this.put(n,parts);return n}
+  img(d){const f=jpgInfo(d);return{n:this.add([`<< /Type /XObject /Subtype /Image /Width ${f.w} /Height ${f.h} /ColorSpace /${f.nc===1?"DeviceGray":f.nc===4?"DeviceCMYK":"DeviceRGB"} /BitsPerComponent 8 /Filter /DCTDecode /Length ${d.length} >>\nstream\n`,d,"\nendstream"]),w:f.w,h:f.h}}
+  stream(s){return this.add([`<< /Length ${s.length} >>\nstream\n${s}\nendstream`])}
+  blob(root){const E=new TextEncoder(),ch=[new Uint8Array([0x25,0x50,0x44,0x46,0x2D,0x31,0x2E,0x34,0x0A,0x25,0xE2,0xE3,0xCF,0xD3,0x0A])];let off=ch[0].length;const xs=[];
+    const push=p=>{const u=typeof p==="string"?E.encode(p):p;ch.push(u);off+=u.length};
+    this.o.forEach((parts,i)=>{xs.push(off);push(`${i+1} 0 obj\n`);parts.forEach(push);push("\nendobj\n")});
+    const xo=off;let x=`xref\n0 ${this.o.length+1}\n0000000000 65535 f \n`;for(const v of xs)x+=String(v).padStart(10,"0")+" 00000 n \n";
+    push(x+`trailer\n<< /Size ${this.o.length+1} /Root ${root} 0 R >>\nstartxref\n${xo}\n%%EOF\n`);return new Blob(ch,{type:"application/pdf"})}
+}
+async function getBytes(eid,k){const u=await imgUrl(eid,k);const r=await fetch(u);if(!r.ok)throw new Error("img");return new Uint8Array(await r.arrayBuffer())}
+async function blankMap(d){
+  const bm=await new Promise((ok,no)=>{const im=new Image();const u=URL.createObjectURL(new Blob([d],{type:"image/jpeg"}));im.onload=()=>{URL.revokeObjectURL(u);ok(im)};im.onerror=no;im.src=u});
+  const w=bm.naturalWidth,h=bm.naturalHeight,cv=document.createElement("canvas");cv.width=w;cv.height=h;const g=cv.getContext("2d",{willReadFrequently:true});g.fillStyle="#fff";g.fillRect(0,0,w,h);g.drawImage(bm,0,0);
+  const px=g.getImageData(0,0,w,h).data,bl=new Uint8Array(h);
+  for(let y=0;y<h;y++){let c=0,o=y*w*4;for(let x=0;x<w;x++,o+=4)if(px[o]<170&&++c>2)break;bl[y]=c<=2?1:0}
+  cv.width=cv.height=1;return bl;
+}
+function findCut(bl,lo,hi){for(let r=hi;r>=lo;r--){let ok=true;for(let k=-3;k<=3;k++)if(!bl[r+k]){ok=false;break}if(ok)return r}return hi}
+function textJpg(draw,wpt,hpt,sc){const cv=document.createElement("canvas");cv.width=Math.round(wpt*sc);cv.height=Math.round(hpt*sc);const g=cv.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,cv.width,cv.height);g.scale(sc,sc);g.fillStyle="#111";g.textBaseline="alphabetic";draw(g);
+  return new Promise(ok=>cv.toBlob(b=>b.arrayBuffer().then(a=>ok(new Uint8Array(a))),"image/jpeg",.92))}
+const FONT='"Apple SD Gothic Neo","Pretendard","Noto Sans KR","Malgun Gothic",sans-serif';
+const CIR="①②③④⑤";
+
+async function makePdf(L,withAns,prog){
+  const pw=new PW(),cat=pw.reserve(),pages=pw.reserve(),kids=[];let pg=null;
+  const flush=()=>{if(!pg)return;const res=Object.keys(pg.res).map(n=>`/I${n} ${n} 0 R`).join(" ");const cn=pw.stream(pg.cs.join("\n"));
+    kids.push(pw.add([`<< /Type /Page /Parent ${pages} 0 R /MediaBox [0 0 ${A4W} ${A4H}] /Resources << /XObject << ${res} >> >> /Contents ${cn} 0 R >>`]));pg=null};
+  const use=(im,cmd)=>{pg.res[im.n]=1;pg.cs.push(cmd)};
+  for(let i=0;i<L.length;i++){
+    const x=L[i];prog(i,L.length);
+    const hd=pw.img(await textJpg(g=>{g.font=`700 10.5px ${FONT}`;g.fillText(`${i+1}.  ${x.name}`,0,12);const t=`${CN[x.c]} · ${x.p.q[0]}~${x.p.q[1]}번`;g.font=`600 9.5px ${FONT}`;g.fillStyle="#555";g.fillText(t,A4W-2*MX-g.measureText(t).width,12)},A4W-2*MX,16,4));
+    let col=0,y=MT;
+    const newPage=()=>{flush();pg={cs:[],res:{}};use(hd,`q ${f2(A4W-2*MX)} 0 0 16 ${MX} ${f2(A4H-22-16)} cm /I${hd.n} Do Q`);
+      pg.cs.push(`q 0.15 G 0.8 w ${MX} ${f2(A4H-MT+6)} m ${f2(A4W-MX)} ${f2(A4H-MT+6)} l S 0.75 G 0.5 w ${f2(A4W/2)} ${MB} m ${f2(A4W/2)} ${f2(A4H-MT+2)} l S Q`);col=0;y=MT};
+    const nextCol=()=>{if(col===0){col=1;y=MT}else newPage()};
+    newPage();
+    for(const k of [x.p.f,x.p.f+"_q"]){
+      const d=await getBytes(x.e.id,k),im=pw.img(d),bl=await blankMap(d),s=CW/im.w;
+      let r=0,end=im.h;while(r<end&&bl[r])r++;while(end>r&&bl[end-1])end--;
+      while(r<end){
+        const avail=Math.floor((A4H-MB-y)/s);
+        if(avail<60){nextCol();continue}
+        const cut=end-r<=avail?end:findCut(bl,r+Math.floor(avail*.45),r+avail);
+        const X=MX+col*(CW+GT),hh=(cut-r)*s;
+        use(im,`q ${f2(X)} ${f2(A4H-y-hh)} ${f2(CW)} ${f2(hh)} re W n ${f2(im.w*s)} 0 0 ${f2(im.h*s)} ${f2(X)} ${f2(A4H-y+r*s-im.h*s)} cm /I${im.n} Do Q`);
+        y+=hh;r=cut;
+        if(r<end){while(r<end&&bl[r])r++;nextCol()}
+      }
+      y+=18;
+    }
+  }
+  flush();
+  if(withAns){
+    const per=17;
+    for(let s0=0;s0<L.length;s0+=per){
+      const part=L.slice(s0,s0+per);
+      const im=pw.img(await textJpg(g=>{g.font=`800 20px ${FONT}`;g.fillText(s0?"정답 (이어서)":"정답",MX,58);
+        let yy=96;part.forEach((x,j)=>{const n=s0+j+1;g.fillStyle="#111";g.font=`700 11.5px ${FONT}`;g.fillText(`${n}.  ${x.name}`,MX,yy);
+          g.font=`600 10px ${FONT}`;g.fillStyle="#666";const t=`${CN[x.c]} · ${x.p.q[0]}~${x.p.q[1]}번`;g.fillText(t,A4W-MX-g.measureText(t).width,yy);
+          let xx=MX+14;g.fillStyle="#111";g.font=`600 12.5px ${FONT}`;for(let q=x.p.q[0];q<=x.p.q[1];q++){const a=`${q}번 ${CIR[x.p.a[q]-1]||x.p.a[q]}`;g.fillText(a,xx,yy+19);xx+=g.measureText(a).width+22}
+          g.strokeStyle="#e3e3e3";g.lineWidth=.6;g.beginPath();g.moveTo(MX,yy+31);g.lineTo(A4W-MX,yy+31);g.stroke();yy+=42});},A4W,A4H,2.2));
+      pg={cs:[],res:{}};use(im,`q ${A4W} 0 0 ${A4H} 0 0 cm /I${im.n} Do Q`);flush();
+    }
+  }
+  pw.put(pages,[`<< /Type /Pages /Kids [${kids.map(k=>k+" 0 R").join(" ")}] /Count ${kids.length} >>`]);
+  pw.put(cat,[`<< /Type /Catalog /Pages ${pages} 0 R >>`]);
+  return pw.blob(cat);
+}
+async function download(){
+  if(busy)return;const L=bkSorted();if(!L.length)return;busy=true;
+  const withAns=get("njs:ans",true);
+  try{
+    const blob=await makePdf(L,withAns,(i,n)=>bar(`PDF 만드는 중… ${i+1} / ${n}`));
+    const dt=new Date(),ds=`${dt.getFullYear()}${String(dt.getMonth()+1).padStart(2,"0")}${String(dt.getDate()).padStart(2,"0")}`;
+    const name=`과거의 유산_${ds}_${L.length}지문.pdf`;
+    bar("저장 창을 확인하세요");
+    let dl=null;try{if(MODE==="pack"&&window.claude&&claude.use)dl=await claude.use("downloads")}catch(e){}
+    if(dl){try{await dl.save({filename:name,data:blob})}catch(e){if(e&&e.code!=="declined")alert("저장하지 못했습니다: "+(e.message||e.code))}}
+    else{const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000)}
+  }catch(e){console.error(e);alert("PDF를 만들지 못했습니다. 새로고침 후 다시 시도해 주세요.")}
+  busy=false;bar();
+}
+
 window.addEventListener("hashchange",route);
-route();
+route();bar();
 </script>
 </body>
 </html>
