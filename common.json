@@ -1,4 +1,15 @@
 {
-  "notices": [{ "date": "2026-11-22", "text": "수업 시작 전 이 페이지에서 이번 주 과제를 확인하세요." }],
-  "materials": [{ "title": "자료 예시 (링크를 넣으세요)", "url": "https://example.com" }]
+  "notices": [
+    {
+      "date": "2026-11-22",
+      "text": "수업 시작 전 이 페이지에서 이번 주 과제를 확인하세요."
+    }
+  ],
+  "materials": [
+    {
+      "title": "국어 모의고사 N제",
+      "desc": "지문을 유형별로 골라 풀기",
+      "url": "https://claude.ai/artifact/1dosBVggzfRsHnPuSZSb6m"
+    }
+  ]
 }

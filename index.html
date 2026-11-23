@@ -8,14 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{--ink:#111;--ink2:#444b57;--mut:#8b919c;--line:#e8eaee;--acc:#5588dd;--soft:#e8f0fd;--soft2:#f4f7fc;--ok:#1b8a5a;--bad:#d9480f;color-scheme:light}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:#fff;color:var(--ink);font:16px/1.55 "Pretendard","Apple SD Gothic Neo","Noto Sans KR",-apple-system,sans-serif}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.55 "Pretendard Variable","Pretendard","Apple SD Gothic Neo","Noto Sans KR",-apple-system,sans-serif}
 button{font-family:inherit}
 main{max-width:560px;margin:0 auto;padding:22px 20px 80px}
-.disp,h1,.cal-h b,.next .big{font-family:"Black Han Sans","Apple SD Gothic Neo","Noto Sans KR",sans-serif;font-weight:900;font-synthesis:none}
-h1{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.01em}
+h1{font-size:26px;line-height:1.25;margin:0;font-weight:800;letter-spacing:-.02em}
 h2{font-size:13px;color:var(--mut);margin:28px 0 6px;font-weight:700}
 .hdr{display:flex;justify-content:space-between;align-items:center;margin:0 0 18px}
 .hdr button{background:none;border:0;color:var(--mut);font-size:14px;font-weight:600;cursor:pointer;padding:6px 0 6px 12px}
@@ -28,7 +28,7 @@ h2{font-size:13px;color:var(--mut);margin:28px 0 6px;font-weight:700}
 
 /* 첫 화면 */
 .land{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;padding:0 20px 8vh}
-.land h1{font-size:clamp(44px,9vw,84px);line-height:1.15;margin:0 0 22px;text-align:center}
+.land h1{font:400 clamp(44px,9vw,84px)/1.15 "Black Han Sans","Pretendard Variable","Apple SD Gothic Neo",sans-serif;font-weight:900;font-synthesis:none;letter-spacing:-.01em;margin:0 0 22px;text-align:center}
 .land .btns{display:flex;gap:10px}
 .btn1,.btn2{border:0;border-radius:10px;padding:14px 22px;font-size:16px;font-weight:700;cursor:pointer}
 .btn1{background:var(--acc);color:#fff}
@@ -36,7 +36,7 @@ h2{font-size:13px;color:var(--mut);margin:28px 0 6px;font-weight:700}
 
 /* 로그인 */
 .login{margin-top:14vh;text-align:center}
-.login h1{font-size:34px;margin-bottom:6px}
+.login h1{font-size:30px;margin-bottom:6px}
 .login input{width:100%;max-width:320px;font-size:22px;text-align:center;letter-spacing:.08em;padding:14px;border-radius:10px;border:2px solid transparent;background:var(--soft2);color:var(--ink);margin-top:18px}
 .login input:focus{outline:0;border-color:var(--acc);background:#fff}
 .login .btn1{display:block;margin:12px auto 0;width:100%;max-width:320px;padding:15px}
@@ -49,15 +49,16 @@ h2{font-size:13px;color:var(--mut);margin:28px 0 6px;font-weight:700}
 
 /* 자료 */
 a.mat{display:flex;justify-content:space-between;align-items:center;color:var(--ink);text-decoration:none;font-weight:600;font-size:17px}
-a.mat span:last-child{color:var(--acc);font-size:14px}
+a.mat>span:last-child{color:var(--acc);font-size:14px;font-weight:700}
+a.mat .md{display:block;color:var(--mut);font-size:14px;font-weight:500;margin-top:2px}
 
 /* 일정 */
 .next{padding:22px 2px 10px}
 .next .sm{color:var(--mut);font-size:14px;font-weight:600}
-.next .big{font-size:30px;line-height:1.25;margin:2px 0 4px}
+.next .big{font-size:28px;line-height:1.25;margin:2px 0 4px;font-weight:800;letter-spacing:-.02em}
 .next .acc{color:var(--acc);font-weight:700;font-size:15px}
 .cal-h{display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px}
-.cal-h b{font-size:20px;font-weight:900}
+.cal-h b{font-size:18px;font-weight:800}
 .cal-h button{background:none;border:0;font-size:24px;color:var(--ink2);cursor:pointer;padding:2px 12px}
 .cal{display:grid;grid-template-columns:repeat(7,1fr);row-gap:2px}
 .cal .w{text-align:center;font-size:13px;color:var(--mut);font-weight:700;padding:6px 0}
@@ -78,13 +79,18 @@ a.mat span:last-child{color:var(--acc);font-size:14px}
 /* 일정 변경 팝업 */
 .modal{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;padding:16px}
 .modal .req{width:100%;max-width:440px;background:#fff;border:0;border-radius:16px;padding:24px 22px;box-shadow:0 16px 48px rgba(0,0,0,.22)}
-.req h3{margin:0 0 16px;font:900 24px/1.2 "Black Han Sans","Apple SD Gothic Neo",sans-serif;font-synthesis:none}
+.req h3{margin:0 0 4px;font-size:21px;font-weight:800;letter-spacing:-.02em}
+.req .cur{color:var(--mut);font-size:14px;margin-bottom:20px}
 .req .t{font-size:14px;font-weight:700;color:var(--ink2)}
 .req .dp{display:flex;gap:6px;margin:8px 0 18px}
 .req .dp button{flex:1;padding:12px 0;border:0;border-radius:10px;background:var(--soft2);color:var(--ink2);font-size:15px;font-weight:700;cursor:pointer}
 .req .dp button.on{background:var(--acc);color:#fff}
-.req input[type=time]{width:100%;font-size:20px;padding:12px;border-radius:10px;border:2px solid transparent;background:var(--soft2);color:var(--ink);margin-top:8px}
-.req .go{display:block;width:100%;margin-top:18px;padding:15px 0;border:0;border-radius:10px;background:var(--acc);color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+.tp{display:flex;align-items:center;gap:8px;margin-top:8px}
+.tp i{font-style:normal;font-size:22px;font-weight:700;color:var(--mut)}
+.tp select{display:block;width:100%;min-width:0;-webkit-appearance:none;appearance:none;border:2px solid transparent;border-radius:10px;background:var(--soft2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5l6 6 6-6' fill='none' stroke='%238b919c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center;color:var(--ink);font-family:inherit;font-size:22px;font-weight:700;padding:13px 34px 13px 14px;text-align:center;text-align-last:center}
+.tp select:focus{outline:0;border-color:var(--acc);background-color:#fff}
+.req .go{display:block;width:100%;margin-top:22px;padding:15px 0;border:0;border-radius:10px;background:var(--acc);color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+.req .err{min-height:0;margin-top:10px;text-align:center}
 .req .x{display:block;margin:10px auto 0;background:none;border:0;color:var(--mut);font-size:14px;cursor:pointer}
 .hide{display:none}
 </style>
@@ -265,18 +271,23 @@ a.mat span:last-child{color:var(--acc);font-size:14px}
     draw();
     let day = null;
     const err = h('div', { class: 'err' });
-    const time = h('input', { type: 'time' });
+    const [h0, m0] = ((nx && nx.time) || '19:00').split(':');
+    const opt = (v, cur) => { const o = h('option', { value: v }, v); if (v === cur) o.selected = true; return o; };
+    const pad = n => String(n).padStart(2, '0');
+    const hh = h('select', { 'aria-label': '시' }, ...Array.from({ length: 24 }, (_, i) => opt(pad(i), h0)));
+    const mm = h('select', { 'aria-label': '분' }, ...Array.from({ length: 12 }, (_, i) => opt(pad(i * 5), m0)));
     const dp = h('div', { class: 'dp' });
     const drawDays = () => dp.replaceChildren(...[...WD].map(c => h('button', { class: c === day ? 'on' : '', onclick: () => { day = c; drawDays(); } }, c)));
     drawDays();
     const form = h('div', { class: 'card req' },
       h('h3', {}, '일정 변경'),
+      h('div', { class: 'cur' }, nx ? '현재 ' + fmt(nx.date) + ' ' + (nx.time || '') : ''),
       h('div', { class: 't' }, '변경 희망 요일'), dp,
-      h('div', { class: 't' }, '변경 희망 시간'), time,
+      h('div', { class: 't' }, '변경 희망 시간'), h('div', { class: 'tp' }, hh, h('i', {}, ':'), mm),
       h('button', { class: 'go', onclick: async () => {
-        if (!day || !time.value) { err.textContent = '요일과 시간을 선택하세요.'; return; }
+        if (!day) { err.textContent = '변경 희망 요일을 선택하세요.'; return; }
         err.textContent = '';
-        await sendChangeRequest({ name: d.name, from: nx && nx.date, day, time: time.value });
+        await sendChangeRequest({ name: d.name, from: nx && nx.date, day, time: hh.value + ':' + mm.value });
         modal.classList.add('hide'); sent.textContent = '요청이 완료되었습니다.';
       } }, '변경 요청 보내기'),
       err,
@@ -290,7 +301,7 @@ a.mat span:last-child{color:var(--acc);font-size:14px}
   function materials(d) {
     const v = h('div', {});
     if (!d.materials.length) return h('div', { class: 'card empty' }, '등록된 자료 없음');
-    d.materials.forEach(m => v.append(h('div', { class: 'card' }, h('a', { class: 'mat', href: m.url, target: '_blank', rel: 'noopener' }, h('span', {}, m.title), h('span', {}, '열기 ›')))));
+    d.materials.forEach(m => v.append(h('div', { class: 'card' }, h('a', { class: 'mat', href: m.url, target: '_blank', rel: 'noopener' }, h('span', {}, h('span', { class: 'mt' }, m.title), m.desc ? h('span', { class: 'md' }, m.desc) : null), h('span', {}, '열기 ›')))));
     return v;
   }
 
