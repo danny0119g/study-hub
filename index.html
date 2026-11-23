@@ -165,16 +165,16 @@ a.mat span:last-child{color:var(--acc);font-size:13px}
 
   function login(msg) {
     app.replaceChildren();
-    const input = h('input', { type: 'text', inputmode: 'numeric', placeholder: '휴대폰 번호 뒤 8자리', autocomplete: 'off', maxlength: '16' });
+    const input = h('input', { type: 'text', inputmode: 'numeric', placeholder: '전화번호 8자리', autocomplete: 'off', maxlength: '16' });
     const err = h('div', { class: 'err' }, msg || '');
     const go = async () => {
-      if (norm(input.value).length !== 8) { err.textContent = '코드는 휴대폰 번호 뒤 8자리 숫자입니다.'; return; }
+      if (norm(input.value).length !== 8) { err.textContent = '전화번호 8자리를 입력하세요.'; return; }
       err.textContent = '확인 중...';
       try { const r = await fetchData(input.value); store.set(r.saved); render(r.data); }
       catch (e) { err.textContent = '코드가 맞지 않습니다.'; }
     };
     input.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
-    app.append(h('div', { class: 'login' }, h('button', { class: 'back', onclick: landing }, '‹ 처음으로'), h('h1', {}, '수강생 로그인'), h('p', { class: 'meta' }, '휴대폰 번호 뒤 8자리를 입력하세요.'), input, h('button', { onclick: go }, '입장'), err));
+    app.append(h('div', { class: 'login' }, h('button', { class: 'back', onclick: landing }, '‹ 처음으로'), h('h1', {}, '수강생 로그인'), h('p', { class: 'meta' }, '전화번호 8자리를 입력하세요.'), input, h('button', { onclick: go }, '입장'), err));
     input.focus();
   }
 
