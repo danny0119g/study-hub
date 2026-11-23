@@ -330,10 +330,12 @@ async function blankMap(d){
   const bm=await new Promise((ok,no)=>{const im=new Image();const u=URL.createObjectURL(new Blob([d],{type:"image/jpeg"}));im.onload=()=>{URL.revokeObjectURL(u);ok(im)};im.onerror=no;im.src=u});
   const w=bm.naturalWidth,h=bm.naturalHeight,cv=document.createElement("canvas");cv.width=w;cv.height=h;const g=cv.getContext("2d",{willReadFrequently:true});g.fillStyle="#fff";g.fillRect(0,0,w,h);g.drawImage(bm,0,0);
   const px=g.getImageData(0,0,w,h).data,bl=new Uint8Array(h);
-  for(let y=0;y<h;y++){let c=0,o=y*w*4;for(let x=0;x<w;x++,o+=4)if(px[o]<170&&++c>2)break;bl[y]=c<=2?1:0}
+  const T=Math.max(2,Math.round(w*0.004));for(let y=0;y<h;y++){let c=0,o=y*w*4;for(let x=0;x<w;x++,o+=4)if(px[o]<130&&++c>T)break;bl[y]=c<=T?1:0}
   cv.width=cv.height=1;return bl;
 }
-function findCut(bl,lo,hi){for(let r=hi;r>=lo;r--){let ok=true;for(let k=-3;k<=3;k++)if(!bl[r+k]){ok=false;break}if(ok)return r}return hi}
+function findCut(bl,lo,hi){let best=-1,bs=0,i=lo;
+  while(i<=hi){if(bl[i]){let s0=i;while(i<bl.length&&bl[i])i++;const len=i-s0;if(len>=4){const c=Math.min(hi,s0+Math.min(len>>1,12));if(len>=bs){bs=len;best=c}}}else i++}
+  return best<0?hi:best}
 function textJpg(draw,wpt,hpt,sc){const cv=document.createElement("canvas");cv.width=Math.round(wpt*sc);cv.height=Math.round(hpt*sc);const g=cv.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,cv.width,cv.height);g.scale(sc,sc);g.fillStyle="#111";g.textBaseline="alphabetic";draw(g);
   return new Promise(ok=>cv.toBlob(b=>b.arrayBuffer().then(a=>ok(new Uint8Array(a))),"image/jpeg",.92))}
 const FONT='"Apple SD Gothic Neo","Pretendard","Noto Sans KR","Malgun Gothic",sans-serif';
@@ -355,10 +357,12 @@ async function makePdf(L,withAns,prog){
     for(const k of [x.p.f,x.p.f+"_q"]){
       const d=await getBytes(x.e.id,k),im=pw.img(d),bl=await blankMap(d),s=CW/im.w;
       let r=0,end=im.h;while(r<end&&bl[r])r++;while(end>r&&bl[end-1])end--;
+      const isQ=k!==x.p.f,colPx=Math.floor((A4H-MB-MT)/s);
+      if(isQ&&y>MT&&(end-r)*s>A4H-MB-y&&(A4H-MB-y)<(A4H-MB-MT)*.4)nextCol();
       while(r<end){
         const avail=Math.floor((A4H-MB-y)/s);
         if(avail<60){nextCol();continue}
-        const cut=end-r<=avail?end:findCut(bl,r+Math.floor(avail*.45),r+avail);
+        const cut=end-r<=avail?end:findCut(bl,r+Math.floor(avail*(isQ?.3:.75)),r+avail);
         const X=MX+col*(CW+GT),hh=(cut-r)*s;
         use(im,`q ${f2(X)} ${f2(A4H-y-hh)} ${f2(CW)} ${f2(hh)} re W n ${f2(im.w*s)} 0 0 ${f2(im.h*s)} ${f2(X)} ${f2(A4H-y+r*s-im.h*s)} cm /I${im.n} Do Q`);
         y+=hh;r=cut;
