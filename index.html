@@ -7,7 +7,7 @@
 <title>국어의 정답</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{--ink:#111;--ink2:#444b57;--mut:#8b919c;--line:#e8eaee;--acc:#5588dd;--soft:#e8f0fd;--soft2:#f4f7fc;--ok:#1b8a5a;--bad:#d9480f;color-scheme:light}
@@ -27,9 +27,49 @@ h2{font-size:13px;color:var(--mut);margin:28px 0 6px;font-weight:700}
 .post .b{margin-top:8px;white-space:pre-wrap;color:var(--ink2)}
 
 /* 첫 화면 */
-.land{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;padding:0 20px 8vh}
-.land h1{font:400 clamp(44px,9vw,84px)/1.15 "Black Han Sans","Pretendard Variable","Apple SD Gothic Neo",sans-serif;font-weight:900;font-synthesis:none;letter-spacing:-.01em;margin:0 0 22px;text-align:center}
-.land .btns{display:flex;gap:10px}
+.land{position:fixed;inset:0;overflow-y:auto;background:#fff;word-break:keep-all;-webkit-overflow-scrolling:touch}
+.land .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+.serif{font-family:"Noto Serif KR","Nanum Myeongjo",serif;font-synthesis:none}
+.ltop{display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid var(--ink)}
+.ltop .wm{font-size:19px;font-weight:900;letter-spacing:-.03em}
+.ltop nav{display:flex;align-items:center;gap:18px}
+.ltop nav button{background:none;border:0;padding:6px 0;font-size:14px;font-weight:600;color:var(--ink2);cursor:pointer}
+.ltop nav .btn1{padding:8px 14px;color:#fff;background:var(--acc);border-radius:9px}
+.hero{padding:13vh 0 11vh}
+.hero .kick{font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--acc);margin:0 0 22px}
+.hero h1{font-size:clamp(34px,6.2vw,66px);line-height:1.22;font-weight:700;letter-spacing:-.035em;margin:0;white-space:pre-line}
+.hero p{max-width:520px;margin:28px 0 0;font-size:17px;line-height:1.75;color:var(--ink2)}
+.hero .btns{display:flex;gap:10px;margin-top:36px}
+.hero .btns button{padding:12px 20px;font-size:15px}
+.sec{border-top:1px solid var(--ink);padding:56px 0 64px}
+.sec h2{font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--ink);margin:0 0 36px}
+.steps{list-style:none;margin:0;padding:0}
+.steps li{display:grid;grid-template-columns:72px 220px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+.steps li:first-child{border-top:0;padding-top:0}
+.steps .no{font-size:28px;font-weight:700;color:var(--acc);line-height:1.1}
+.steps b{font-size:19px;font-weight:700;letter-spacing:-.02em}
+.steps p{margin:0;color:var(--ink2);line-height:1.7}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.cols div{padding:0 28px;border-left:1px solid var(--line)}
+.cols div:first-child{padding-left:0;border-left:0}
+.cols b{display:block;font-size:24px;font-weight:700;letter-spacing:-.03em;margin-bottom:12px}
+.cols p{margin:0;color:var(--ink2);line-height:1.7;font-size:15px}
+.lfoot{border-top:1px solid var(--ink);padding:40px 0 56px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.lfoot .q{font-size:22px;font-weight:700;letter-spacing:-.03em}
+.lfoot small{display:block;margin-top:8px;color:var(--mut);font-size:13px}
+@media (max-width:720px){
+  .land .wrap{padding:0 20px}
+  .ltop nav{gap:14px}
+  .hero{padding:9vh 0 8vh}
+  .hero p{font-size:16px}
+  .sec{padding:44px 0 48px}
+  .steps li{grid-template-columns:44px 1fr;gap:6px 14px}
+  .steps li p{grid-column:2}
+  .steps .no{font-size:22px}
+  .cols{grid-template-columns:1fr}
+  .cols div{padding:20px 0;border-left:0;border-top:1px solid var(--line)}
+  .cols div:first-child{padding-top:0;border-top:0}
+}
 .btn1,.btn2{border:0;border-radius:9px;padding:9px 18px;font-size:14px;font-weight:600;cursor:pointer}
 .btn1{background:var(--acc);color:#fff}
 .btn2{background:var(--soft);color:#1f3358}
@@ -161,11 +201,36 @@ a.mat .md{display:block;color:var(--mut);font-size:14px;font-weight:500;margin-t
   const SITE_NAME = '국어의 정답';
   function landing() {
     app.replaceChildren();
-    app.append(h('div', { class: 'land' },
-      h('h1', {}, SITE_NAME),
-      h('div', { class: 'btns' },
-        h('button', { class: 'btn1', onclick: () => login() }, '로그인'),
-        h('button', { class: 'btn2', onclick: board }, '게시판'))));
+    const step = (no, t, d) => h('li', {}, h('span', { class: 'no serif' }, no), h('b', { class: 'serif' }, t), h('p', {}, d));
+    const col = (t, d) => h('div', {}, h('b', { class: 'serif' }, t), h('p', {}, d));
+    app.append(h('div', { class: 'land' }, h('div', { class: 'wrap' },
+      h('header', { class: 'ltop' },
+        h('span', { class: 'wm serif' }, SITE_NAME),
+        h('nav', {},
+          h('button', { onclick: board }, '게시판'),
+          h('button', { class: 'btn1', onclick: () => login() }, '수강생 로그인'))),
+      h('section', { class: 'hero' },
+        h('p', { class: 'kick' }, '수능 국어 1:1 수업'),
+        h('h1', { class: 'serif' }, '읽은 만큼 맞히고,\n맞힌 이유를 말할 수 있게.'),
+        h('p', {}, '지문을 읽는 순서부터 선지를 고르는 근거까지, 한 사람의 풀이를 기준으로 다룹니다.'),
+        h('div', { class: 'btns' },
+          h('button', { class: 'btn1', onclick: () => login() }, '수강생 로그인'),
+          h('button', { class: 'btn2', onclick: board }, '게시판'))),
+      h('section', { class: 'sec' },
+        h('h2', {}, '수업은 이렇게 진행됩니다'),
+        h('ol', { class: 'steps' },
+          step('01', '진단', '첫 수업에서 실전 한 회를 풀고, 틀린 문항을 영역과 유형별로 나눕니다.'),
+          step('02', '매주 과제와 피드백', '과제는 수강생 페이지에 올라가고, 제출하면 피드백이 같은 자리에 남습니다.'),
+          step('03', '일정과 자료는 한 곳에서', '수업 일정, 교안, 성적 기록을 수강생 전용 페이지에서 바로 확인합니다.'))),
+      h('section', { class: 'sec' },
+        h('h2', {}, '다루는 것'),
+        h('div', { class: 'cols' },
+          col('독서', '문단의 역할과 정보 사이의 관계를 잡으면서 읽는 연습.'),
+          col('문학', '작품 감상보다 <보기>와 선지에서 근거를 찾는 연습.'),
+          col('문법', '개념을 정확한 용어로 정리하고 기출로 다시 확인.'))),
+      h('footer', { class: 'lfoot' },
+        h('div', {}, h('div', { class: 'q serif' }, '수강생이신가요?'), h('small', {}, '휴대폰 번호 뒤 8자리로 로그인합니다.')),
+        h('div', {}, h('button', { class: 'btn1', onclick: () => login() }, '로그인'), h('small', {}, '© 2026 ' + SITE_NAME))))));
   }
   async function board() {
     app.replaceChildren();
