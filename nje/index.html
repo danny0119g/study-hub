@@ -7,7 +7,7 @@
 <title>국어의 정답 · 과거의 유산</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f5f7fa;--card:#fff;--ink:#0f1115;--ink2:#3d4350;--sub:#7a808c;--line:#e7eaf0;--line2:#d9dee7;--acc:#5588dd;--acc2:#3f6fc2;--soft:#eaf1fc;--ok:#1b8a5a;--okbg:#e7f6ee;--bad:#d9480f;--badbg:#fdeee6;--shadow:0 1px 2px rgba(16,24,40,.04),0 4px 16px rgba(16,24,40,.05)}
 *{box-sizing:border-box}
@@ -139,6 +139,80 @@ body.hasbar .qimg{max-height:calc(100vh - 420px)}
  .ch{width:36px;height:36px;font-size:15px}.row .no{width:38px}.row{gap:6px;padding:6px 4px}.cs{gap:5px!important}
  .phead h1{font-size:18px}
 }
+/* ---- 메인 사이트와 같은 형식 ---- */
+body{background:#fff;--ink:#111;--line:#e8eaee;--line2:#cfd4dc;--sub:#8b919c}
+.top{position:static;background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:0}
+
+.top{border-bottom:0}
+.top{padding:0 24px}
+.top .in{max-width:1192px;margin:0 auto;padding:22px 0 14px;border-bottom:2px solid var(--ink);align-items:center}
+.brand{font:900 22px/1 "Noto Serif KR",serif;letter-spacing:-.04em;font-synthesis:none}
+.crumb{font-size:14px}
+.homeback{font-size:14px;font-weight:600;color:var(--ink2);text-decoration:none;white-space:nowrap}
+.homeback:hover{color:var(--ink)}
+main{max-width:1240px;padding:30px 24px 60px}
+.btn{border:1px solid var(--line2);border-radius:5px;padding:8px 14px;font-size:14px;transition:none}
+.btn:hover{border-color:var(--ink);color:var(--ink)}
+.btn.pri{background:var(--ink);border-color:var(--ink)}
+.btn.pri:hover{background:#000;border-color:#000}
+.btn.ghost{border:1px solid var(--line2);background:#fff;padding:6px 12px}
+.btn.ghost:hover{background:#fff}
+.hero{margin:0 0 8px}
+.hero h1{font-size:24px;font-weight:800;letter-spacing:-.04em}
+.stat{gap:22px;margin-top:10px}
+.stat div{font-size:13px;color:var(--sub);font-weight:500;display:flex;align-items:baseline;gap:4px}
+.stat b{display:inline;font-size:17px;font-weight:800}
+.grp{margin:30px 0 12px;font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-.03em}
+table.tiles{display:table;width:100%;border-collapse:collapse;border-top:2px solid var(--ink);font-size:15px}
+table.tiles th{background:#f7f8fa;font-size:13px;font-weight:700;color:var(--ink2);padding:10px 14px;border-bottom:1px solid var(--line);text-align:left}
+table.tiles td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.tiles tr.tile{border:0!important;border-radius:0;box-shadow:none;background:none;transform:none;position:static;cursor:pointer}
+table.tiles tr.tile:hover td{background:#fafbfc}
+table.tiles .cn{font-weight:700;font-size:16px;width:160px}
+table.tiles .cn i{display:inline-block;width:4px;height:15px;background:var(--c);margin-right:10px;vertical-align:-2px}
+table.tiles .nn{width:90px;color:var(--ink2);font-variant-numeric:tabular-nums}
+table.tiles .pg2{display:flex;align-items:center;gap:12px}
+table.tiles .prog{flex:1;max-width:320px;height:4px;border-radius:0;margin:0;background:#eef0f3}
+table.tiles .prog i{border-radius:0;background:var(--c)}
+table.tiles .pc{margin:0;font-size:13px;color:var(--sub);font-weight:500;white-space:nowrap}
+table.tiles .rr{width:110px;text-align:right}
+.tile .tr{white-space:nowrap}
+.tile .tr{position:static;display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line2);background:#fff;color:var(--ink2);border-radius:4px;padding:5px 10px;font-size:13px;font-weight:700}
+.tile .tr:hover{background:#fff;border-color:var(--ink);color:var(--ink)}
+.lhead{margin:0 0 16px;align-items:center}
+.lhead h1{font-size:24px;font-weight:800;letter-spacing:-.04em}
+.lhead .n{font-size:14px;font-weight:500}
+.seg{background:none;border:1px solid var(--line2);border-radius:5px;padding:0;overflow:hidden}
+.seg button{border-radius:0;padding:7px 13px;font-size:14px;color:var(--ink2);border-left:1px solid var(--line2)}
+.seg button:first-child{border-left:0}
+.seg button.on{background:var(--ink);color:#fff;box-shadow:none}
+.list{display:block;border-top:2px solid var(--ink)}
+.item{border:0;border-bottom:1px solid var(--line);border-radius:0;padding:12px 10px;box-shadow:none;transition:none}
+.item:hover{border-color:var(--line);box-shadow:none;background:#fafbfc}
+.item .k b{font-size:15px;font-weight:600}
+.item .k small{font-weight:500}
+.pk{border-radius:3px;width:22px;height:22px;border:1.5px solid var(--line2)}
+.pk.on{background:var(--ink);border-color:var(--ink)}
+.badge{border-radius:3px;padding:3px 8px;font-weight:700}
+.chip{border-radius:3px;padding:3px 9px;font-weight:700}
+.phead h1{font-size:20px;font-weight:800;letter-spacing:-.03em}
+.pane{border-radius:4px;box-shadow:none;padding:8px}
+.pane img{border-radius:0}
+.sheet{border-radius:4px;box-shadow:none;border-top:2px solid var(--ink)}
+.sheet h3{color:var(--ink);font-size:14px}
+.row{border-radius:3px}
+.side{top:16px}
+#bar{border-radius:6px;background:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+#bar .btn.pri{background:#fff;color:var(--ink);border-color:#fff;border-radius:5px}
+.empty{border-top:2px solid var(--ink);padding:44px 0}
+@media (max-width:560px){
+  .top{padding:0 16px}.top .in{padding:18px 0 12px}
+  main{padding:20px 16px 50px}
+  table.tiles .cn{width:auto}
+  table.tiles .nn{display:none}
+  table.tiles .prog{display:none}
+  table.tiles td,table.tiles th{padding:12px 8px}
+}
 </style>
 </head>
 <body>
@@ -147,6 +221,7 @@ body.hasbar .qimg{max-height:calc(100vh - 420px)}
   <div class="crumb" id="crumb"></div>
   <span class="sp"></span>
   <button class="btn ghost" id="rnd" title="이 제재에서 랜덤" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg><span>랜덤</span></button>
+  <a class="homeback" href="../">내 수업</a>
 </div></header>
 <main id="app"></main>
 <div id="bar" hidden></div>
@@ -186,9 +261,11 @@ function home(){
   let h=`<section class="hero"><div><h1>과거의 유산</h1>
   <div class="stat"><div><b>${total}</b>지문</div><div><b>${P.reduce((s,x)=>s+nqs(x),0).toLocaleString()}</b>문항</div><div><b>${dn}</b>채점 완료</div></div></div>
   </section>`;
-  const tile=([c,n])=>{const L=inCat(c),d=L.filter(done).length;return `<div class="tile" role="button" tabindex="0" style="${sty(c)}" data-c="${c}"><button class="tr" data-r="${c}" title="${n} 랜덤"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>랜덤</button><b>${n}</b><div class="n">${L.length}지문</div><div class="prog"><i style="width:${L.length?d/L.length*100:0}%"></i></div><div class="pc">${d?`${d} / ${L.length} 완료`:"아직 안 풂"}</div></div>`};
-  h+=`<div class="grp">독서</div><div class="tiles">${CAT.filter(([c])=>RD.has(c)).map(tile).join("")}</div>`;
-  h+=`<div class="grp">문학</div><div class="tiles">${CAT.filter(([c])=>!RD.has(c)).map(tile).join("")}</div>`;
+  const RI='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>';
+  const tile=([c,n])=>{const L=inCat(c),d=L.filter(done).length,pct=L.length?d/L.length*100:0;return `<tr class="tile" role="button" tabindex="0" style="${sty(c)}" data-c="${c}"><td class="cn"><i></i>${n}</td><td class="nn">${L.length}지문</td><td><div class="pg2"><div class="prog"><i style="width:${pct}%"></i></div><span class="pc">${d?`${d} / ${L.length}`:"아직 안 풂"}</span></div></td><td class="rr"><button class="tr" data-r="${c}" title="${n} 랜덤">${RI}랜덤</button></td></tr>`};
+  const tbl=(t,arr)=>`<div class="grp">${t}</div><table class="tiles"><thead><tr><th>제재</th><th class="nn">지문</th><th>진행</th><th></th></tr></thead><tbody>${arr.map(tile).join("")}</tbody></table>`;
+  h+=tbl("독서",CAT.filter(([c])=>RD.has(c)));
+  h+=tbl("문학",CAT.filter(([c])=>!RD.has(c)));
   $("#app").innerHTML=h;
   document.querySelectorAll(".tile").forEach(b=>{b.onclick=()=>go("c/"+b.dataset.c);b.onkeydown=ev=>{if(ev.key==="Enter")go("c/"+b.dataset.c)}});
   document.querySelectorAll(".tile .tr").forEach(b=>b.onclick=ev=>{ev.stopPropagation();random(b.dataset.r)});
