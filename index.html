@@ -247,14 +247,14 @@ table.list tr.ph{cursor:pointer}
     app.replaceChildren(root);
     return { nav, body };
   }
-  function noticeBox() {
+  function noticeBox(noBoard) {
     const ul = h('ul', { class: 'nlist' }, h('li', {}, h('span', {}, '불러오는 중')));
     fetch('common.json', { cache: 'no-store' }).then(r => r.json()).then(c => {
       const n = (c.notices || []).slice().sort((x, y) => (y.date || '').localeCompare(x.date || '')).slice(0, 4);
       ul.replaceChildren(...(n.length ? n.map(x => h('li', {}, h('time', {}, (x.date || '').slice(5).replace('-', '.')), h('span', {}, x.text)))
         : [h('li', {}, h('span', {}, '등록된 공지가 없습니다.'))]));
     }).catch(() => ul.replaceChildren(h('li', {}, h('span', {}, '공지를 불러오지 못했습니다.'))));
-    return h('div', { class: 'box' }, h('h3', {}, '공지', h('a', { onclick: board }, '게시판 ›')), ul);
+    return h('div', { class: 'box' }, h('h3', {}, '공지', noBoard ? null : h('a', { onclick: board }, '게시판 ›')), ul);
   }
 
   function landing() {
@@ -368,7 +368,7 @@ table.list tr.ph{cursor:pointer}
   function render(d) {
     const tabs = ['자료', '일정'];
     const views = {};
-    const { nav, body } = shell(tabs.map(t => ({ t, fn: () => show(t) })).concat([{ t: '게시판', fn: board }]),
+    const { nav, body } = shell(tabs.map(t => ({ t, fn: () => show(t) })),
       h('span', { class: 'who' }, d.name, h('a', { onclick: () => { store.del(); landing(); } }, '로그아웃')));
     function show(t) {
       for (const k of tabs) views[k].classList.toggle('hide', k !== t);
@@ -380,7 +380,7 @@ table.list tr.ph{cursor:pointer}
     const nb = h('div', { class: 'box nxt' }, h('h3', {}, '다음 수업'), h('div', { class: 'in' },
       nx ? [h('div', { class: 'd' }, fmt(nx.date) + ' ' + (nx.time || '')), h('div', { class: 's' }, h('b', {}, ddText(dday(nx.date))), nx.note ? ' · ' + nx.note : '')]
          : h('div', { class: 's' }, '예정된 수업이 없습니다.')));
-    body.append(h('div', { class: 'dash' }, h('div', {}, ...tabs.map(t => views[t])), h('aside', { class: 'side' }, nb, noticeBox())));
+    body.append(h('div', { class: 'dash' }, h('div', {}, ...tabs.map(t => views[t])), h('aside', { class: 'side' }, nb, noticeBox(true))));
     show('자료');
   }
 
