@@ -14,7 +14,7 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;background:#fff;color:var(--ink);font:16px/1.55 "Pretendard Variable","Pretendard","Apple SD Gothic Neo","Noto Sans KR",-apple-system,sans-serif}
 button{font-family:inherit}
-main{max-width:560px;margin:0 auto;padding:22px 20px 80px}
+main{max-width:none;margin:0;padding:0}
 h1{font-size:26px;line-height:1.25;margin:0;font-weight:800;letter-spacing:-.02em}
 h2{font-size:13px;color:var(--mut);margin:28px 0 6px;font-weight:700}
 .hdr{display:flex;justify-content:space-between;align-items:center;margin:0 0 18px}
@@ -90,64 +90,86 @@ table.cur td{color:var(--ink2);white-space:pre-line}
 .btn1{background:var(--acc);color:#fff}
 .btn2{background:var(--soft);color:#1f3358}
 
-/* 로그인 */
-.login{margin-top:14vh;text-align:center}
-.login h1{font-size:28px;font-weight:700;letter-spacing:-.03em;margin-bottom:8px}
-.login .meta{font-size:14px;font-weight:500;letter-spacing:-.01em;color:var(--mut);margin:0}
-.login input{width:100%;max-width:320px;font-family:inherit;font-size:20px;font-weight:600;text-align:center;letter-spacing:.06em;padding:14px;border-radius:10px;border:2px solid transparent;background:var(--soft2);color:var(--ink);margin-top:18px}
-.login input:focus{outline:0;border-color:var(--acc);background:#fff}
-.login input::placeholder{font-size:16px;font-weight:500;letter-spacing:0;color:#a3a9b4}
-.login .btn1{display:block;margin:12px auto 0;width:100%;max-width:320px;padding:14px;font-size:15px;font-weight:700}
-.back{background:none;border:0;color:var(--mut);font-size:14px;font-weight:600;cursor:pointer;padding:8px 0;margin-bottom:18px}
-
-/* 탭 */
-.tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:6px}
-.tabs button{flex:1;padding:12px 0;border:0;border-bottom:3px solid transparent;margin-bottom:-1px;background:none;color:var(--mut);font-size:16px;font-weight:700;cursor:pointer}
-.tabs button.on{color:var(--ink);border-bottom-color:var(--acc)}
-
-/* 자료 */
-a.mat{display:flex;justify-content:space-between;align-items:center;color:var(--ink);text-decoration:none;font-weight:600;font-size:17px}
-a.mat>span:last-child{color:var(--acc);font-size:14px;font-weight:700}
-a.mat .md{display:block;color:var(--mut);font-size:14px;font-weight:500;margin-top:2px}
+/* 공통 틀 (로그인 후·게시판·로그인) */
+.pg{max-width:1040px;margin:0 auto;padding:0 24px 64px;font-size:15px;word-break:keep-all}
+.pg .ltop nav a.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink)}
+.pg .ltop nav a{padding-bottom:4px}
+.pg .ltop .who{font-size:14px;color:var(--ink2);font-weight:600}
+.pg .ltop .who a{margin-left:12px;color:var(--mut);font-weight:500;cursor:pointer}
+.dash{display:grid;grid-template-columns:1fr 300px;gap:36px;padding-top:30px}
+.dash .side{display:flex;flex-direction:column;gap:16px}
+.pg h2{font-size:18px;font-weight:800;letter-spacing:-.03em;color:var(--ink);margin:0 0 14px}
+.pg h2 small{font-size:13px;font-weight:500;color:var(--mut);margin-left:8px;letter-spacing:0}
+.nxt .in{padding:14px}
+.nxt .d{font-size:22px;font-weight:800;letter-spacing:-.03em;line-height:1.3}
+.nxt .s{margin-top:4px;font-size:14px;color:var(--ink2)}
+.nxt .s b{color:var(--acc)}
+table.list{width:100%;border-collapse:collapse;border-top:2px solid var(--ink);font-size:15px}
+table.list th{background:#f7f8fa;font-size:13px;font-weight:700;color:var(--ink2);padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}
+table.list td{padding:13px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.list .no{width:56px;text-align:center;color:var(--mut);font-variant-numeric:tabular-nums}
+table.list .act{width:80px;text-align:right}
+table.list .act a{font-size:13px;font-weight:700;color:var(--ink2);text-decoration:none;border:1px solid #cfd4dc;border-radius:4px;padding:5px 10px;white-space:nowrap}
+table.list .act a:hover{border-color:var(--ink);color:var(--ink)}
+table.list a.tt{color:var(--ink);font-weight:600;text-decoration:none}
+table.list a.tt:hover{text-decoration:underline}
+table.list .md{display:block;font-size:13px;color:var(--mut);margin-top:2px}
+table.list .dt{width:96px;color:var(--mut);font-size:13px;font-variant-numeric:tabular-nums}
+table.list .emp{text-align:center;color:var(--mut);padding:40px 0}
+table.list tr.pb td{background:#fbfbfc;color:var(--ink2);white-space:pre-wrap;line-height:1.75;padding:16px 12px 20px}
+table.list tr.ph{cursor:pointer}
+.lbox{max-width:360px;margin:12vh auto 0}
+.lbox .box h3{font-size:15px}
+.lbox .in{padding:16px 14px}
+.lbox .back{display:inline-block;margin-top:14px;font-size:13px;color:var(--mut);cursor:pointer;background:none;border:0;padding:0}
 
 /* 일정 */
-.next{padding:22px 2px 10px}
-.next .sm{color:var(--mut);font-size:14px;font-weight:600}
-.next .big{font-size:28px;line-height:1.25;margin:2px 0 4px;font-weight:800;letter-spacing:-.02em}
-.next .acc{color:var(--acc);font-weight:700;font-size:15px}
-.cal-h{display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px}
-.cal-h b{font-size:18px;font-weight:800}
-.cal-h button{background:none;border:0;font-size:24px;color:var(--ink2);cursor:pointer;padding:2px 12px}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);row-gap:2px}
-.cal .w{text-align:center;font-size:13px;color:var(--mut);font-weight:700;padding:6px 0}
+.next{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:12px 14px;border:1px solid var(--line);border-radius:6px;margin-bottom:18px}
+.next .sm{font-size:13px;font-weight:700;color:var(--mut)}
+.next .big{font-size:17px;font-weight:800;letter-spacing:-.02em}
+.next .acc{font-size:14px;color:var(--acc);font-weight:600}
+.cal-h{display:flex;align-items:center;gap:6px;margin:0 0 10px}
+.cal-h b{font-size:18px;font-weight:800;letter-spacing:-.02em;margin-right:6px;order:-1}
+.cal-h button{background:#fff;border:1px solid #cfd4dc;border-radius:4px;width:30px;height:28px;font-size:16px;line-height:1;color:var(--ink2);cursor:pointer;padding:0}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);border-top:2px solid var(--ink);border-left:1px solid var(--line)}
+.cal .w{text-align:center;font-size:13px;color:var(--ink2);font-weight:700;padding:8px 0;background:#f7f8fa;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
 .cal .w.sun,.cal .c.sun .n{color:var(--bad)}
 .cal .w.sat,.cal .c.sat .n{color:var(--acc)}
-.cal .c{min-height:56px;border-radius:10px;padding:5px 0;text-align:center;cursor:default}
-.cal .c.off{visibility:hidden}
-.cal .c .n{font-size:15px;font-weight:600}
-.cal .c.today .n{display:inline-block;min-width:30px;line-height:26px;border:2px solid var(--ink);border-radius:99px}
-.cal .c.les{background:var(--soft);cursor:pointer}
-.cal .c.les .tm{margin-top:2px;font-size:12px;font-weight:800;color:var(--acc)}
-.cal .c.les.past{opacity:.45}
-.cal .c.sel{background:var(--acc)}
-.cal .c.sel .n,.cal .c.sel .tm{color:#fff}
-.chg{display:block;width:100%;margin-top:18px;padding:15px 0;border:0;border-radius:10px;background:var(--soft);color:#1f3358;font-size:16px;font-weight:700;cursor:pointer}
-.sent{margin-top:12px;text-align:center;color:var(--ok);font-weight:700;min-height:1.4em}
+.cal .c{min-height:78px;padding:6px 7px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left;cursor:default;background:#fff}
+.cal .c.off{background:#fafafb}
+.cal .c .n{font-size:13px;font-weight:600;color:var(--ink2)}
+.cal .c.today .n{display:inline-block;background:var(--ink);color:#fff!important;border-radius:3px;padding:0 5px}
+.cal .c.les{cursor:pointer}
+.cal .c.les .tm{margin-top:6px;font-size:12px;font-weight:700;color:var(--acc);background:var(--soft2);border-left:3px solid var(--acc);padding:3px 5px;border-radius:2px;white-space:nowrap;overflow:hidden}
+.cal .c.les.past .tm{color:var(--mut);border-left-color:#c5cad3;background:#f4f5f7}
+.cal .c.sel{box-shadow:inset 0 0 0 2px var(--acc)}
+.chg{display:inline-block;margin-top:16px;padding:9px 16px;border:1px solid var(--ink);border-radius:5px;background:#fff;color:var(--ink);font-size:14px;font-weight:700;cursor:pointer}
+.sent{margin-top:10px;color:var(--ok);font-weight:600;font-size:14px;min-height:1.4em}
+@media (max-width:820px){
+  .pg{padding:0 16px 48px}
+  .pg .ltop .who{width:100%;order:3;font-size:13px}
+  .dash{grid-template-columns:1fr;gap:22px;padding-top:20px}
+  .dash .side{order:-1}
+  .cal .c{min-height:58px;padding:4px 3px}
+  .cal .c.les .tm{font-size:11px;padding:2px 2px;border-left-width:2px;text-align:center}
+  table.list .no{width:40px}
+  table.list .dt{width:72px}
+}
 
 /* 일정 변경 팝업 */
 .modal{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;padding:16px}
-.modal .req{width:100%;max-width:440px;background:#fff;border:0;border-radius:16px;padding:24px 22px;box-shadow:0 16px 48px rgba(0,0,0,.22)}
-.req h3{margin:0 0 4px;font-size:21px;font-weight:800;letter-spacing:-.02em}
+.modal .req{width:100%;max-width:420px;background:#fff;border:0;border-top:3px solid var(--ink);border-radius:4px;padding:22px 20px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.req h3{margin:0 0 4px;font-size:18px;font-weight:800;letter-spacing:-.02em}
 .req .cur{color:var(--mut);font-size:14px;margin-bottom:20px}
 .req .t{font-size:14px;font-weight:700;color:var(--ink2)}
 .req .dp{display:flex;gap:6px;margin:8px 0 18px}
-.req .dp button{flex:1;padding:12px 0;border:0;border-radius:10px;background:var(--soft2);color:var(--ink2);font-size:15px;font-weight:700;cursor:pointer}
-.req .dp button.on{background:var(--acc);color:#fff}
+.req .dp button{flex:1;padding:10px 0;border:1px solid #cfd4dc;border-radius:4px;background:#fff;color:var(--ink2);font-size:14px;font-weight:700;cursor:pointer}
+.req .dp button.on{background:var(--ink);border-color:var(--ink);color:#fff}
 .tp{display:flex;align-items:center;gap:8px;margin-top:8px}
 .tp i{font-style:normal;font-size:22px;font-weight:700;color:var(--mut)}
-.tp select{display:block;width:100%;min-width:0;-webkit-appearance:none;appearance:none;border:2px solid transparent;border-radius:10px;background:var(--soft2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5l6 6 6-6' fill='none' stroke='%238b919c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center;color:var(--ink);font-family:inherit;font-size:22px;font-weight:700;padding:13px 34px 13px 14px;text-align:center;text-align-last:center}
+.tp select{display:block;width:100%;min-width:0;-webkit-appearance:none;appearance:none;border:1px solid #cfd4dc;border-radius:4px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5l6 6 6-6' fill='none' stroke='%238b919c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center;color:var(--ink);font-family:inherit;font-size:18px;font-weight:700;padding:10px 34px 10px 12px;text-align:center;text-align-last:center}
 .tp select:focus{outline:0;border-color:var(--acc);background-color:#fff}
-.req .go{display:block;width:100%;margin-top:22px;padding:15px 0;border:0;border-radius:10px;background:var(--acc);color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+.req .go{display:block;width:100%;margin-top:20px;padding:12px 0;border:0;border-radius:5px;background:var(--ink);color:#fff;font-size:15px;font-weight:700;cursor:pointer}
 .req .err{min-height:0;margin-top:10px;text-align:center}
 .req .x{display:block;margin:10px auto 0;background:none;border:0;color:var(--mut);font-size:14px;cursor:pointer}
 .hide{display:none}
@@ -215,6 +237,26 @@ a.mat .md{display:block;color:var(--mut);font-size:14px;font-weight:500;margin-t
   const STATUS = { todo: '해야 함', submitted: '제출함', checked: '확인 완료' };
 
   const SITE_NAME = '국어의 정답';
+  // 첫 화면과 같은 머리말 틀
+  function shell(navs, right) {
+    const nav = h('nav', {}, ...navs.map(n => { const a = h('a', { class: n.on ? 'on' : '', onclick: n.fn }, n.t); a.dataset.t = n.t; return a; }));
+    const body = h('div', {});
+    const root = h('div', { class: 'pg' },
+      h('header', { class: 'ltop' }, h('span', { class: 'wm', style: 'cursor:pointer', onclick: () => { const c = store.get(); c ? fetchData(c).then(r => render(r.data)).catch(landing) : landing(); } }, SITE_NAME), nav, h('span', { class: 'sp' }), right || null),
+      body);
+    app.replaceChildren(root);
+    return { nav, body };
+  }
+  function noticeBox() {
+    const ul = h('ul', { class: 'nlist' }, h('li', {}, h('span', {}, '불러오는 중')));
+    fetch('common.json', { cache: 'no-store' }).then(r => r.json()).then(c => {
+      const n = (c.notices || []).slice().sort((x, y) => (y.date || '').localeCompare(x.date || '')).slice(0, 4);
+      ul.replaceChildren(...(n.length ? n.map(x => h('li', {}, h('time', {}, (x.date || '').slice(5).replace('-', '.')), h('span', {}, x.text)))
+        : [h('li', {}, h('span', {}, '등록된 공지가 없습니다.'))]));
+    }).catch(() => ul.replaceChildren(h('li', {}, h('span', {}, '공지를 불러오지 못했습니다.'))));
+    return h('div', { class: 'box' }, h('h3', {}, '공지', h('a', { onclick: board }, '게시판 ›')), ul);
+  }
+
   function landing() {
     app.replaceChildren();
     const go = id => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth' }); };
@@ -288,51 +330,57 @@ a.mat .md{display:block;color:var(--mut);font-size:14px;font-weight:500;margin-t
       h('footer', { class: 'lfoot' }, '© 2026 ' + SITE_NAME + ' · munhak.org'))));
   }
   async function board() {
-    app.replaceChildren();
-    const list = h('div', {}, h('div', { class: 'empty' }, '불러오는 중...'));
-    app.append(h('div', { class: 'hdr' }, h('h1', {}, '게시판'), h('button', { onclick: landing }, '‹ 처음으로')), list);
+    const back = store.get() ? { t: '내 수업', fn: () => fetchData(store.get()).then(r => render(r.data)).catch(landing) } : { t: '처음으로', fn: landing };
+    const { body } = shell([back, { t: '게시판', on: true, fn: board }]);
+    const tb = h('tbody', {}, h('tr', {}, h('td', { class: 'emp', colspan: 3 }, '불러오는 중')));
+    body.append(h('div', { style: 'padding-top:30px' }, h('h2', {}, '게시판'),
+      h('table', { class: 'list' }, h('thead', {}, h('tr', {}, h('th', { class: 'no' }, '번호'), h('th', {}, '제목'), h('th', { class: 'dt' }, '날짜'))), tb)));
     try {
       const r = await fetch('board.json', { cache: 'no-store' });
       const posts = r.ok ? await r.json() : [];
-      list.replaceChildren();
-      if (!posts.length) list.append(h('div', { class: 'card empty' }, '등록된 글이 없습니다.'));
-      posts.forEach(p => list.append(h('div', { class: 'card post' },
-        h('div', { class: 't' }, p.title), h('div', { class: 'meta' }, p.date || ''), h('div', { class: 'b' }, p.text || ''))));
-    } catch (e) { list.replaceChildren(h('div', { class: 'card empty' }, '글을 불러오지 못했습니다.')); }
+      tb.replaceChildren();
+      if (!posts.length) { tb.append(h('tr', {}, h('td', { class: 'emp', colspan: 3 }, '등록된 글이 없습니다.'))); return; }
+      posts.forEach((p, i) => {
+        const pb = h('tr', { class: 'pb hide' }, h('td', { colspan: 3 }, p.text || ''));
+        tb.append(h('tr', { class: 'ph', onclick: () => pb.classList.toggle('hide') },
+          h('td', { class: 'no' }, posts.length - i), h('td', {}, h('a', { class: 'tt' }, p.title)), h('td', { class: 'dt' }, (p.date || '').replace(/-/g, '.'))), pb);
+      });
+    } catch (e) { tb.replaceChildren(h('tr', {}, h('td', { class: 'emp', colspan: 3 }, '글을 불러오지 못했습니다.'))); }
   }
 
   function login(msg) {
-    app.replaceChildren();
+    const { body } = shell([{ t: '처음으로', fn: landing }, { t: '게시판', fn: board }]);
     const input = h('input', { type: 'text', inputmode: 'numeric', placeholder: '휴대폰 번호', autocomplete: 'off', maxlength: '16' });
-    const err = h('div', { class: 'err' }, msg || '');
+    const er = h('div', { class: 'er' }, msg || '');
     const go = async () => {
-      if (norm(input.value).length !== 8) { err.textContent = '휴대폰 번호를 확인하세요.'; return; }
-      err.textContent = '로그인 중...';
+      if (norm(input.value).length !== 8) { er.textContent = '휴대폰 번호를 확인하세요.'; return; }
+      er.textContent = '확인 중...';
       try { const r = await fetchData(input.value); store.set(r.saved); render(r.data); }
-      catch (e) { err.textContent = '코드가 맞지 않습니다.'; }
+      catch (e) { er.textContent = '등록된 번호가 아닙니다.'; }
     };
     input.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
-    app.append(h('div', { class: 'login' }, h('button', { class: 'back', onclick: landing }, '‹ 처음으로'), h('h1', {}, '수강생 로그인'), h('p', { class: 'meta' }, '010 제외 8자리를 입력하세요.'), input, h('button', { class: 'btn1', onclick: go }, '로그인'), err));
+    body.append(h('div', { class: 'lbox' }, h('div', { class: 'box' },
+      h('h3', {}, '수강생 로그인'),
+      h('div', { class: 'in' }, h('div', { class: 'lg' }, input, h('button', { onclick: go }, '확인')), h('div', { class: 'hint' }, '010을 뺀 뒤 8자리'), er))));
     input.focus();
   }
 
   function render(d) {
-    app.replaceChildren();
     const tabs = ['자료', '일정'];
     const views = {};
-    const bar = h('div', { class: 'tabs' });
-    tabs.forEach((t, i) => {
-      const b = h('button', { onclick: () => show(t) }, t);
-      b.dataset.t = t; bar.append(b);
-    });
+    const { nav, body } = shell(tabs.map(t => ({ t, fn: () => show(t) })).concat([{ t: '게시판', fn: board }]),
+      h('span', { class: 'who' }, d.name, h('a', { onclick: () => { store.del(); landing(); } }, '로그아웃')));
     function show(t) {
       for (const k of tabs) views[k].classList.toggle('hide', k !== t);
-      for (const b of bar.children) b.classList.toggle('on', b.dataset.t === t);
+      for (const a of nav.children) a.classList.toggle('on', a.dataset.t === t);
     }
-    views['자료'] = materials(d); views['일정'] = schedule(d);
-    app.append(
-      h('div', { class: 'hdr' }, h('h1', {}, d.name), h('button', { onclick: () => { store.del(); landing(); } }, '로그아웃')),
-      bar, ...tabs.map(t => views[t]));
+    views['자료'] = h('section', {}, h('h2', {}, '자료'), materials(d));
+    views['일정'] = h('section', {}, h('h2', {}, '일정'), schedule(d));
+    const nx = nextLesson(d);
+    const nb = h('div', { class: 'box nxt' }, h('h3', {}, '다음 수업'), h('div', { class: 'in' },
+      nx ? [h('div', { class: 'd' }, fmt(nx.date) + ' ' + (nx.time || '')), h('div', { class: 's' }, h('b', {}, ddText(dday(nx.date))), nx.note ? ' · ' + nx.note : '')]
+         : h('div', { class: 's' }, '예정된 수업이 없습니다.')));
+    body.append(h('div', { class: 'dash' }, h('div', {}, ...tabs.map(t => views[t])), h('aside', { class: 'side' }, nb, noticeBox())));
     show('자료');
   }
 
@@ -387,9 +435,10 @@ a.mat .md{display:block;color:var(--mut);font-size:14px;font-weight:500;margin-t
         if (l) c.addEventListener('click', () => { sel = k; showInfo(k, l); draw(); });
         grid.append(c);
       }
+      for (let i = (cur.getDay() + last) % 7; i && i < 7; i++) grid.append(h('div', { class: 'c off' }));
     }
     const nx = nextLesson(d);
-    showInfo(nx ? nx.date : null, nx);
+    info.append(h('div', { class: 'sm' }, '수업이 있는 날짜를 누르면 시간과 내용이 나옵니다.'));
     draw();
     let day = null;
     const err = h('div', { class: 'err' });
@@ -424,9 +473,13 @@ a.mat .md{display:block;color:var(--mut);font-size:14px;font-weight:500;margin-t
     const v = h('div', {});
     const draw = list => {
       list = list.filter(m => m && m.url && !/example\.com/.test(m.url));
-      v.replaceChildren();
-      if (!list.length) { v.append(h('div', { class: 'card empty' }, '등록된 자료 없음')); return; }
-      list.forEach(m => v.append(h('div', { class: 'card' }, h('a', { class: 'mat', href: m.url, target: '_blank', rel: 'noopener' }, h('span', {}, h('span', { class: 'mt' }, m.title), m.desc ? h('span', { class: 'md' }, m.desc) : null), h('span', {}, '열기 ›')))));
+      const tb = h('tbody', {});
+      if (!list.length) tb.append(h('tr', {}, h('td', { class: 'emp', colspan: 3 }, '등록된 자료가 없습니다.')));
+      list.forEach((m, i) => tb.append(h('tr', {},
+        h('td', { class: 'no' }, i + 1),
+        h('td', {}, h('a', { class: 'tt', href: m.url, target: '_blank', rel: 'noopener' }, m.title), m.desc ? h('span', { class: 'md' }, m.desc) : null),
+        h('td', { class: 'act' }, h('a', { href: m.url, target: '_blank', rel: 'noopener' }, '열기')))));
+      v.replaceChildren(h('table', { class: 'list' }, h('thead', {}, h('tr', {}, h('th', { class: 'no' }, '번호'), h('th', {}, '자료명'), h('th', { class: 'act' }, ''))), tb));
     };
     draw(d.materials || []);
     // 공통 자료는 common.json 을 바로 읽어 반영한다 (data/*.bin 을 다시 만들지 않아도 됨). 제목이 같으면 common.json 쪽이 우선.
